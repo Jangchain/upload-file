@@ -1,0 +1,130 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#1__13" rel="nofollow">1 你在上家公司主要做哪些方面测试</a></li><li><a href="#2_postmanjmeter_28" rel="nofollow">2 postman和jmeter在测试工作中的作用</a></li><li><ul><li><ul><li><a href="#Postman_32" rel="nofollow">Postman的作用</a></li><li><a href="#JMeter_48" rel="nofollow">JMeter的作用</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#3bug_66" rel="nofollow">3说说你测试中常见的bug</a></li><li><ul><li><ul><li><a href="#_Functional_Bugs_70" rel="nofollow">功能性错误 (Functional Bugs)</a></li><li><a href="#_UI_Bugs_78" rel="nofollow">界面错误 (UI Bugs)</a></li><li><a href="#_Compatibility_Bugs_87" rel="nofollow">兼容性问题 (Compatibility Bugs)</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#4__95" rel="nofollow">4 性能测试了解多少？常用的性能测试工具</a></li><li><ul><li><ul><li><a href="#_99" rel="nofollow">性能测试的了解</a></li><li><a href="#_116" rel="nofollow">常用的性能测试工具</a></li><li><a href="#_148" rel="nofollow">兼容性测试的了解</a></li><li><a href="#_158" rel="nofollow">兼容性测试的考虑方面</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#6__194" rel="nofollow">6 数据库常用的语法，深入了解多少？</a></li><li><a href="#7__200" rel="nofollow">7 上家公司的测试流程是怎么样的</a></li><li><a href="#8_jmeter_264" rel="nofollow">8 如何用jmeter实现接口测</a></li><li><a href="#9_web_272" rel="nofollow">9 web测试会从哪些方面去测</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/1466c07631a6beb4757b80529b26ee1c.png" alt="封面"></p> 
+<h2><a id="1__13"></a>1 你在上家公司主要做哪些方面测试</h2> 
+<p>需要联系实际，如果没有上一家公司，就直说没有，可以补充：自己本人了解到的公司日常测试内容。</p> 
+<ol><li><strong>功能测试</strong>： 设计和执行功能测试用例，确保各个功能模块按需求正确工作。</li><li><strong>回归测试</strong>： 维护和更新回归测试用例库，定期执行回归测试，确保软件更新后没有引入新的缺陷。</li><li><strong>性能测试</strong>： 使用JMeter进行负载测试和压力测试，评估系统在高负载条件下的性能，并提出优化建议。</li><li><strong>自动化测试</strong>： 使用Selenium编写自动化测试脚本，定期运行这些脚本以提高测试效率。</li><li><strong>安全测试</strong>： 进行漏洞扫描和渗透测试，发现并修复潜在的安全漏洞。</li><li><strong>用户界面测试</strong>： 设计并执行UI测试用例，确保界面元素在不同设备和浏览器上的一致性。</li></ol> 
+<h2><a id="2_postmanjmeter_28"></a>2 postman和jmeter在测试工作中的作用</h2> 
+<h4><a id="Postman_32"></a>Postman的作用</h4> 
+<p><strong>1. API测试 (API Testing)</strong></p> 
+<ul><li><strong>描述</strong>：Postman是一个流行的API开发和测试工具，用于发送HTTP请求和验证响应。</li><li><strong>使用场景</strong>： 
+  <ul><li><strong>单个API测试</strong>：验证单个API端点的功能，确保其按预期工作。</li><li><strong>自动化测试</strong>：编写自动化测试脚本，使用Postman的Collection Runner批量执行测试。</li><li><strong>环境管理</strong>：管理不同的测试环境（如开发、测试、生产环境），通过环境变量动态调整请求参数。</li><li><strong>集成测试</strong>：与CI/CD管道集成，自动执行API测试，确保在代码变更后API的稳定性。</li></ul> </li></ul> 
+<p><strong>2. 优点</strong></p> 
+<ul><li><strong>易用性</strong>：界面友好，易于上手，即使是非技术人员也能快速学会使用。</li><li><strong>灵活性</strong>：支持各种HTTP请求方法（GET、POST、PUT、DELETE等）和复杂的请求配置（如Headers、Body）。</li><li><strong>可视化结果</strong>：提供详细的响应结果和日志，便于调试和分析问题。</li><li><strong>丰富的扩展</strong>：支持JavaScript编写测试脚本，实现复杂的测试逻辑。</li></ul> 
+<h4><a id="JMeter_48"></a>JMeter的作用</h4> 
+<p><strong>1. 性能测试 (Performance Testing)</strong></p> 
+<ul><li><strong>描述</strong>：JMeter是一个开源的性能测试工具，用于测试应用程序的性能和负载能力。</li><li><strong>使用场景</strong>： 
+  <ul><li><strong>负载测试</strong>：模拟大量并发用户，测试系统在高负载下的响应时间和吞吐量。</li><li><strong>压力测试</strong>：逐渐增加负载，直到系统达到性能瓶颈，评估其最大承受能力。</li><li><strong>稳定性测试</strong>：长时间运行测试，观察系统的稳定性和资源使用情况。</li><li><strong>分布式测试</strong>：支持分布式测试架构，可以在多个机器上同时执行测试，提高负载生成能力。</li></ul> </li></ul> 
+<p><strong>2. 优点</strong></p> 
+<ul><li><strong>强大性能</strong>：支持大规模并发用户模拟，适用于高负载性能测试。</li><li><strong>可扩展性</strong>：支持通过插件和脚本扩展功能，可以自定义测试逻辑和报告。</li><li><strong>丰富协议支持</strong>：不仅支持HTTP/HTTPS，还支持FTP、JDBC、SMTP等多种协议，适用于多种应用场景。</li><li><strong>可视化报告</strong>：生成详细的性能测试报告，包括响应时间、吞吐量、错误率等关键指标。</li></ul> 
+<h2><a id="3bug_66"></a>3说说你测试中常见的bug</h2> 
+<p>需要联系实际，以下是举例</p> 
+<h4><a id="_Functional_Bugs_70"></a>功能性错误 (Functional Bugs)</h4> 
+<ul><li> <p>某个按钮点击无响应。</p> </li><li> <p>表单提交后没有生成预期的记录。</p> </li></ul> 
+<h4><a id="_UI_Bugs_78"></a>界面错误 (UI Bugs)</h4> 
+<ul><li>布局错位或重叠。</li><li>文本显示错误或溢出。</li><li>按钮或链接不可点击。</li></ul> 
+<h4><a id="_Compatibility_Bugs_87"></a>兼容性问题 (Compatibility Bugs)</h4> 
+<ul><li>某些浏览器上功能失效。</li><li>不同操作系统下显示效果不一致。</li><li>移动设备上无法正常使用。</li></ul> 
+<h2><a id="4__95"></a>4 性能测试了解多少？常用的性能测试工具</h2> 
+<h4><a id="_99"></a>性能测试的了解</h4> 
+<p><strong>1. 性能测试的定义</strong><br> 性能测试是指通过模拟负载和压力，评估软件系统在特定条件下的性能表现，包括响应时间、吞吐量、资源利用率等关键指标。</p> 
+<p><strong>2. 性能测试的目的</strong></p> 
+<ul><li><strong>识别性能瓶颈</strong>：找出系统在高负载下的薄弱环节，确保系统在实际使用中能够稳定运行。</li><li><strong>验证系统稳定性</strong>：通过长时间测试，验证系统在持续负载下的稳定性和可靠性。</li><li><strong>优化系统性能</strong>：通过测试结果，指导开发和优化工作，提高系统性能。</li></ul> 
+<p><strong>3. 性能测试的关键指标</strong></p> 
+<ul><li><strong>响应时间</strong>：用户请求到系统响应的时间。</li><li><strong>吞吐量</strong>：单位时间内系统处理的请求数量。</li><li><strong>并发用户数</strong>：系统同时处理的用户数量。</li><li><strong>资源利用率</strong>：系统资源（如CPU、内存、网络带宽等）的使用情况。</li><li><strong>错误率</strong>：系统在高负载下的错误请求比例。</li></ul> 
+<h4><a id="_116"></a>常用的性能测试工具</h4> 
+<p><strong>1. Apache JMeter</strong></p> 
+<ul><li><strong>特点</strong>：开源、免费、功能强大，支持多种协议（HTTP/HTTPS、FTP、JDBC、SMTP等），可扩展性强。</li><li><strong>使用场景</strong>：适用于Web应用、数据库、文件服务器等的性能测试。</li><li><strong>优点</strong>：支持分布式测试，易于集成到CI/CD管道，生成详细的性能报告。</li></ul> 
+<p><strong>2. LoadRunner</strong></p> 
+<ul><li><strong>特点</strong>：商业软件，功能全面，支持多种协议和技术（如Web、SAP、Citrix、Oracle等）。</li><li><strong>使用场景</strong>：适用于大规模企业级性能测试。</li><li><strong>优点</strong>：强大的脚本录制和回放功能，丰富的分析和报告工具，良好的技术支持。</li></ul> 
+<p><strong>3. Gatling</strong></p> 
+<ul><li><strong>特点</strong>：开源、基于Scala，专注于HTTP协议，性能优越。</li><li><strong>使用场景</strong>：适用于Web应用的高并发性能测试。</li><li><strong>优点</strong>：支持编程方式编写测试脚本，高效的执行和报告生成。</li></ul> 
+<p><strong>4. NeoLoad</strong></p> 
+<ul><li><strong>特点</strong>：商业软件，易于使用，支持多种协议和技术（如Web、数据库、云服务等）。</li><li><strong>使用场景</strong>：适用于中大型企业级性能测试。</li><li><strong>优点</strong>：用户友好的界面，支持实时监控和分析，丰富的报告功能。</li></ul> 
+<p>#5 兼容性测试会从哪些方面考虑</p> 
+<h4><a id="_148"></a>兼容性测试的了解</h4> 
+<p><strong>1. 兼容性测试的定义</strong><br> 兼容性测试是评估软件在不同环境中（如操作系统、浏览器、硬件、网络配置等）的表现，确保软件能够在各种平台、配置和设备上正常运行。</p> 
+<p><strong>2. 兼容性测试的目的</strong></p> 
+<ul><li><strong>确保用户体验一致</strong>：确保软件在不同的设备和环境中提供一致的功能和用户体验。</li><li><strong>提升市场覆盖率</strong>：通过兼容性测试，确保软件能够在尽可能多的配置和平台上运行，以覆盖更多的用户群体。</li><li><strong>减少潜在问题</strong>：提前发现和修复在不同环境下可能出现的问题，减少用户遇到问题的概率。</li></ul> 
+<h4><a id="_158"></a>兼容性测试的考虑方面</h4> 
+<p><strong>1. 操作系统兼容性</strong></p> 
+<ul><li><strong>不同版本</strong>：测试软件在同一操作系统的不同版本（如Windows 10、Windows 11，macOS Monterey、Ventura）上的表现。</li><li><strong>不同类型</strong>：测试软件在不同类型的操作系统（如Windows、macOS、Linux等）上的表现。</li></ul> 
+<p><strong>2. 浏览器兼容性</strong></p> 
+<ul><li><strong>不同浏览器</strong>：测试Web应用在各种主流浏览器（如Chrome、Firefox、Safari、Edge等）上的表现。</li><li><strong>不同版本</strong>：测试Web应用在同一浏览器的不同版本上的表现。</li><li><strong>移动端浏览器</strong>：测试Web应用在移动端浏览器（如Chrome for Android、Safari for iOS）上的表现。</li></ul> 
+<p><strong>3. 硬件兼容性</strong></p> 
+<ul><li><strong>不同配置</strong>：测试软件在不同硬件配置（如CPU、内存、存储等）上的表现。</li><li><strong>不同设备</strong>：测试软件在不同设备（如台式机、笔记本、平板、手机等）上的表现。</li></ul> 
+<p><strong>4. 显示兼容性</strong></p> 
+<ul><li><strong>分辨率</strong>：测试软件在不同屏幕分辨率（如1080p、4K、手机屏幕等）上的表现。</li><li><strong>颜色深度</strong>：测试软件在不同颜色深度（如16位色、32位色）上的表现。</li></ul> 
+<p><strong>5. 网络兼容性</strong></p> 
+<ul><li><strong>不同网络条件</strong>：测试软件在不同网络速度和条件（如有线网络、Wi-Fi、4G/5G等）下的表现。</li><li><strong>不同网络配置</strong>：测试软件在不同网络配置（如代理服务器、防火墙设置等）下的表现。</li></ul> 
+<p><strong>6. 本地化兼容性</strong></p> 
+<ul><li><strong>语言和区域</strong>：测试软件在不同语言和区域设置下的表现，确保本地化功能正常。</li></ul> 
+<p><strong>7. 外部接口兼容性</strong></p> 
+<ul><li><strong>API</strong>：测试软件与外部API在不同版本和配置下的兼容性。</li><li><strong>第三方插件</strong>：测试软件与常用第三方插件或扩展的兼容性。</li></ul> 
+<h2><a id="6__194"></a>6 数据库常用的语法，深入了解多少？</h2> 
+<p>联系个人实际进行回答</p> 
+<h2><a id="7__200"></a>7 上家公司的测试流程是怎么样的</h2> 
+<p>以下是常见的测试流程：，联系个人实际进行回答，如果没有上家公司，可以谈谈自己了解到的测试流程。</p> 
+<p><strong>1. 需求分析阶段</strong></p> 
+<ul><li><strong>活动</strong>：测试人员参与需求分析会议，理解和澄清需求。</li><li><strong>目标</strong>：确保测试团队对需求有全面和准确的理解。</li><li><strong>输出</strong>：需求文档、初步的测试计划。</li></ul> 
+<p><strong>2. 测试计划阶段</strong></p> 
+<ul><li><strong>活动</strong>：制定详细的测试计划，包括测试策略、测试范围、资源分配和时间表。</li><li><strong>目标</strong>：制定清晰的测试路线图，确保所有测试活动有条不紊地进行。</li><li><strong>输出</strong>：测试计划文档。</li></ul> 
+<p><strong>3. 测试设计阶段</strong></p> 
+<ul><li><strong>活动</strong>：设计测试用例，包括功能测试用例、性能测试用例和边界测试用例等。</li><li><strong>目标</strong>：确保覆盖所有需求和可能的边界情况。</li><li><strong>输出</strong>：测试用例文档。</li></ul> 
+<p><strong>4. 测试环境搭建</strong></p> 
+<ul><li><strong>活动</strong>：搭建和配置测试环境，包括硬件、软件、网络等。</li><li><strong>目标</strong>：模拟真实的生产环境，确保测试结果的准确性和可靠性。</li><li><strong>输出</strong>：配置好的测试环境。</li></ul> 
+<p><strong>5. 测试执行阶段</strong></p> 
+<ul><li><strong>活动</strong>：执行测试用例，记录测试结果和缺陷。</li><li><strong>目标</strong>：验证系统是否按照需求正常工作，发现并记录缺陷。</li><li><strong>输出</strong>：测试结果报告、缺陷报告。</li></ul> 
+<p><strong>6. 缺陷管理阶段</strong></p> 
+<ul><li><strong>活动</strong>：报告、跟踪和管理缺陷，确保缺陷得到及时修复和验证。</li><li><strong>目标</strong>：确保所有发现的缺陷都得到修复和验证，确保系统稳定性。</li><li><strong>输出</strong>：更新的缺陷报告和状态。</li></ul> 
+<p><strong>7. 回归测试阶段</strong></p> 
+<ul><li><strong>活动</strong>：在缺陷修复后，重新执行测试用例，验证缺陷修复是否有效，系统其他部分是否受影响。</li><li><strong>目标</strong>：确保缺陷修复后系统功能完好无损。</li><li><strong>输出</strong>：回归测试结果报告。</li></ul> 
+<p><strong>8. 测试报告阶段</strong></p> 
+<ul><li><strong>活动</strong>：汇总测试结果，编写测试总结报告，提供测试的整体情况和质量评估。</li><li><strong>目标</strong>：为项目团队和管理层提供全面的测试反馈，评估软件的质量。</li><li><strong>输出</strong>：测试总结报告。</li></ul> 
+<p><strong>9. 发布和验收阶段</strong></p> 
+<ul><li><strong>活动</strong>：参与软件的发布和验收测试，确保软件在实际生产环境中的稳定运行。</li><li><strong>目标</strong>：验证软件在实际使用环境中的表现，确保没有重大问题。</li><li><strong>输出</strong>：验收测试报告。</li></ul> 
+<h2><a id="8_jmeter_264"></a>8 如何用jmeter实现接口测</h2> 
+<ol><li><strong>创建测试计划和线程组</strong>：在测试计划中添加一个线程组，配置线程数、Ramp-Up Period 和循环次数。</li><li><strong>添加 HTTP 请求采样器</strong>：在线程组下添加 HTTP 请求采样器，配置请求的协议、服务器名称、端口号、路径和请求方法等参数。</li><li><strong>添加监听器</strong>：添加如“查看结果树”或“汇总报告”的监听器，以便在测试执行后查看和分析结果。</li><li><strong>执行测试</strong>：保存并执行测试计划，查看监听器中的测试结果。</li><li><strong>分析结果</strong>：根据响应时间、吞吐量和错误率等指标，评估接口的性能和稳定性。</li></ol> 
+<h2><a id="9_web_272"></a>9 web测试会从哪些方面去测</h2> 
+<p><strong>1. 功能测试</strong></p> 
+<ul><li><strong>目的</strong>：验证 Web 应用程序的各项功能是否按照需求正常工作。</li><li><strong>内容</strong>： 
+  <ul><li>链接测试：确保所有链接（内部和外部）都能正确导航。</li><li>表单测试：验证表单的输入和提交功能，包括必填字段、数据验证、错误提示等。</li><li>Cookie 测试：检查应用程序是否正确创建、修改和删除 cookies。</li><li>界面测试：验证用户界面的各个元素（如按钮、菜单、文本框等）是否正确显示和工作。</li></ul> </li></ul> 
+<p><strong>2. 性能测试</strong></p> 
+<ul><li><strong>目的</strong>：评估 Web 应用程序在不同负载条件下的性能。</li><li><strong>内容</strong>： 
+  <ul><li>负载测试：测试应用程序在正常和高峰负载下的表现。</li><li>压力测试：测试应用程序在极端条件下的稳定性。</li><li>吞吐量测试：测量应用程序在单位时间内处理的请求数量。</li><li>响应时间测试：测量应用程序对用户请求的响应速度。</li></ul> </li></ul> 
+<p><strong>3. 兼容性测试</strong></p> 
+<ul><li><strong>目的</strong>：确保 Web 应用程序在不同的浏览器、操作系统和设备上都能正常工作。</li><li><strong>内容</strong>： 
+  <ul><li>浏览器兼容性：测试应用程序在不同浏览器（如 Chrome、Firefox、Safari、Edge 等）上的表现。</li><li>操作系统兼容性：测试应用程序在不同操作系统（如 Windows、macOS、Linux 等）上的表现。</li><li>移动设备兼容性：测试应用程序在不同移动设备（如手机、平板电脑）上的表现。</li></ul> </li></ul> 
+<p><strong>4. 安全性测试</strong></p> 
+<ul><li><strong>目的</strong>：确保 Web 应用程序不受安全漏洞的威胁，保护用户数据。</li><li><strong>内容</strong>： 
+  <ul><li>SQL 注入测试：检查应用程序是否容易受到 SQL 注入攻击。</li><li>XSS（跨站脚本）测试：检查应用程序是否容易受到跨站脚本攻击。</li><li>CSRF（跨站请求伪造）测试：检查应用程序是否容易受到跨站请求伪造攻击。</li><li>身份验证和授权测试：验证用户身份认证和权限管理机制的安全性。</li></ul> </li></ul> 
+<p><strong>5. 用户体验测试</strong></p> 
+<ul><li> <p><strong>目的</strong>：评估 Web 应用程序的用户界面和交互设计，确保良好的用户体验。</p> </li><li> <p><strong>内容</strong>：</p> 
+  <ul><li> <p>易用性测试：评估应用程序的界面设计、导航和使用便捷性。</p> </li><li> <p>响应性设计测试：确保应用程序在不同屏幕尺寸和分辨率下都有良好的显示效果。</p> </li></ul> </li></ul>
+                </div>
+</body>
+</html>

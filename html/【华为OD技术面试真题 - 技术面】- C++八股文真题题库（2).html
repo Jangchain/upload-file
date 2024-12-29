@@ -1,0 +1,344 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#STL_15" rel="nofollow">STL有哪些容器</a></li><li><ul><li><ul><li><a href="#1__19" rel="nofollow">1. 序列容器</a></li><li><a href="#2__27" rel="nofollow">2. 关联容器</a></li><li><a href="#3_C11_35" rel="nofollow">3. 无序关联容器（C++11新增）</a></li><li><a href="#4__43" rel="nofollow">4. 容器适配器</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#Vectorlist_54" rel="nofollow">Vector和list的区别是什么</a></li><li><ul><li><ul><li><a href="#1__58" rel="nofollow">1. 数据结构</a></li><li><a href="#2__62" rel="nofollow">2. 性能特点</a></li><li><a href="#3__74" rel="nofollow">3. 内存使用</a></li><li><a href="#4__78" rel="nofollow">4. 应用场景</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#vector_82" rel="nofollow">在一个循环中将vector中的奇数位元素全部删除</a></li><li><ul><li><ul><li><a href="#_86" rel="nofollow">方法：反向迭代删除</a></li><li><a href="#_114" rel="nofollow">注意事项：</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#makefileCMake_123" rel="nofollow">makefile和CMake</a></li><li><ul><li><ul><li><a href="#makefile_127" rel="nofollow">makefile</a></li><li><a href="#CMake_134" rel="nofollow">CMake</a></li><li><a href="#_141" rel="nofollow">对比</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_156" rel="nofollow">进程线程</a></li><li><ul><li><ul><li><a href="#Process_160" rel="nofollow">进程（Process）</a></li><li><a href="#Thread_167" rel="nofollow">线程（Thread）</a></li><li><a href="#_174" rel="nofollow">进程与线程的区别</a></li><li><a href="#C_179" rel="nofollow">C++中的并发编程</a></li><li><a href="#_186" rel="nofollow">进程</a></li><li><a href="#_213" rel="nofollow">线程</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_248" rel="nofollow">指针和引用</a></li><li><ul><li><ul><li><a href="#_252" rel="nofollow">指针</a></li><li><a href="#_280" rel="nofollow">引用</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_309" rel="nofollow">类的构造与析构</a></li><li><ul><li><ul><li><a href="#_313" rel="nofollow">构造函数</a></li><li><a href="#_356" rel="nofollow">析构函数</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#C_398" rel="nofollow">C++内存分配机制</a></li><li><ul><li><ul><li><a href="#Stack_Allocation_402" rel="nofollow">栈内存分配（Stack Allocation）</a></li><li><a href="#Heap_Allocation_417" rel="nofollow">堆内存分配（Heap Allocation）</a></li><li><a href="#Static_Storage_433" rel="nofollow">静态存储区域（Static Storage）</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#sizeoflen_450" rel="nofollow">sizeof和len的区别</a></li><li><ul><li><ul><li><a href="#sizeof_454" rel="nofollow">sizeof</a></li><li><a href="#len__size__469" rel="nofollow">len 或 size() 方法</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#gdb_485" rel="nofollow">平时会用gdb吗，讲一讲基本用法</a></li><li><ul><li><ul><li><a href="#gdb__489" rel="nofollow">`gdb` 基本用法</a></li></ul> 
+  </li></ul> 
+ </li></ul> 
+</div> 
+<p></p> 
+<h2><a id="STL_15"></a>STL有哪些容器</h2> 
+<h4><a id="1__19"></a>1. 序列容器</h4> 
+<p>这些容器在内部按顺序存储元素。</p> 
+<ul><li><strong><code>vector</code></strong>：提供动态数组功能，可以随机访问元素。优点是访问速度快，尾部添加/删除元素效率高；缺点是中间插入或删除元素效率低。</li><li><strong><code>deque</code></strong>：双端队列，支持在头部和尾部高效地插入和删除元素。相比<code>vector</code>，<code>deque</code>在头部插入和删除效率更高。</li><li><strong><code>list</code></strong>：双向链表，支持在任何位置高效地插入和删除元素。优点是插入和删除效率高；缺点是不支持随机访问，访问元素效率较低。</li><li><strong><code>forward_list</code></strong>（C++11新增）：单向链表，比<code>list</code>更节省空间，但只能向前遍历。</li></ul> 
+<h4><a id="2__27"></a>2. 关联容器</h4> 
+<p>这些容器内部使用树结构（通常是红黑树），元素根据键进行排序。</p> 
+<ul><li><strong><code>set</code></strong>：集合，存储唯一键的集合，自动排序。</li><li><strong><code>map</code></strong>：映射，存储键值对，根据键排序，键是唯一的。</li><li><strong><code>multiset</code></strong>：多重集合，可以存储重复的键。</li><li><strong><code>multimap</code></strong>：多重映射，可以存储重复键的键值对。</li></ul> 
+<h4><a id="3_C11_35"></a>3. 无序关联容器（C++11新增）</h4> 
+<p>基于哈希表实现，元素不排序，提供平均常数时间的复杂度进行查找、插入和删除操作。</p> 
+<ul><li><strong><code>unordered_set</code></strong>：无序集合，存储唯一键的集合。</li><li><strong><code>unordered_map</code></strong>：无序映射，存储键值对，键是唯一的。</li><li><strong><code>unordered_multiset</code></strong>：无序多重集合，可以存储重复的键。</li><li><strong><code>unordered_multimap</code></strong>：无序多重映射，可以存储重复键的键值对。</li></ul> 
+<h4><a id="4__43"></a>4. 容器适配器</h4> 
+<p>容器适配器提供了一种方式，以修改现有容器类的接口。</p> 
+<ul><li><strong><code>stack</code></strong>：栈适配器，默认使用<code>deque</code>实现。后进先出（LIFO）数据结构。</li><li><strong><code>queue</code></strong>：队列适配器，默认使用<code>deque</code>实现。先进先出（FIFO）数据结构。</li><li><strong><code>priority_queue</code></strong>：优先队列适配器，默认使用<code>vector</code>实现，但元素按优先级排序。</li></ul> 
+<h2><a id="Vectorlist_54"></a>Vector和list的区别是什么</h2> 
+<h4><a id="1__58"></a>1. 数据结构</h4> 
+<ul><li><strong><code>vector</code></strong>：基于动态数组的实现。它在内存中连续存储所有元素，这意味着可以通过指针算术直接计算元素位置，从而实现快速的随机访问。</li><li><strong><code>list</code></strong>：基于双向链表的实现。每个元素都作为一个节点独立存储，每个节点通过指针连接前一个和后一个节点。这种结构使得在任何位置插入和删除操作都非常高效，但不支持直接的随机访问。</li></ul> 
+<h4><a id="2__62"></a>2. 性能特点</h4> 
+<ul><li> <p><strong>访问元素</strong>：</p> 
+  <ul><li><code>vector</code>：提供非常高效的随机访问能力，访问任意位置的元素的时间复杂度为O(1)。</li><li><code>list</code>：只能通过顺序访问来找到特定元素，访问任意位置的元素的时间复杂度为O(n)。</li></ul> </li><li> <p><strong>插入和删除操作</strong>：</p> 
+  <ul><li><code>vector</code>： 
+    <ul><li>在尾部插入和删除操作非常高效（通常为O(1)），但可能涉及到动态数组的重新分配和元素的复制或移动。</li><li>在中间或开始插入和删除效率较低，因为可能需要移动多个元素。</li></ul> </li><li><code>list</code>： 
+    <ul><li>在任何位置插入和删除元素都非常高效，时间复杂度为O(1)，因为这仅仅涉及修改指针而不需要移动其他元素。</li></ul> </li></ul> </li></ul> 
+<h4><a id="3__74"></a>3. 内存使用</h4> 
+<ul><li><strong><code>vector</code></strong>：由于内部使用数组，所以内存使用相对紧凑，但在扩容时可能会有额外的内存开销。</li><li><strong><code>list</code></strong>：每个元素需要额外的内存来存储指向前后节点的指针，因此内存使用比<code>vector</code>更高。</li></ul> 
+<h4><a id="4__78"></a>4. 应用场景</h4> 
+<ul><li><strong><code>vector</code></strong>：适合那些需要快速随机访问元素的场景，或者添加和删除操作主要发生在序列的末尾。</li><li><strong><code>list</code></strong>：适合那些需要频繁插入和删除操作的场景，尤其是在序列的中间或开始位置进行这些操作。</li></ul> 
+<h2><a id="vector_82"></a>在一个循环中将vector中的奇数位元素全部删除</h2> 
+<h4><a id="_86"></a>方法：反向迭代删除</h4> 
+<p>由于在循环中删除<code>vector</code>元素可能会导致迭代器失效和元素移动，最安全的做法是从后向前迭代<code>vector</code>并进行删除。这样做的好处是，删除元素后，只会影响到当前元素之后的元素的位置和迭代器，而不会影响到已经处理过的元素。这里是如何实现的：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> vec <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 从后向前迭代，删除奇数位元素（注意索引从0开始）</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> vec<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token operator">--</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>i <span class="token operator">%</span> <span class="token number">2</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>  <span class="token comment">// 选取奇数位元素（索引为偶数）</span>
+            vec<span class="token punctuation">.</span><span class="token function">erase</span><span class="token punctuation">(</span>vec<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 输出结果验证</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> vec<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> num <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="_114"></a>注意事项：</h4> 
+<ol><li> <p><strong>迭代器失效</strong>：在<code>vector</code>中删除元素会使从当前位置到末尾的所有迭代器、指针和引用失效。因此从后向前删除可以避免处理已失效的迭代器。</p> </li><li> <p><strong>性能考虑</strong>：每次调用<code>erase</code>都可能导致从当前元素到末尾的所有元素复制或移动，这在元素数量较多时可能导致较高的性能成本。</p> </li></ol> 
+<h2><a id="makefileCMake_123"></a>makefile和CMake</h2> 
+<h4><a id="makefile_127"></a>makefile</h4> 
+<ul><li><strong>定义</strong>：<code>makefile</code>是一个文本文件，其中定义了一组规则来指定如何编译和链接程序。它被<code>make</code>工具使用，来自动化编译过程。</li><li><strong>特点</strong>： 
+  <ul><li>通过编写一系列的规则来描述源文件如何被编译和链接。</li><li>每个规则指明一个目标文件、依赖和用于生成目标的命令。</li><li>适用于小到中型的项目，特别是当项目结构相对简单时。</li></ul> </li></ul> 
+<h4><a id="CMake_134"></a>CMake</h4> 
+<ul><li><strong>定义</strong>：<code>CMake</code>是一个跨平台的自动化构建系统，它使用<code>CMakeLists.txt</code>文件来定义构建过程。</li><li><strong>特点</strong>： 
+  <ul><li>不直接构建项目，而是生成标准的构建文件（如Unix的Makefiles或Windows的项目文件），然后依靠相应的构建系统进行项目构建。</li><li>可以根据不同平台生成对应的构建系统文件，提高项目的可移植性。</li><li>适用于大型项目，特别是需要跨平台编译的项目。</li></ul> </li></ul> 
+<h4><a id="_141"></a>对比</h4> 
+<ol><li> <p><strong>平台兼容性</strong>：</p> 
+  <ul><li><code>makefile</code>：通常与Unix-like系统紧密相关，虽然可以在Windows上通过工具如Cygwin使用，但不如CMake那样天然跨平台。</li><li><code>CMake</code>：天然支持跨平台，可以生成多种平台上的构建系统文件，如Makefiles、Ninja、Visual Studio项目文件等。</li></ul> </li><li> <p><strong>易用性和灵活性</strong>：</p> 
+  <ul><li><code>makefile</code>：需要详细指定编译命令和链接命令，对新手可能较为复杂。</li><li><code>CMake</code>：通过简单的配置语法自动处理许多复杂的构建任务，更易于管理大型项目。</li></ul> </li><li> <p><strong>可维护性</strong>：</p> 
+  <ul><li><code>makefile</code>：随着项目规模的扩大，makefile可能变得难以管理和维护。</li><li><code>CMake</code>：通过组织多个<code>CMakeLists.txt</code>文件，可以更好地管理大型项目的构建过程。</li></ul> </li></ol> 
+<h2><a id="_156"></a>进程线程</h2> 
+<h4><a id="Process_160"></a>进程（Process）</h4> 
+<ul><li><strong>定义</strong>：进程是计算机中的一个程序的实例。它是系统进行资源分配和调度的基本单位，拥有独立的地址空间和系统资源。</li><li><strong>特点</strong>： 
+  <ul><li>每个进程都有自己独立的内存地址空间。</li><li>进程间通信需要使用特定的IPC（Inter-process communication）机制，如管道、消息队列、共享内存等。</li><li>进程之间的切换开销较大，因为涉及到完整的上下文切换。</li></ul> </li></ul> 
+<h4><a id="Thread_167"></a>线程（Thread）</h4> 
+<ul><li><strong>定义</strong>：线程是进程的执行单元，是CPU调度和执行的实际单元，一个进程可以包含一个或多个线程。</li><li><strong>特点</strong>： 
+  <ul><li>线程在同一个进程下共享进程资源，如内存和文件描述符等。</li><li>线程的创建、终止和切换的开销小于进程，因为线程间的上下文切换不需要地址空间的切换。</li><li>多线程可以利用多核处理器的并行处理能力，提高应用程序的执行效率。</li></ul> </li></ul> 
+<h4><a id="_174"></a>进程与线程的区别</h4> 
+<ul><li><strong>资源独立性</strong>：进程有完全独立的地址空间，线程共享所属进程的地址空间。</li><li><strong>通信方式</strong>：进程间通信（IPC）比较复杂，线程间通信可以直接通过读写共享数据来进行。</li><li><strong>开销</strong>：进程的创建、销毁和切换开销更大，线程相对较小。</li></ul> 
+<h4><a id="C_179"></a>C++中的并发编程</h4> 
+<p>C++11及以后的版本引入了<code>&lt;thread&gt;</code>库，支持原生的多线程编程。通过使用<code>std::thread</code>，程序员可以在C++中创建并管理线程。此外，C++还提供了其他并发编程的工具，如互斥锁<code>std::mutex</code>、条件变量<code>std::condition_variable</code>等，来帮助同步多线程之间的活动。</p> 
+<p>作为一名C++面试官，你需要确保候选人不仅了解理论概念，还能实际应用它们。以下是对进程和线程的解释以及代码示例：</p> 
+<h4><a id="_186"></a>进程</h4> 
+<p><strong>代码示例</strong>：在C++中可以通过使用POSIX标准库（在Linux和macOS上），使用<code>fork()</code>来创建新的进程。例如：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unistd.h&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    pid_t pid <span class="token operator">=</span> <span class="token function">fork</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 创建一个新的进程</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>pid <span class="token operator">&lt;</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cerr <span class="token operator">&lt;&lt;</span> <span class="token string">"Fork failed"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+        <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>pid <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 子进程</span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"This is the child process. PID: "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 父进程</span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"This is the parent process. PID: "</span> <span class="token operator">&lt;&lt;</span> <span class="token function">getpid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<p>在这个例子中，<code>fork()</code>函数会复制当前进程，生成一个新的子进程。父进程会获得子进程的PID，而子进程的PID为0。</p> 
+<h4><a id="_213"></a>线程</h4> 
+<p><strong>代码示例</strong>：C++11引入了标准线程库，可以使用<code>std::thread</code>来创建线程。例如：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread&gt;</span></span>
+
+<span class="token comment">// 线程函数</span>
+<span class="token keyword">void</span> <span class="token function">print_message</span><span class="token punctuation">(</span><span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string <span class="token operator">&amp;</span>message<span class="token punctuation">,</span> <span class="token keyword">int</span> count<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> count<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> message <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 创建并启动线程</span>
+    std<span class="token double-colon punctuation">::</span>thread <span class="token function">t1</span><span class="token punctuation">(</span>print_message<span class="token punctuation">,</span> <span class="token string">"Hello from thread 1"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>thread <span class="token function">t2</span><span class="token punctuation">(</span>print_message<span class="token punctuation">,</span> <span class="token string">"Hello from thread 2"</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 等待线程完成</span>
+    t1<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    t2<span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<p>在这个例子中，<code>std::thread</code>被用来创建并启动线程。<code>t1.join()</code>和<code>t2.join()</code>用于确保主线程等待子线程完成。</p> 
+<h2><a id="_248"></a>指针和引用</h2> 
+<h4><a id="_252"></a>指针</h4> 
+<p><strong>定义</strong>：指针是一个变量，其存储的是另一个变量的地址。通过指针，可以间接访问和修改它所指向的内存位置的数据。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>指针可以被初始化为<code>nullptr</code>，表示它不指向任何内存位置。</li><li>指针的值可以改变，可以指向不同的变量或动态分配的内存。</li><li>通过解引用操作符<code>*</code>可以访问或修改指针所指向的数据。</li></ul> 
+<p><strong>代码示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">*</span> p <span class="token operator">=</span> <span class="token operator">&amp;</span>x<span class="token punctuation">;</span> <span class="token comment">// 'p' 是指向 'x' 的指针</span>
+
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value of x: "</span> <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>       <span class="token comment">// 输出: Value of x: 10</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Address of x: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">&amp;</span>x <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>    <span class="token comment">// 输出: Address of x: [x 的内存地址]</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value of p (address): "</span> <span class="token operator">&lt;&lt;</span> p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 输出: Value of p (address): [x 的内存地址]</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value pointed by p: "</span> <span class="token operator">&lt;&lt;</span> <span class="token operator">*</span>p <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>  <span class="token comment">// 输出: Value pointed by p: 10</span>
+
+    <span class="token operator">*</span>p <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment">// 通过指针修改 'x' 的值</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"New value of x: "</span> <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>   <span class="token comment">// 输出: New value of x: 20</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="_280"></a>引用</h4> 
+<p><strong>定义</strong>：引用是另一个变量的别名，它是一个已存在变量的另一个名字。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>引用一旦被初始化与一个变量，就不能改变为引用另一个变量。</li><li>引用必须在声明时初始化。</li><li>引用允许通过自身直接访问和修改它所引用的变量，就如同操作原始变量一样。</li></ul> 
+<p><strong>代码示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> x <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span><span class="token operator">&amp;</span> ref <span class="token operator">=</span> x<span class="token punctuation">;</span> <span class="token comment">// 'ref' 是 'x' 的引用</span>
+
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value of x: "</span> <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>      <span class="token comment">// 输出: Value of x: 10</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Value of ref: "</span> <span class="token operator">&lt;&lt;</span> ref <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>  <span class="token comment">// 输出: Value of ref: 10</span>
+
+    ref <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment">// 修改引用同时也修改原始变量 'x'</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"New value of x: "</span> <span class="token operator">&lt;&lt;</span> x <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>  <span class="token comment">// 输出: New value of x: 20</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"New value of ref: "</span> <span class="token operator">&lt;&lt;</span> ref <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span> <span class="token comment">// 输出: New value of ref: 20</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="_309"></a>类的构造与析构</h2> 
+<h4><a id="_313"></a>构造函数</h4> 
+<p><strong>定义</strong>：构造函数是一种特殊的成员函数，它在创建类的对象时自动调用，用于初始化对象的成员变量。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>构造函数的名称与类名相同，并且不返回任何类型。</li><li>可以有多个构造函数，实现重载。</li><li>支持默认构造函数（无参数）、参数化构造函数以及复制构造函数。</li></ul> 
+<p><strong>代码示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;string&gt;</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    std<span class="token double-colon punctuation">::</span>string name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+
+    <span class="token comment">// 默认构造函数</span>
+    <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">name</span><span class="token punctuation">(</span><span class="token string">"Unknown"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">age</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Default constructor called"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 参数化构造函数</span>
+    <span class="token function">Person</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>string n<span class="token punctuation">,</span> <span class="token keyword">int</span> a<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">name</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">age</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Parameterized constructor called"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 复制构造函数</span>
+    <span class="token function">Person</span><span class="token punctuation">(</span><span class="token keyword">const</span> Person <span class="token operator">&amp;</span>p<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">name</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">age</span><span class="token punctuation">(</span>p<span class="token punctuation">.</span>age<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Copy constructor called"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    Person person1<span class="token punctuation">;</span>
+    Person <span class="token function">person2</span><span class="token punctuation">(</span><span class="token string">"John Doe"</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    Person person3 <span class="token operator">=</span> person2<span class="token punctuation">;</span> <span class="token comment">// 调用复制构造函数</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="_356"></a>析构函数</h4> 
+<p><strong>定义</strong>：析构函数是一种特殊的成员函数，它在对象生命周期结束时被自动调用，用于执行清理操作，如释放资源、内存等。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>析构函数的名称是在类名前加上波浪符号 <code>~</code>。</li><li>每个类只能有一个析构函数，且不带参数。</li><li>析构函数通常用于释放构造函数或成员函数中分配的资源。</li></ul> 
+<p><strong>代码示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Resource</span> <span class="token punctuation">{<!-- --></span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token function">Resource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Resource acquired"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">~</span><span class="token function">Resource</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Resource released"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Demo</span> <span class="token punctuation">{<!-- --></span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    Resource res<span class="token punctuation">;</span>
+
+    <span class="token function">Demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Demo created"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token operator">~</span><span class="token function">Demo</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Demo destroyed"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    Demo demo<span class="token punctuation">;</span> <span class="token comment">// 输出: Resource acquired -&gt; Demo created -&gt; Demo destroyed -&gt; Resource released</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="C_398"></a>C++内存分配机制</h2> 
+<h4><a id="Stack_Allocation_402"></a>栈内存分配（Stack Allocation）</h4> 
+<p>栈是操作系统提供给程序的一块连续的内存区域，主要用于存储函数调用的局部变量。使用栈内存的特点是分配和释放速度非常快，但空间有限。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>自动管理，局部变量在声明时自动分配内存，当函数调用结束时自动释放。</li><li>存取速度快，适用于存储临时变量。</li><li>内存大小和生命周期由作用域决定，超出作用域后，内存会被自动释放。</li></ul> 
+<p><strong>示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token keyword">void</span> <span class="token function">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> localVariable <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// 在栈上分配</span>
+<span class="token punctuation">}</span> <span class="token comment">// 函数结束时，localVariable 被自动销毁</span>
+</code></pre> 
+<h4><a id="Heap_Allocation_417"></a>堆内存分配（Heap Allocation）</h4> 
+<p>堆内存用于存储动态分配的内存，这部分内存的管理由程序员控制，需要使用<code>new</code>和<code>delete</code>操作符来分配和释放内存。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>灵活性高，可以动态地分配所需大小的内存。</li><li>生命周期由程序员控制，不受作用域限制。</li><li>使用不当容易导致内存泄露、内存碎片等问题。</li></ul> 
+<p><strong>示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">;</span> <span class="token comment">// 在堆上分配内存</span>
+<span class="token operator">*</span>ptr <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token comment">// 使用内存</span>
+<span class="token keyword">delete</span> ptr<span class="token punctuation">;</span> <span class="token comment">// 释放内存</span>
+ptr <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span> <span class="token comment">// 避免悬空指针</span>
+</code></pre> 
+<h4><a id="Static_Storage_433"></a>静态存储区域（Static Storage）</h4> 
+<p>静态存储区域用于存储全局变量、静态变量和常量。这部分内存在程序启动时分配，在程序结束时释放。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>内存分配和释放由程序自动管理。</li><li>在程序整个运行期间都存在。</li></ul> 
+<p><strong>示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token keyword">static</span> <span class="token keyword">int</span> staticVariable <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span> <span class="token comment">// 静态变量，在静态存储区域分配</span>
+<span class="token keyword">int</span> globalVariable <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment">// 全局变量，同样在静态存储区域</span>
+</code></pre> 
+<h2><a id="sizeoflen_450"></a>sizeof和len的区别</h2> 
+<p>在C++中，<code>sizeof</code> 和 <code>len</code>（通常不存在于标准C++库中，可能指的是某些特定容器的成员函数，如 <code>std::vector</code> 的 <code>size()</code>）是两个用于获取数据大小的不同方法，但它们的用途和功能有显著区别。</p> 
+<h4><a id="sizeof_454"></a>sizeof</h4> 
+<p><code>sizeof</code> 是一个编译时操作符，用于返回一个变量、数据类型或表达式的内存大小（以字节为单位）。这个大小在编译时就已经确定，不会因为运行时的数据变化而改变。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>用于获取类型的存储大小，包括基本类型（如 <code>int</code>、<code>double</code>）和复合类型（如数组、结构体）。</li><li>返回类型是 <code>std::size_t</code>。</li><li>适用于获取数组的总大小（不适用于动态分配的数组指针），结构体的大小等。</li></ul> 
+<p><strong>示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">10</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>  <span class="token comment">// 输出数组总大小，例如 40（如果int是4字节）</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token keyword">sizeof</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>  <span class="token comment">// 输出4（如果int是4字节）</span>
+</code></pre> 
+<h4><a id="len__size__469"></a>len 或 size() 方法</h4> 
+<p>在C++标准库中，容器类（如 <code>std::vector</code>, <code>std::string</code> 等）通常提供了 <code>size()</code> 方法来获取容器中当前存储的元素数量。注意，这里没有 <code>len</code> 函数，如果在面试中提到 <code>len</code>，可能需要指明是从某个特定库中来的函数，如 Python 的内置 <code>len()</code> 函数。</p> 
+<p><strong>特点</strong>：</p> 
+<ul><li>动态查询容器当前包含的元素数量。</li><li>返回值通常是 <code>std::size_t</code>。</li><li>只适用于容器，不适用于基本数据类型或普通数组。</li></ul> 
+<p><strong>示例</strong>：</p> 
+<pre><code class="prism language-cpp">std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> vec <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> vec<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>  <span class="token comment">// 输出5，表示vec包含5个元素</span>
+</code></pre> 
+<h2><a id="gdb_485"></a>平时会用gdb吗，讲一讲基本用法</h2> 
+<h4><a id="gdb__489"></a><code>gdb</code> 基本用法</h4> 
+<p><code>gdb</code>（GNU Debugger）是一个强大的开源调试工具，在开发和调试C++程序时非常实用。它可以帮助开发者逐步执行代码、检查变量、设置断点、查看内存和寄存器等，以找到并修复问题。</p> 
+<p><strong>1. 启动与运行</strong></p> 
+<ul><li>通过 <code>gdb &lt;可执行文件&gt;</code> 命令启动调试器，并加载可执行文件。</li><li>可以使用 <code>run</code> 命令启动程序。</li><li><code>gdb</code> 可以传递命令行参数，如 <code>run arg1 arg2</code>。</li></ul> 
+<p><strong>2. 设置断点</strong></p> 
+<ul><li><code>break &lt;文件名:行号&gt;</code>：在指定文件的特定行设置断点。</li><li><code>break &lt;函数名&gt;</code>：在函数入口处设置断点。</li><li><code>info breakpoints</code>：列出当前所有断点。</li><li><code>delete &lt;编号&gt;</code>：删除指定编号的断点。</li></ul> 
+<p><strong>3. 单步调试</strong></p> 
+<ul><li><code>step</code>：逐行执行代码并进入函数。</li><li><code>next</code>：逐行执行代码但不进入函数。</li><li><code>continue</code>：继续执行直到遇到下一个断点。</li></ul> 
+<p><strong>4. 检查变量</strong></p> 
+<ul><li><code>print &lt;变量名&gt;</code>：输出变量的值。</li><li><code>info locals</code>：显示当前作用域内的所有局部变量及其值。</li><li><code>watch &lt;变量名&gt;</code>：在变量值改变时触发断点。</li></ul> 
+<p><strong>5. 查看堆栈</strong></p> 
+<ul><li><code>backtrace</code> 或 <code>bt</code>：显示当前函数调用栈（backtrace），帮助追踪程序的执行路径。</li><li><code>frame &lt;编号&gt;</code>：切换到特定的栈帧，便于调试特定的函数调用。</li></ul> 
+<p><strong>6. 其他高级功能</strong></p> 
+<ul><li><code>layout</code>：提供带有源代码的交互式TUI界面调试。</li><li><code>set variable</code>：修改变量的值。</li><li><code>x</code>：查看特定内存地址的内容。</li></ul>
+                </div>
+</body>
+</html>

@@ -1,0 +1,182 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_0"></a>华为OD面试真题精选</h2> 
+<p>🌟 强烈推荐：华为OD技术面试手撕算法代码真题 🌟</p> 
+<p>所有题目均为华为od实际面试过程中出现的算法代码真题。</p> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> </p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_0" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_12" rel="nofollow">题目描述</a></li><li><a href="#_17" rel="nofollow">输入</a></li><li><a href="#_23" rel="nofollow">输出</a></li><li><a href="#1_27" rel="nofollow">用例1</a></li><li><a href="#2_42" rel="nofollow">用例2</a></li><li><a href="#C_78" rel="nofollow">C++</a></li><li><a href="#Java_115" rel="nofollow">Java</a></li><li><a href="#javaScript_157" rel="nofollow">javaScript</a></li><li><a href="#Python_188" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<h2><a id="_12"></a>题目描述</h2> 
+<p>某公司,每天早上都有很多人去坐电梯,每个人都可能到不同的楼层.同时电梯还有一个容量限制.电梯最多只能带K个人.电梯从第a层到第b层,会花费|a-b|的时间.<br> 现在有N个人，以及知道每个人想要去的地方，请问如何坐电梯，才能使每个人到达到他们对应的楼层，且所花费时间最少。电梯最后要回到第1层.</p> 
+<h2><a id="_17"></a>输入</h2> 
+<p>对于每个输入,先输入两个整数N,K.表示有N个人,以及电梯的容量K.<br> 接下来一行,有N个整数,f1, f2, … , fn. 表示每个人要到达的地方.<br> (1 &lt;= N, K &lt;= 2000, 1 &lt;= fi &lt;= 2000)</p> 
+<h2><a id="_23"></a>输出</h2> 
+<p>输出最小的花费时间.</p> 
+<h2><a id="1_27"></a>用例1</h2> 
+<p>输入</p> 
+<pre><code>5 2
+3 5 2 4 1
+</code></pre> 
+<p>输出</p> 
+<pre><code>12
+</code></pre> 
+<h2><a id="2_42"></a>用例2</h2> 
+<p>输入</p> 
+<pre><code>4 1
+1 2 3 4
+</code></pre> 
+<p>输出</p> 
+<pre><code>12
+</code></pre> 
+<p><strong>测试用例1:</strong></p> 
+<ol><li>按降序排列楼层列表：<code>[5, 4, 3, 2, 1]</code>。</li><li>根据电梯容量分组：<code>[[5, 4], [3, 2], [1]]</code>。</li><li>计算每次行程的时间成本（往返1楼）：<code>(5 - 1) * 2 + (3 - 1) * 2 + (1 - 1) * 2</code>。</li><li>计算时间成本总和：<code>8 + 4 + 0 = 12</code>。</li></ol> 
+<p>测试用例1的最小时间成本估算：<code>12</code></p> 
+<p><strong>测试用例2:</strong></p> 
+<ol><li>由于电梯每次只能搭载一人，它将简单地将每个人带到他们的楼层然后返回。</li><li>计算每次行程的时间成本（往返1楼）：<code>(1 - 1) * 2 + (2 - 1) * 2 + (3 - 1) * 2 + (4 - 1) * 2</code>。</li><li>计算时间成本总和：<code>0 + 2 + 4 + 6</code>。</li></ol> 
+<p>测试用例2的最小时间成本估算：<code>12</code></p> 
+<h2><a id="C_78"></a>C++</h2> 
+<pre><code class="prism language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">calculateMinTimeCost</span><span class="token punctuation">(</span>std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> floors<span class="token punctuation">,</span> <span class="token keyword">int</span> elevatorCapacity<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 将楼层数组按降序排序</span>
+    std<span class="token operator">::</span><span class="token function">sort</span><span class="token punctuation">(</span>floors<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> floors<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> std<span class="token operator">::</span>greater<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">int</span> timeCost <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token class-name">size_t</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 遍历楼层，每次最多搭载电梯容量的人数</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> floors<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 当前行程中最高的楼层</span>
+        <span class="token keyword">int</span> highestFloor <span class="token operator">=</span> floors<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 移动电梯容量或剩余人数（取较小值）</span>
+        i <span class="token operator">+=</span> std<span class="token operator">::</span><span class="token function">min</span><span class="token punctuation">(</span>elevatorCapacity<span class="token punctuation">,</span> static_cast<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token punctuation">(</span>floors<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 计算往返1楼的时间成本</span>
+        timeCost <span class="token operator">+=</span> <span class="token punctuation">(</span>highestFloor <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> timeCost<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 测试用例1</span>
+    std<span class="token operator">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> floorsCase1 <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> elevatorCapacityCase1 <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token keyword">int</span> minCostCase <span class="token operator">=</span> <span class="token function">calculateMinTimeCost</span><span class="token punctuation">(</span>floorsCase1<span class="token punctuation">,</span> elevatorCapacityCase1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    std<span class="token operator">::</span>cout <span class="token operator">&lt;&lt;</span> minCostCase <span class="token operator">&lt;&lt;</span> std<span class="token operator">::</span>endl<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="Java_115"></a>Java</h2> 
+<pre><code class="prism language-java"> 
+
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Arrays</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Collections</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ElevatorOptimization</span> <span class="token punctuation">{<!-- --></span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 测试用例1</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> floorsCase1 <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> elevatorCapacityCase1 <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> minCostCase  <span class="token operator">=</span> <span class="token function">calculateMinTimeCost</span><span class="token punctuation">(</span>floorsCase1<span class="token punctuation">,</span> elevatorCapacityCase1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>minCostCase<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+      
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">calculateMinTimeCost</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> floors<span class="token punctuation">,</span> <span class="token keyword">int</span> elevatorCapacity<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 将楼层数组按降序排序</span>
+        <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> sortedFloors <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">stream</span><span class="token punctuation">(</span>floors<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">boxed</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">::</span><span class="token keyword">new</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>sortedFloors<span class="token punctuation">,</span> <span class="token class-name">Collections</span><span class="token punctuation">.</span><span class="token function">reverseOrder</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">int</span> timeCost <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token comment">// 遍历楼层，每次最多搭载电梯容量的人数</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> sortedFloors<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 当前行程中最高的楼层</span>
+            <span class="token keyword">int</span> highestFloor <span class="token operator">=</span> sortedFloors<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token comment">// 移动电梯容量或剩余人数（取较小值）</span>
+            i <span class="token operator">+=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>elevatorCapacity<span class="token punctuation">,</span> sortedFloors<span class="token punctuation">.</span>length <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 计算往返1楼的时间成本</span>
+            timeCost <span class="token operator">+=</span> <span class="token punctuation">(</span>highestFloor <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> timeCost<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="javaScript_157"></a>javaScript</h2> 
+<pre><code class="prism language-js"><span class="token keyword">function</span> <span class="token function">calculateMinTimeCost</span><span class="token punctuation">(</span><span class="token parameter">floors<span class="token punctuation">,</span> elevatorCapacity</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 将楼层数组按降序排序</span>
+    floors<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> b <span class="token operator">-</span> a<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> timeCost <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token comment">// 遍历楼层，每次最多搭载电梯容量的人数</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>i <span class="token operator">&lt;</span> floors<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 当前行程中最高的楼层</span>
+        <span class="token keyword">let</span> highestFloor <span class="token operator">=</span> floors<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment">// 移动电梯容量或剩余人数（取较小值）</span>
+        i <span class="token operator">+=</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>elevatorCapacity<span class="token punctuation">,</span> floors<span class="token punctuation">.</span>length <span class="token operator">-</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 计算往返1楼的时间成本</span>
+        timeCost <span class="token operator">+=</span> <span class="token punctuation">(</span>highestFloor <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> timeCost<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 测试用例1</span>
+<span class="token keyword">const</span> floorsCase1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> elevatorCapacityCase1 <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> minCostCase <span class="token operator">=</span> <span class="token function">calculateMinTimeCost</span><span class="token punctuation">(</span>floorsCase1<span class="token punctuation">,</span> elevatorCapacityCase1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>minCostCase<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<h2><a id="Python_188"></a>Python</h2> 
+<pre><code class="prism language-python"><span class="token keyword">def</span> <span class="token function">calculate_min_time_cost</span><span class="token punctuation">(</span>floors<span class="token punctuation">,</span> elevator_capacity<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 将楼层数组按降序排序</span>
+    floors<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>reverse<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+
+    time_cost <span class="token operator">=</span> <span class="token number">0</span>
+    i <span class="token operator">=</span> <span class="token number">0</span>
+    <span class="token comment"># 遍历楼层，每次最多搭载电梯容量的人数</span>
+    <span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>floors<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token comment"># 当前行程中最高的楼层</span>
+        highest_floor <span class="token operator">=</span> floors<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+        <span class="token comment"># 移动电梯容量或剩余人数（取较小值）</span>
+        i <span class="token operator">+=</span> <span class="token builtin">min</span><span class="token punctuation">(</span>elevator_capacity<span class="token punctuation">,</span> <span class="token builtin">len</span><span class="token punctuation">(</span>floors<span class="token punctuation">)</span> <span class="token operator">-</span> i<span class="token punctuation">)</span>
+        <span class="token comment"># 计算往返1楼的时间成本</span>
+        time_cost <span class="token operator">+=</span> <span class="token punctuation">(</span>highest_floor <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token number">2</span>
+
+    <span class="token keyword">return</span> time_cost
+
+<span class="token comment"># 测试用例1</span>
+floors_case1 <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
+elevator_capacity_case1 <span class="token operator">=</span> <span class="token number">2</span>
+min_cost_case <span class="token operator">=</span> calculate_min_time_cost<span class="token punctuation">(</span>floors_case1<span class="token punctuation">,</span> elevator_capacity_case1<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>min_cost_case<span class="token punctuation">)</span>
+</code></pre> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_0" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_12" rel="nofollow">题目描述</a></li><li><a href="#_17" rel="nofollow">输入</a></li><li><a href="#_23" rel="nofollow">输出</a></li><li><a href="#1_27" rel="nofollow">用例1</a></li><li><a href="#2_42" rel="nofollow">用例2</a></li><li><a href="#C_78" rel="nofollow">C++</a></li><li><a href="#Java_115" rel="nofollow">Java</a></li><li><a href="#javaScript_157" rel="nofollow">javaScript</a></li><li><a href="#Python_188" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/60398424d5147ca81166e00b60fd3e34.png" alt="封面"></p>
+                </div>
+</body>
+</html>

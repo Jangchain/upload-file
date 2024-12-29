@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_1"></a>华为OD面试真题精选</h2> 
+<p>🌟 强烈推荐：华为OD技术面试手撕算法代码真题 🌟</p> 
+<p>所有题目均为华为od实际面试过程中出现的算法代码真题。</p> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> </p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_1" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_13" rel="nofollow">题目描述</a></li><li><a href="#_17" rel="nofollow">输入描述</a></li><li><a href="#_21" rel="nofollow">输出描述</a></li><li><a href="#1_25" rel="nofollow">用例1</a></li><li><a href="#2_40" rel="nofollow">用例2</a></li><li><a href="#C_57" rel="nofollow">C++</a></li><li><a href="#Java_90" rel="nofollow">Java</a></li><li><a href="#javaScript_122" rel="nofollow">javaScript</a></li><li><a href="#Python_157" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<h2><a id="_13"></a>题目描述</h2> 
+<p>在一个国家仅有1分，2分，3分硬币，将钱N兑换成硬币有很多种兑法。请你编程序计算出共有多少种兑法。</p> 
+<h2><a id="_17"></a>输入描述</h2> 
+<p>每行只有一个正整数N，N小于32768。</p> 
+<h2><a id="_21"></a>输出描述</h2> 
+<p>对应每个输入，输出兑换方法数。</p> 
+<h2><a id="1_25"></a>用例1</h2> 
+<p>输入</p> 
+<pre><code>2934
+</code></pre> 
+<p>输出</p> 
+<pre><code>718831
+</code></pre> 
+<h2><a id="2_40"></a>用例2</h2> 
+<p>输入</p> 
+<pre><code>12553
+</code></pre> 
+<p>输出</p> 
+<pre><code>13137761
+</code></pre> 
+<h2><a id="C_57"></a>C++</h2> 
+<pre><code class="prism language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span><span class="token string">&lt;iostream&gt;</span></span>
+
+using namespace std<span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 定义四个整数变量：a、b、n和sign。其中，sign初始值为1</span>
+    <span class="token keyword">int</span> a<span class="token punctuation">,</span>b<span class="token punctuation">,</span>n<span class="token punctuation">,</span>sign<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">;</span>
+    cin <span class="token operator">&gt;&gt;</span> n<span class="token punctuation">;</span>
+       <span class="token comment">// 计算n除以3的商，赋值给a</span>
+    a <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将a加到sign上</span>
+    sign <span class="token operator">+=</span> a<span class="token punctuation">;</span>
+    <span class="token comment">// 使用for循环，循环次数为n除以3的商加1</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span>
+    <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 在每次循环中，计算(n - 3 * i)除以2的商，赋值给b</span>
+        b <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">3</span> <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+        <span class="token comment">// 将b加到sign上</span>
+        sign <span class="token operator">+=</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 输出sign的值</span>
+    cout <span class="token operator">&lt;&lt;</span> sign <span class="token operator">&lt;&lt;</span> endl<span class="token punctuation">;</span>
+    <span class="token comment">// 将sign重置为1，为处理下一个输入做准备</span>
+    sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// 程序正常结束，返回0</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="Java_90"></a>Java</h2> 
+<pre><code class="prism language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">Scanner</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 创建一个Scanner对象，用于读取用户输入</span>
+        <span class="token class-name">Scanner</span> scanner <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Scanner</span><span class="token punctuation">(</span><span class="token class-name">System</span><span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 读取用户输入的整数n</span>
+        <span class="token keyword">int</span> n <span class="token operator">=</span> scanner<span class="token punctuation">.</span><span class="token function">nextInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 定义四个整数变量：a、b和sign。其中，sign初始值为1</span>
+        <span class="token keyword">int</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+        <span class="token comment">// 计算n除以3的商，赋值给a</span>
+        a <span class="token operator">=</span> n <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span>
+        <span class="token comment">// 将a加到sign上</span>
+        sign <span class="token operator">+=</span> a<span class="token punctuation">;</span>
+        <span class="token comment">// 使用for循环，循环次数为n除以3的商加1</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 在每次循环中，计算(n - 3 * i)除以2的商，赋值给b</span>
+            b <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">3</span> <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">;</span>
+            <span class="token comment">// 将b加到sign上</span>
+            sign <span class="token operator">+=</span> b<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 输出sign的值</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 将sign重置为1，为处理下一个输入做准备</span>
+        sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="javaScript_122"></a>javaScript</h2> 
+<pre><code class="prism language-js"><span class="token comment">// 引入readline模块，用于读取用户输入</span>
+<span class="token keyword">const</span> readline <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'readline'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> rl <span class="token operator">=</span> readline<span class="token punctuation">.</span><span class="token function">createInterface</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>
+    <span class="token literal-property property">input</span><span class="token operator">:</span> process<span class="token punctuation">.</span>stdin<span class="token punctuation">,</span>
+    <span class="token literal-property property">output</span><span class="token operator">:</span> process<span class="token punctuation">.</span>stdout
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 读取用户输入的整数n</span>
+rl<span class="token punctuation">.</span><span class="token function">on</span><span class="token punctuation">(</span><span class="token string">'line'</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 定义四个整数变量：a、b和sign。其中，sign初始值为1</span>
+    <span class="token keyword">let</span> a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token comment">// 计算n除以3的商，赋值给a</span>
+    a <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>n <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将a加到sign上</span>
+    sign <span class="token operator">+=</span> a<span class="token punctuation">;</span>
+    <span class="token comment">// 使用for循环，循环次数为n除以3的商加1</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;=</span> n <span class="token operator">/</span> <span class="token number">3</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 在每次循环中，计算(n - 3 * i)除以2的商，赋值给b</span>
+        b <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">3</span> <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 将b加到sign上</span>
+        sign <span class="token operator">+=</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token comment">// 输出sign的值</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">// 将sign重置为1，为处理下一个输入做准备</span>
+    sign <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    rl<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<h2><a id="Python_157"></a>Python</h2> 
+<pre><code class="prism language-python"><span class="token comment"># 读取用户输入的整数n</span>
+n <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span><span class="token builtin">input</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 定义四个整数变量：a、b和sign。其中，sign初始值为1</span>
+a<span class="token punctuation">,</span> b<span class="token punctuation">,</span> sign <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span>
+<span class="token comment"># 计算n除以3的商，赋值给a</span>
+a <span class="token operator">=</span> n <span class="token operator">//</span> <span class="token number">3</span>
+<span class="token comment"># 将a加到sign上</span>
+sign <span class="token operator">+=</span> a
+<span class="token comment"># 使用for循环，循环次数为n除以3的商加1</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>n <span class="token operator">//</span> <span class="token number">3</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># 在每次循环中，计算(n - 3 * i)除以2的商，赋值给b</span>
+    b <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">3</span> <span class="token operator">*</span> i<span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">2</span>
+    <span class="token comment"># 将b加到sign上</span>
+    sign <span class="token operator">+=</span> b
+<span class="token comment"># 输出sign的值</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>sign<span class="token punctuation">)</span>
+<span class="token comment"># 将sign重置为1，为处理下一个输入做准备</span>
+sign <span class="token operator">=</span> <span class="token number">1</span>
+</code></pre> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_1" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_13" rel="nofollow">题目描述</a></li><li><a href="#_17" rel="nofollow">输入描述</a></li><li><a href="#_21" rel="nofollow">输出描述</a></li><li><a href="#1_25" rel="nofollow">用例1</a></li><li><a href="#2_40" rel="nofollow">用例2</a></li><li><a href="#C_57" rel="nofollow">C++</a></li><li><a href="#Java_90" rel="nofollow">Java</a></li><li><a href="#javaScript_122" rel="nofollow">javaScript</a></li><li><a href="#Python_157" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2ae808fdb26022cc99ad3fd13742a4bf.png" alt="封面"></p>
+                </div>
+</body>
+</html>

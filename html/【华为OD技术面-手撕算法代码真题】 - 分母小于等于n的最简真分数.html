@@ -1,0 +1,187 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_17" rel="nofollow">题目描述</a></li><li><a href="#_41" rel="nofollow">解题思路</a></li><li><a href="#C_59" rel="nofollow">C++</a></li><li><a href="#Java_95" rel="nofollow">Java</a></li><li><a href="#javaScript_140" rel="nofollow">javaScript</a></li><li><a href="#Python_183" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/531481147412447605047d39bc063274.png" alt="封面"></p> 
+<h2><a id="_17"></a>题目描述</h2> 
+<blockquote> 
+ <p><strong>给你一个整数 n，请你返回所有 0 到 1 之间（不包括 0 和 1）满足分母小于等于 n 的</strong> <strong>最简</strong> <strong>分数。分数可以以</strong> <strong>任意</strong> <strong>顺序返回。</strong></p> 
+ <p><strong>示例 1：</strong></p> 
+ <pre><code class="prism language-text">输入：n
+ = 2
+输出：["1/2"]
+解释："1/2" 是唯一一个分母小于等于 2 的最简分数。
+</code></pre> 
+ <p><strong>示例 2：</strong></p> 
+ <pre><code class="prism language-text">输入：n = 3
+输出：["1/2","1/3","2/3"]
+</code></pre> 
+</blockquote> 
+<h2><a id="_41"></a>解题思路</h2> 
+<ol><li> <p><strong>遍历所有可能的分母</strong>：从 2 开始到给定的最大值 n，因为分母为 1 时，分数就变成了 1，不符合最简分数的要求。</p> </li><li> <p><strong>对每个分母遍历所有可能的分子</strong>：对于每个分母，分子的范围从 1 到该分母的前一个数字，保证分子始终小于分母。</p> </li><li> <p><strong>判断分子和分母是否互质</strong>：使用最大公约数（GCD）算法来检查分子和分母的最大公约数。如果为 1，则分子和分母互质，即这两个数没有除 1 外的其他公约数。</p> </li><li> <p><strong>生成最简分数</strong>：如果分子和分母互质，则将它们以分数的形式（“分子/分母”）转换为字符串，并添加到结果容器中。</p> </li></ol> 
+<h2><a id="C_59"></a>C++</h2> 
+<pre><code class="prism language-c"> 
+
+class Solution <span class="token punctuation">{<!-- --></span>
+public<span class="token operator">:</span>
+    std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>std<span class="token operator">::</span>string<span class="token operator">&gt;</span> <span class="token function">simplifiedFractions</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token operator">::</span>vector<span class="token operator">&lt;</span>std<span class="token operator">::</span>string<span class="token operator">&gt;</span> fractions<span class="token punctuation">;</span>
+        <span class="token comment">// 外层循环遍历所有可能的分母，从 2 开始到 n（包括 n），因为分母不能为 1（否则分数为 1，不符合题目要求）</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> denominator <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> denominator <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> denominator<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 内层循环遍历所有可能的分子，从 1 开始到分母减 1（不包括分母），保证分子总是小于分母</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> numerator <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> numerator <span class="token operator">&lt;</span> denominator<span class="token punctuation">;</span> numerator<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                <span class="token comment">// 使用 gcd 函数判断分子和分母的最大公约数是否为 1，如果为 1 则说明此分数为最简分数</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">gcd</span><span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                    <span class="token comment">// 将最简分数以字符串形式添加到结果列表中</span>
+                    fractions<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>numerator<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> std<span class="token operator">::</span><span class="token function">to_string</span><span class="token punctuation">(</span>denominator<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fractions<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+private<span class="token operator">:</span>
+    <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 循环直到 b 为 0，此时 a 就是最大公约数</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>b <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> a <span class="token operator">%</span> b<span class="token punctuation">;</span>  <span class="token comment">// 计算 a 除以 b 的余数</span>
+            a <span class="token operator">=</span> b<span class="token punctuation">;</span>             <span class="token comment">// 将 b 赋值给 a</span>
+            b <span class="token operator">=</span> temp<span class="token punctuation">;</span>          <span class="token comment">// 将余数赋值给 b，继续循环</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> 
+<h2><a id="Java_95"></a>Java</h2> 
+<pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">/**
+     * 此函数用于生成所有分母小于等于 n 的最简分数。
+     * @param n 分数的最大分母
+     * @return 返回一个包含所有最简分数的字符串列表
+     */</span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> <span class="token function">simplifiedFractions</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 初始化结果列表，利用 (n-1) * (n/2) 预估可能的分数数量，这样可以减少动态数组扩容的性能损耗。</span>
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> fractions <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>n <span class="token operator">/</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 外层循环遍历所有可能的分母，从 2 开始到 n（包括 n），因为分母不能为 1（否则分数为 1，不符合题目要求）</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> denominator <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> denominator <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> denominator<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 内层循环遍历所有可能的分子，从 1 开始到分母减 1（不包括分母），保证分子总是小于分母</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> numerator <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> numerator <span class="token operator">&lt;</span> denominator<span class="token punctuation">;</span> numerator<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                <span class="token comment">// 使用 gcd 函数判断分子和分母的最大公约数是否为 1，如果为 1 则说明此分数为最简分数</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">gcd</span><span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                    <span class="token comment">// 将最简分数以字符串形式添加到结果列表中</span>
+                    fractions<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>numerator <span class="token operator">+</span> <span class="token string">"/"</span> <span class="token operator">+</span> denominator<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token punctuation">}</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> fractions<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">/**
+     * 计算两个整数的最大公约数，使用辗转相除法（也称欧几里得算法）。
+     * @param a 整数 a
+     * @param b 整数 b
+     * @return 返回 a 和 b 的最大公约数
+     */</span>
+    <span class="token keyword">private</span> <span class="token keyword">int</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token keyword">int</span> a<span class="token punctuation">,</span> <span class="token keyword">int</span> b<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 循环直到 b 为 0，此时 a 就是最大公约数</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>b <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">int</span> temp <span class="token operator">=</span> a <span class="token operator">%</span> b<span class="token punctuation">;</span>  <span class="token comment">// 计算 a 除以 b 的余数</span>
+            a <span class="token operator">=</span> b<span class="token punctuation">;</span>             <span class="token comment">// 将 b 赋值给 a</span>
+            b <span class="token operator">=</span> temp<span class="token punctuation">;</span>          <span class="token comment">// 将余数赋值给 b，继续循环</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="javaScript_140"></a>javaScript</h2> 
+<pre><code class="prism language-js"><span class="token comment">/**
+ * @param {number} n
+ * @return {string[]}
+ */</span>
+<span class="token keyword">var</span> <span class="token function-variable function">simplifiedFractions</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">n</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">const</span> fractions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    
+    <span class="token comment">// 外层循环遍历所有可能的分母，从 2 开始到 n（包括 n）</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> denominator <span class="token operator">=</span> <span class="token number">2</span><span class="token punctuation">;</span> denominator <span class="token operator">&lt;=</span> n<span class="token punctuation">;</span> denominator<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 内层循环遍历所有可能的分子，从 1 开始到分母减 1（不包括分母）</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> numerator <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> numerator <span class="token operator">&lt;</span> denominator<span class="token punctuation">;</span> numerator<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 使用 gcd 函数判断分子和分母的最大公约数是否为 1，如果为 1 则说明此分数为最简分数</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token function">gcd</span><span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                <span class="token comment">// 将最简分数以字符串形式添加到结果数组中</span>
+                fractions<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span>numerator<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span>denominator<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> fractions<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">/**
+ * 计算两个整数的最大公约数，使用辗转相除法（欧几里得算法）。
+ * @param {number} a 整数 a
+ * @param {number} b 整数 b
+ * @return {number} 返回 a 和 b 的最大公约数
+ */</span>
+<span class="token keyword">function</span> <span class="token function">gcd</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 循环直到 b 为 0，此时 a 就是最大公约数</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>b <span class="token operator">!==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">let</span> temp <span class="token operator">=</span> a <span class="token operator">%</span> b<span class="token punctuation">;</span>
+        a <span class="token operator">=</span> b<span class="token punctuation">;</span>
+        b <span class="token operator">=</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> a<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="Python_183"></a>Python</h2> 
+<pre><code class="prism language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">simplifiedFractions</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        此函数用于生成所有分母小于等于 n 的最简分数。
+        :param n: 分数的最大分母
+        :return: 返回一个包含所有最简分数的字符串列表
+        """</span>
+        <span class="token comment"># 初始化结果列表</span>
+        fractions <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        
+        <span class="token comment"># 外层循环遍历所有可能的分母，从 2 开始到 n（包括 n），因为分母不能为 1（否则分数为 1，不符合题目要求）</span>
+        <span class="token keyword">for</span> denominator <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> n <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 内层循环遍历所有可能的分子，从 1 开始到分母减 1（不包括分母），保证分子总是小于分母</span>
+            <span class="token keyword">for</span> numerator <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> denominator<span class="token punctuation">)</span><span class="token punctuation">:</span>
+                <span class="token comment"># 使用 gcd 函数判断分子和分母的最大公约数是否为 1，如果为 1 则说明此分数为最简分数</span>
+                <span class="token keyword">if</span> self<span class="token punctuation">.</span>gcd<span class="token punctuation">(</span>numerator<span class="token punctuation">,</span> denominator<span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">1</span><span class="token punctuation">:</span>
+                    <span class="token comment"># 将最简分数以字符串形式添加到结果列表中</span>
+                    fractions<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token string-interpolation"><span class="token string">f"</span><span class="token interpolation"><span class="token punctuation">{<!-- --></span>numerator<span class="token punctuation">}</span></span><span class="token string">/</span><span class="token interpolation"><span class="token punctuation">{<!-- --></span>denominator<span class="token punctuation">}</span></span><span class="token string">"</span></span><span class="token punctuation">)</span>
+        
+        <span class="token keyword">return</span> fractions
+
+    <span class="token keyword">def</span> <span class="token function">gcd</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> a<span class="token punctuation">,</span> b<span class="token punctuation">)</span><span class="token punctuation">:</span>
+        <span class="token triple-quoted-string string">"""
+        计算两个整数的最大公约数，使用辗转相除法（也称欧几里得算法）。
+        :param a: 整数 a
+        :param b: 整数 b
+        :return: 返回 a 和 b 的最大公约数
+        """</span>
+        <span class="token comment"># 循环直到 b 为 0，此时 a 就是最大公约数</span>
+        <span class="token keyword">while</span> b <span class="token operator">!=</span> <span class="token number">0</span><span class="token punctuation">:</span>
+            a<span class="token punctuation">,</span> b <span class="token operator">=</span> b<span class="token punctuation">,</span> a <span class="token operator">%</span> b  <span class="token comment"># 计算 a 除以 b 的余数，并更新 a 和 b</span>
+        <span class="token keyword">return</span> a
+</code></pre>
+                </div>
+</body>
+</html>

@@ -1,0 +1,188 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_15" rel="nofollow">题目描述</a></li><li><a href="#_49" rel="nofollow">解题思路</a></li><li><a href="#C_68" rel="nofollow">C++</a></li><li><a href="#Java_106" rel="nofollow">Java</a></li><li><a href="#javaScript_146" rel="nofollow">javaScript</a></li><li><a href="#Python_180" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<h2><a id="_15"></a>题目描述</h2> 
+<blockquote> 
+ <p>以数组 <code>intervals</code> 表示若干个区间的集合，其中单个区间为 <code>intervals[i] = [starti, endi]</code> 。请你合并所有重叠的区间，并返回 <em>一个不重叠的区间数组，该数组需恰好覆盖输入中的所有区间</em> 。</p> 
+ <p><strong>示例 1：</strong></p> 
+ <pre><code>输入：intervals = [[1,3],[2,6],[8,10],[15,18]]
+输出：[[1,6],[8,10],[15,18]]
+解释：区间 [1,3] 和 [2,6] 重叠, 将它们合并为 [1,6].
+</code></pre> 
+ <p><strong>示例 2：</strong></p> 
+ <pre><code>输入：intervals = [[1,4],[4,5]]
+输出：[[1,5]]
+解释：区间 [1,4] 和 [4,5] 可被视为重叠区间。
+</code></pre> 
+ <p><strong>提示：</strong></p> 
+ <ul><li><code>1 &lt;= intervals.length &lt;= 104</code></li><li><code>intervals[i].length == 2</code></li><li><code>0 &lt;= starti &lt;= endi &lt;= 104</code></li></ul> 
+</blockquote> 
+<h2><a id="_49"></a>解题思路</h2> 
+<p>当你需要合并一组可能重叠的区间时，可以使用以下解题思路：</p> 
+<ol><li> <p><strong>排序</strong>：首先，将所有区间按照起始位置进行排序。这一步是合并区间的关键，因为排序后，你可以按顺序检查每个区间，从而简化合并过程。</p> </li><li> <p><strong>初始化结果数组</strong>：创建一个空数组 <code>merged</code>，用来存储合并后的区间。</p> </li><li> <p><strong>遍历区间</strong>：</p> 
+  <ul><li>对于每个区间，检查它是否与结果数组中最后一个区间重叠。</li><li>如果结果数组为空，或者当前区间的起始位置大于结果数组中最后一个区间的结束位置，则将当前区间直接添加到结果数组中。</li><li>如果有重叠（即当前区间的起始位置小于或等于结果数组中最后一个区间的结束位置），则需要合并当前区间与结果数组中最后一个区间。更新结果数组中最后一个区间的结束位置，将其设置为当前区间的结束位置和结果数组中最后一个区间的结束位置中的较大值。</li></ul> </li><li> <p><strong>返回结果</strong>：遍历完成后，<code>merged</code> 数组中存储的即为合并后的区间列表。</p> </li></ol> 
+<p>这个思路利用排序来简化区间合并的过程，确保只需要单次遍历就可以完成所有的合并操作，从而有效地减少了时间复杂度。排序之后的线性遍历让我们只需要关心当前区间和结果数组中最后一个区间的关系，极大地简化了逻辑判断。这种方法的时间复杂度主要由排序步骤决定，为 (O(n \log n))，其中 (n) 是区间的数量，之后的遍历为 (O(n))，因此总体时间复杂度为 (O(n \log n))。</p> 
+<h2><a id="C_68"></a>C++</h2> 
+<pre><code class="prism language-c"><span class="token comment">// 函数定义，输入是一个二维向量intervals，每个子向量表示一个区间[starti, endi]</span>
+vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;&gt;</span> <span class="token function">merge</span><span class="token punctuation">(</span>vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;&gt;</span><span class="token operator">&amp;</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 首先对区间进行排序，根据每个区间的起始位置starti排序，使得处理合并时更加方便</span>
+    <span class="token function">sort</span><span class="token punctuation">(</span>intervals<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> intervals<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 定义结果向量ans，用于存储合并后的区间</span>
+    vector<span class="token operator">&lt;</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;&gt;</span> ans<span class="token punctuation">;</span>
+
+    <span class="token comment">// 使用一个for循环遍历所有区间</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// t记录当前考察的区间的结束点endi</span>
+        <span class="token keyword">int</span> t <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// j用于查找与当前区间可能重叠的后续区间</span>
+        <span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 如果后续区间的起始点小于或等于当前区间的结束点，则表示这两个区间有重叠</span>
+        <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> intervals<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> t<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 更新当前考察的区间的结束点为当前区间和重叠区间的结束点的较大值</span>
+            t <span class="token operator">=</span> <span class="token function">max</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 移动j到下一个区间</span>
+            j<span class="token operator">++</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// 将当前扩展后的区间添加到结果向量中</span>
+        ans<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 更新i为j，即跳过所有已经合并的区间，直接开始新一轮的合并</span>
+        i <span class="token operator">=</span> j<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 返回合并后的区间列表</span>
+    <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="Java_106"></a>Java</h2> 
+<pre><code class="prism language-java"><span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 合并区间函数，输入是一个二维数组，每个子数组是[start, end]</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">merge</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> intervals<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 首先对区间进行排序，根据每个区间的起始位置进行排序</span>
+        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>intervals<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-&gt;</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 定义结果列表，用于存储合并后的区间</span>
+        <span class="token class-name">List</span><span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token operator">&gt;</span> ans <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 使用for循环遍历所有区间</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 获取当前区间的结束点</span>
+            <span class="token keyword">int</span> t <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// j用于查找与当前区间可能重叠的后续区间</span>
+            <span class="token keyword">int</span> j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 检查是否有重叠区间</span>
+            <span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length <span class="token operator">&amp;&amp;</span> intervals<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> t<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                <span class="token comment">// 更新结束点，如果有重叠，取较大值</span>
+                t <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                j<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+
+            <span class="token comment">// 将合并后的区间加入结果列表</span>
+            ans<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">{<!-- --></span>intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token comment">// 更新i，跳过所有已经合并的区间</span>
+            i <span class="token operator">=</span> j<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token comment">// 将结果列表转换为二维数组并返回</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">.</span><span class="token function">toArray</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>ans<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="javaScript_146"></a>javaScript</h2> 
+<pre><code class="prism language-js"><span class="token comment">/**
+ * @param {number[][]} intervals
+ * @return {number[][]}
+ */</span>
+<span class="token keyword">var</span> <span class="token function-variable function">merge</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">intervals</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// 对区间按照起始位置进行排序</span>
+    intervals<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 结果数组，用来存储合并后的区间</span>
+    <span class="token keyword">const</span> merged <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 遍历排序后的区间数组</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> intervals<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 如果结果数组为空，或者当前区间的起始位置大于结果数组中最后一个区间的结束位置</span>
+        <span class="token comment">// 则不重叠，直接将当前区间添加到结果数组</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>merged<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span> <span class="token operator">||</span> merged<span class="token punctuation">[</span>merged<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">&lt;</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            merged<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token comment">// 否则，有重叠，合并区间</span>
+            <span class="token comment">// 更新结果数组中最后一个区间的结束位置为当前区间和最后一个区间结束位置的较大值</span>
+            merged<span class="token punctuation">[</span>merged<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>merged<span class="token punctuation">[</span>merged<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 返回合并后的区间数组</span>
+    <span class="token keyword">return</span> merged<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre> 
+<h2><a id="Python_180"></a>Python</h2> 
+<pre><code class="prism language-python"> 
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token comment"># 合并区间函数，输入是一个二维列表，每个子列表是[start, end]</span>
+    <span class="token keyword">def</span> <span class="token function">merge</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> intervals<span class="token punctuation">:</span> List<span class="token punctuation">[</span>List<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> List<span class="token punctuation">[</span>List<span class="token punctuation">[</span><span class="token builtin">int</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token comment"># 对区间进行排序，根据每个区间的起始位置</span>
+        intervals<span class="token punctuation">.</span>sort<span class="token punctuation">(</span>key<span class="token operator">=</span><span class="token keyword">lambda</span> x<span class="token punctuation">:</span> x<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+        <span class="token comment"># 定义结果列表，用于存储合并后的区间</span>
+        ans <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        <span class="token comment"># 遍历所有区间</span>
+        i <span class="token operator">=</span> <span class="token number">0</span>
+        <span class="token keyword">while</span> i <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>intervals<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token comment"># 获取当前区间的结束点</span>
+            t <span class="token operator">=</span> intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span>
+
+            <span class="token comment"># j用于查找可能与当前区间重叠的后续区间</span>
+            j <span class="token operator">=</span> i <span class="token operator">+</span> <span class="token number">1</span>
+
+            <span class="token comment"># 检查是否有重叠区间</span>
+            <span class="token keyword">while</span> j <span class="token operator">&lt;</span> <span class="token builtin">len</span><span class="token punctuation">(</span>intervals<span class="token punctuation">)</span> <span class="token keyword">and</span> intervals<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">&lt;=</span> t<span class="token punctuation">:</span>
+                <span class="token comment"># 更新结束点，选择最大值</span>
+                t <span class="token operator">=</span> <span class="token builtin">max</span><span class="token punctuation">(</span>t<span class="token punctuation">,</span> intervals<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                j <span class="token operator">+=</span> <span class="token number">1</span>
+
+            <span class="token comment"># 将合并后的区间加入结果列表</span>
+            ans<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token punctuation">[</span>intervals<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> t<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+            <span class="token comment"># 更新i以跳过所有已合并的区间</span>
+            i <span class="token operator">=</span> j
+
+        <span class="token comment"># 返回合并后的不重叠区间</span>
+        <span class="token keyword">return</span> ans
+</code></pre> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_15" rel="nofollow">题目描述</a></li><li><a href="#_49" rel="nofollow">解题思路</a></li><li><a href="#C_68" rel="nofollow">C++</a></li><li><a href="#Java_106" rel="nofollow">Java</a></li><li><a href="#javaScript_146" rel="nofollow">javaScript</a></li><li><a href="#Python_180" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/fe0e945c6dc7410e52666f1e8053a25e.png" alt="封面"></p>
+                </div>
+</body>
+</html>

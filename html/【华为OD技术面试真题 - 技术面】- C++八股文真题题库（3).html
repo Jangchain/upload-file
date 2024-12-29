@@ -1,0 +1,516 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_UDP__TCP__15" rel="nofollow">选择 UDP 而非 TCP 的应用场景</a></li><li><ul><li><ul><li><a href="#UDP__TCP__19" rel="nofollow">UDP 与 TCP 的基本区别</a></li><li><a href="#_UDP__TCP__37" rel="nofollow">选择 UDP 而非 TCP 的应用场景</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#UDP_57" rel="nofollow">UDP协议传输时出现丢包如何解决</a></li><li><ul><li><ul><li><a href="#1__61" rel="nofollow">1. **应用层实现重传机制**</a></li><li><a href="#2__130" rel="nofollow">2. **序列号和数据包重排序**</a></li><li><a href="#3__FEC_184" rel="nofollow">3. **使用 FEC（前向纠错编码）**</a></li><li><a href="#4__192" rel="nofollow">4. **网络质量监控和自适应传输**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#CPIP_202" rel="nofollow">CP/IP协议相对安全，请说说为什么安全</a></li><li><a href="#_208" rel="nofollow">冒泡排序的核心代码</a></li><li><ul><li><ul><li><a href="#_212" rel="nofollow">冒泡排序的核心代码</a></li><li><a href="#_254" rel="nofollow">代码解析</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#staicconst_264" rel="nofollow">关键字staic和const的用法</a></li><li><ul><li><ul><li><a href="#static__268" rel="nofollow">`static` 关键字</a></li><li><a href="#static__280" rel="nofollow">`static` 示例代码</a></li><li><a href="#const__312" rel="nofollow">`const` 关键字</a></li><li><a href="#const__327" rel="nofollow">`const` 示例代码</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_372" rel="nofollow">链表与数组的区别</a></li><li><ul><li><a href="#1__376" rel="nofollow">1. 内存管理</a></li><li><a href="#2__381" rel="nofollow">2. 访问方式</a></li><li><a href="#3__385" rel="nofollow">3. 插入和删除操作</a></li><li><a href="#4__389" rel="nofollow">4. 内存使用效率</a></li><li><a href="#5__393" rel="nofollow">5. 简单示例代码</a></li></ul> 
+  </li><li><a href="#TCPIPUDP_461" rel="nofollow">TCP/IP协议相对UDP安全，请说说为什么安全</a></li><li><ul><li><ul><li><ul><li><a href="#1__463" rel="nofollow">1. 连接性和状态性</a></li><li><a href="#2__467" rel="nofollow">2. 数据传输的可靠性</a></li><li><a href="#3__471" rel="nofollow">3. 数据完整性和顺序</a></li><li><a href="#4__475" rel="nofollow">4. 流量控制和拥塞控制</a></li><li><a href="#5__479" rel="nofollow">5. 应用场景</a></li></ul> 
+   </li></ul> 
+  </li></ul> 
+ </li></ul> 
+</div> 
+<p></p> 
+<h2><a id="_UDP__TCP__15"></a>选择 UDP 而非 TCP 的应用场景</h2> 
+<h4><a id="UDP__TCP__19"></a>UDP 与 TCP 的基本区别</h4> 
+<ol><li> <p><strong>连接性</strong>：</p> 
+  <ul><li><strong>TCP</strong>：面向连接的协议，在发送数据前需要建立连接（三次握手），保证数据的可靠传输。</li><li><strong>UDP</strong>：无连接的协议，不需要建立连接即可发送数据，减少了连接建立的开销。</li></ul> </li><li> <p><strong>可靠性</strong>：</p> 
+  <ul><li><strong>TCP</strong>：提供可靠的传输服务，数据传输过程中有确认机制、序列号、重传控制，确保数据按顺序且无误地到达。</li><li><strong>UDP</strong>：不保证数据的可靠性，没有确认机制、重传控制、流量控制，因此数据可能丢失、重复或乱序。</li></ul> </li><li> <p><strong>流量控制与拥塞控制</strong>：</p> 
+  <ul><li><strong>TCP</strong>：具有流量控制和拥塞控制机制，防止网络拥堵，提高传输效率。</li><li><strong>UDP</strong>：没有流量控制和拥塞控制机制，适用于对实时性要求高的应用。</li></ul> </li><li> <p><strong>速度与开销</strong>：</p> 
+  <ul><li><strong>TCP</strong>：由于提供可靠传输，需要更多的头部信息和控制机制，开销较大，传输速度相对较慢。</li><li><strong>UDP</strong>：头部信息少，没有连接建立和控制机制，开销小，传输速度快。</li></ul> </li></ol> 
+<h4><a id="_UDP__TCP__37"></a>选择 UDP 而非 TCP 的应用场景</h4> 
+<ol><li> <p><strong>实时应用</strong>：</p> 
+  <ul><li><strong>VoIP（网络电话）、视频会议、在线游戏</strong>：这些应用对实时性要求高，数据延迟敏感。即使数据包丢失，也能继续传输，而不需要重传数据包。因此，UDP 适合此类应用。</li></ul> </li><li> <p><strong>广播和多播</strong>：</p> 
+  <ul><li><strong>实时流媒体</strong>：例如直播视频、实时数据分发等，需要将数据传输给多个接收者。UDP 支持广播和多播，可以高效地实现一对多的通信。</li></ul> </li><li> <p><strong>简单请求响应协议</strong>：</p> 
+  <ul><li><strong>DNS 查询</strong>：域名系统（DNS）查询通常采用 UDP，因为请求和响应都很小且简单，UDP 的低开销和快速响应更为合适。</li></ul> </li><li> <p><strong>局域网中的高效通信</strong>：</p> 
+  <ul><li><strong>网络文件传输、流控制协议（如 TFTP）</strong>：在局域网内，网络环境相对稳定，丢包率低，采用 UDP 可以提高传输效率。</li></ul> </li></ol> 
+<h2><a id="UDP_57"></a>UDP协议传输时出现丢包如何解决</h2> 
+<h4><a id="1__61"></a>1. <strong>应用层实现重传机制</strong></h4> 
+<p><strong>原理</strong>：由于 UDP 本身不提供重传机制，丢包后数据无法自动重发。可以在应用层添加确认和重传逻辑，确保数据可靠传输。</p> 
+<p><strong>实现方法</strong>：</p> 
+<ul><li><strong>发送方</strong>：每发送一个数据包后，等待接收方的确认（ACK）。</li><li><strong>接收方</strong>：收到数据包后，发送确认回执（ACK）给发送方。</li><li><strong>重传逻辑</strong>：如果发送方在一定时间内没有收到 ACK，则重传该数据包，直到收到确认或达到重传次数上限。</li></ul> 
+<p><strong>代码示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;chrono&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;thread&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unordered_map&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;boost/asio.hpp&gt;</span></span>
+
+<span class="token keyword">using</span> boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span>ip<span class="token double-colon punctuation">::</span>udp<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token keyword">int</span> max_retries <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> <span class="token keyword">int</span> timeout_ms <span class="token operator">=</span> <span class="token number">1000</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">send_with_retransmission</span><span class="token punctuation">(</span>udp<span class="token double-colon punctuation">::</span>socket<span class="token operator">&amp;</span> socket<span class="token punctuation">,</span> <span class="token keyword">const</span> udp<span class="token double-colon punctuation">::</span>endpoint<span class="token operator">&amp;</span> endpoint<span class="token punctuation">,</span> <span class="token keyword">const</span> std<span class="token double-colon punctuation">::</span>string<span class="token operator">&amp;</span> message<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    std<span class="token double-colon punctuation">::</span>unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> <span class="token keyword">bool</span><span class="token operator">&gt;</span> ack_received<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> max_retries<span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        socket<span class="token punctuation">.</span><span class="token function">send_to</span><span class="token punctuation">(</span>boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span><span class="token function">buffer</span><span class="token punctuation">(</span>message<span class="token punctuation">)</span><span class="token punctuation">,</span> endpoint<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Wait for ACK with timeout</span>
+        boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span>deadline_timer <span class="token function">timer</span><span class="token punctuation">(</span>socket<span class="token punctuation">.</span><span class="token function">get_io_service</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        timer<span class="token punctuation">.</span><span class="token function">expires_from_now</span><span class="token punctuation">(</span>boost<span class="token double-colon punctuation">::</span>posix_time<span class="token double-colon punctuation">::</span><span class="token function">milliseconds</span><span class="token punctuation">(</span>timeout_ms<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        timer<span class="token punctuation">.</span><span class="token function">async_wait</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> boost<span class="token double-colon punctuation">::</span>system<span class="token double-colon punctuation">::</span>error_code<span class="token operator">&amp;</span> error<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>error <span class="token operator">!=</span> boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span>error<span class="token double-colon punctuation">::</span>operation_aborted<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                ack_received<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// Check for ACK</span>
+        <span class="token keyword">char</span> ack_buffer<span class="token punctuation">[</span><span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        udp<span class="token double-colon punctuation">::</span>endpoint sender_endpoint<span class="token punctuation">;</span>
+        socket<span class="token punctuation">.</span><span class="token function">async_receive_from</span><span class="token punctuation">(</span>boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span><span class="token function">buffer</span><span class="token punctuation">(</span>ack_buffer<span class="token punctuation">)</span><span class="token punctuation">,</span> sender_endpoint<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token operator">&amp;</span><span class="token punctuation">]</span><span class="token punctuation">(</span><span class="token keyword">const</span> boost<span class="token double-colon punctuation">::</span>system<span class="token double-colon punctuation">::</span>error_code<span class="token operator">&amp;</span> error<span class="token punctuation">,</span> std<span class="token double-colon punctuation">::</span>size_t<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>error<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                ack_received<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+                timer<span class="token punctuation">.</span><span class="token function">cancel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        socket<span class="token punctuation">.</span><span class="token function">get_io_service</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">run</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        socket<span class="token punctuation">.</span><span class="token function">get_io_service</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>ack_received<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"ACK received for message: "</span> <span class="token operator">&lt;&lt;</span> message <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+            <span class="token keyword">return</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Failed to receive ACK after "</span> <span class="token operator">&lt;&lt;</span> max_retries <span class="token operator">&lt;&lt;</span> <span class="token string">" attempts"</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span>io_service io_service<span class="token punctuation">;</span>
+    udp<span class="token double-colon punctuation">::</span>socket <span class="token function">socket</span><span class="token punctuation">(</span>io_service<span class="token punctuation">,</span> udp<span class="token double-colon punctuation">::</span><span class="token function">endpoint</span><span class="token punctuation">(</span>udp<span class="token double-colon punctuation">::</span><span class="token function">v4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    udp<span class="token double-colon punctuation">::</span>endpoint <span class="token function">endpoint</span><span class="token punctuation">(</span>boost<span class="token double-colon punctuation">::</span>asio<span class="token double-colon punctuation">::</span>ip<span class="token double-colon punctuation">::</span>address<span class="token double-colon punctuation">::</span><span class="token function">from_string</span><span class="token punctuation">(</span><span class="token string">"127.0.0.1"</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">12345</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    std<span class="token double-colon punctuation">::</span>string message <span class="token operator">=</span> <span class="token string">"Hello, world!"</span><span class="token punctuation">;</span>
+    <span class="token function">send_with_retransmission</span><span class="token punctuation">(</span>socket<span class="token punctuation">,</span> endpoint<span class="token punctuation">,</span> message<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="2__130"></a>2. <strong>序列号和数据包重排序</strong></h4> 
+<p><strong>原理</strong>：由于 UDP 数据包可能乱序到达，可以给每个数据包添加序列号，接收方根据序列号重排序数据包，确保数据按正确顺序处理。</p> 
+<p><strong>实现方法</strong>：</p> 
+<ul><li><strong>发送方</strong>：给每个数据包附加一个递增的序列号。</li><li><strong>接收方</strong>：根据序列号排序接收到的数据包，丢弃重复的或过期的数据包。</li></ul> 
+<p><strong>代码示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;unordered_map&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;algorithm&gt;</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">Packet</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> sequence_number<span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>string data<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">receive_and_reorder_packets</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span>Packet<span class="token operator">&gt;</span><span class="token operator">&amp;</span> received_packets<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    std<span class="token double-colon punctuation">::</span>unordered_map<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token punctuation">,</span> Packet<span class="token operator">&gt;</span> packet_map<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span><span class="token operator">&amp;</span> packet <span class="token operator">:</span> received_packets<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        packet_map<span class="token punctuation">[</span>packet<span class="token punctuation">.</span>sequence_number<span class="token punctuation">]</span> <span class="token operator">=</span> packet<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> sequence_numbers<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span><span class="token operator">&amp;</span> entry <span class="token operator">:</span> packet_map<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        sequence_numbers<span class="token punctuation">.</span><span class="token function">push_back</span><span class="token punctuation">(</span>entry<span class="token punctuation">.</span>first<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    std<span class="token double-colon punctuation">::</span><span class="token function">sort</span><span class="token punctuation">(</span>sequence_numbers<span class="token punctuation">.</span><span class="token function">begin</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> sequence_numbers<span class="token punctuation">.</span><span class="token function">end</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Reordered packets: "</span> <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">auto</span><span class="token operator">&amp;</span> seq_num <span class="token operator">:</span> sequence_numbers<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Packet "</span> <span class="token operator">&lt;&lt;</span> seq_num <span class="token operator">&lt;&lt;</span> <span class="token string">": "</span> <span class="token operator">&lt;&lt;</span> packet_map<span class="token punctuation">[</span>seq_num<span class="token punctuation">]</span><span class="token punctuation">.</span>data <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span>Packet<span class="token operator">&gt;</span> received_packets <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token punctuation">{<!-- --></span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token string">"Packet 2 data"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{<!-- --></span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token string">"Packet 1 data"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{<!-- --></span><span class="token number">3</span><span class="token punctuation">,</span> <span class="token string">"Packet 3 data"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{<!-- --></span><span class="token number">5</span><span class="token punctuation">,</span> <span class="token string">"Packet 5 data"</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token punctuation">{<!-- --></span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token string">"Packet 4 data"</span><span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    <span class="token function">receive_and_reorder_packets</span><span class="token punctuation">(</span>received_packets<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="3__FEC_184"></a>3. <strong>使用 FEC（前向纠错编码）</strong></h4> 
+<p><strong>原理</strong>：通过发送冗余数据包来纠正丢失的数据包。即使部分数据包丢失，接收方仍能重建原始数据。</p> 
+<p><strong>实现方法</strong>：</p> 
+<ul><li><strong>发送方</strong>：使用 FEC 算法生成冗余数据包，并与原始数据包一起发送。</li><li><strong>接收方</strong>：使用接收到的原始数据包和冗余数据包来恢复丢失的数据包。</li></ul> 
+<h4><a id="4__192"></a>4. <strong>网络质量监控和自适应传输</strong></h4> 
+<p><strong>原理</strong>：实时监控网络质量，根据网络状况动态调整传输速率和数据包大小，降低丢包率。</p> 
+<p><strong>实现方法</strong>：</p> 
+<ul><li><strong>发送方</strong>：根据接收方反馈的网络状况，调整传输参数，如减少数据包大小或降低发送速率。</li><li><strong>接收方</strong>：定期向发送方反馈网络质量信息，如丢包率和延迟。</li></ul> 
+<h2><a id="CPIP_202"></a>CP/IP协议相对安全，请说说为什么安全</h2> 
+<h2><a id="_208"></a>冒泡排序的核心代码</h2> 
+<h4><a id="_212"></a>冒泡排序的核心代码</h4> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;vector&gt;</span></span>
+
+<span class="token comment">// 冒泡排序函数</span>
+<span class="token keyword">void</span> <span class="token function">bubbleSort</span><span class="token punctuation">(</span>std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span><span class="token operator">&amp;</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> n <span class="token operator">=</span> arr<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 提前退出标志位</span>
+        <span class="token keyword">bool</span> swapped <span class="token operator">=</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> j <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> j <span class="token operator">&lt;</span> n <span class="token operator">-</span> <span class="token number">1</span> <span class="token operator">-</span> i<span class="token punctuation">;</span> <span class="token operator">++</span>j<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span> <span class="token operator">&gt;</span> arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                <span class="token comment">// 交换相邻元素</span>
+                std<span class="token double-colon punctuation">::</span><span class="token function">swap</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">,</span> arr<span class="token punctuation">[</span>j <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                swapped <span class="token operator">=</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token comment">// 如果没有交换操作，说明数组已排序，提前退出</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>swapped<span class="token punctuation">)</span> <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// 主函数进行测试</span>
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    std<span class="token double-colon punctuation">::</span>vector<span class="token operator">&lt;</span><span class="token keyword">int</span><span class="token operator">&gt;</span> arr <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token number">64</span><span class="token punctuation">,</span> <span class="token number">34</span><span class="token punctuation">,</span> <span class="token number">25</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">22</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">90</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+    
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"未排序数组: "</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> arr<span class="token punctuation">)</span> std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> num <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    
+    <span class="token function">bubbleSort</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"排序后数组: "</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> num <span class="token operator">:</span> arr<span class="token punctuation">)</span> std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> num <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="_254"></a>代码解析</h4> 
+<ol><li><strong>外层循环</strong>：控制遍历次数，共进行 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          n 
+         
+        
+          − 
+         
+        
+          1 
+         
+        
+       
+         n-1 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 0.6667em; vertical-align: -0.0833em;"></span><span class="mord mathnormal">n</span><span class="mspace" style="margin-right: 0.2222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right: 0.2222em;"></span></span><span class="base"><span class="strut" style="height: 0.6444em;"></span><span class="mord">1</span></span></span></span></span> 次遍历，因为最后一次遍历时，只剩下一个元素，无需再比较。</li><li><strong>内层循环</strong>：进行相邻元素的比较和交换，每次遍历结束后，当前最大的元素会被移动到未排序部分的末尾。</li><li><strong>提前退出标志位 <code>swapped</code></strong>：用于优化算法，如果在某次遍历中没有发生交换，说明数组已经有序，可以提前退出循环。</li></ol> 
+<h2><a id="staicconst_264"></a>关键字staic和const的用法</h2> 
+<h4><a id="static__268"></a><code>static</code> 关键字</h4> 
+<ol><li> <p><strong>在类中的静态成员</strong>：</p> 
+  <ul><li><strong>静态数据成员</strong>：属于类本身而不是类的任何一个对象。所有对象共享同一个静态数据成员。</li><li><strong>静态成员函数</strong>：只能访问静态数据成员和静态成员函数，不依赖于任何对象实例。</li></ul> </li><li> <p><strong>在函数中的静态变量</strong>：</p> 
+  <ul><li>函数内的静态变量在函数调用之间保持其值。它只在第一次调用时初始化，后续调用中不会再初始化。</li></ul> </li><li> <p><strong>文件作用域内的静态变量</strong>：</p> 
+  <ul><li>静态变量在声明的源文件内可见，其他文件无法访问。</li></ul> </li></ol> 
+<h4><a id="static__280"></a><code>static</code> 示例代码</h4> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">Example</span> <span class="token punctuation">{<!-- --></span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> staticVar<span class="token punctuation">;</span>
+    <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">staticFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Static Function. staticVar = "</span> <span class="token operator">&lt;&lt;</span> staticVar <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">int</span> Example<span class="token double-colon punctuation">::</span>staticVar <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 初始化静态数据成员</span>
+
+<span class="token keyword">void</span> <span class="token function">functionWithStatic</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">static</span> <span class="token keyword">int</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 函数内静态变量</span>
+    count<span class="token operator">++</span><span class="token punctuation">;</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Static variable in function: "</span> <span class="token operator">&lt;&lt;</span> count <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    Example<span class="token double-colon punctuation">::</span>staticVar <span class="token operator">=</span> <span class="token number">5</span><span class="token punctuation">;</span>
+    <span class="token class-name">Example</span><span class="token double-colon punctuation">::</span><span class="token function">staticFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: Static Function. staticVar = 5</span>
+    
+    <span class="token function">functionWithStatic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: Static variable in function: 1</span>
+    <span class="token function">functionWithStatic</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: Static variable in function: 2</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="const__312"></a><code>const</code> 关键字</h4> 
+<ol><li> <p><strong>常量变量</strong>：</p> 
+  <ul><li>声明后不能修改其值。</li></ul> </li><li> <p><strong>常量指针和指针常量</strong>：</p> 
+  <ul><li>常量指针：指针所指向的值不能通过该指针修改。</li><li>指针常量：指针本身不能修改，但指向的值可以修改。</li></ul> </li><li> <p><strong>常量成员函数</strong>：</p> 
+  <ul><li>不能修改类的任何数据成员，保证成员函数的只读特性。</li></ul> </li><li> <p><strong>常量参数</strong>：</p> 
+  <ul><li>保证传递给函数的参数在函数内部不会被修改。</li></ul> </li></ol> 
+<h4><a id="const__327"></a><code>const</code> 示例代码</h4> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">class</span> <span class="token class-name">ConstExample</span> <span class="token punctuation">{<!-- --></span>
+<span class="token keyword">public</span><span class="token operator">:</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span> constVar<span class="token punctuation">;</span> <span class="token comment">// 常量成员变量</span>
+
+    <span class="token function">ConstExample</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">constVar</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span> <span class="token comment">// 初始化常量成员变量</span>
+
+    <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">const</span> <span class="token punctuation">{<!-- --></span> <span class="token comment">// 常量成员函数</span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"constVar = "</span> <span class="token operator">&lt;&lt;</span> constVar <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">constPointerExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> value <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">const</span> <span class="token keyword">int</span><span class="token operator">*</span> ptr <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span> <span class="token comment">// 常量指针，不能通过 ptr 修改 value 的值</span>
+    <span class="token comment">// *ptr = 20; // 错误</span>
+
+    <span class="token keyword">int</span><span class="token operator">*</span> <span class="token keyword">const</span> ptrConst <span class="token operator">=</span> <span class="token operator">&amp;</span>value<span class="token punctuation">;</span> <span class="token comment">// 指针常量，不能修改 ptrConst 本身</span>
+    <span class="token operator">*</span>ptrConst <span class="token operator">=</span> <span class="token number">20</span><span class="token punctuation">;</span> <span class="token comment">// 正确</span>
+    <span class="token comment">// ptrConst = nullptr; // 错误</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">constParameter</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">int</span> param<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token comment">// param = 10; // 错误，不能修改常量参数</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"constParameter: "</span> <span class="token operator">&lt;&lt;</span> param <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    ConstExample <span class="token function">example</span><span class="token punctuation">(</span><span class="token number">42</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    example<span class="token punctuation">.</span><span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: constVar = 42</span>
+
+    <span class="token function">constPointerExample</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token function">constParameter</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="_372"></a>链表与数组的区别</h2> 
+<h3><a id="1__376"></a>1. 内存管理</h3> 
+<ul><li><strong>数组</strong>：数组在内存中占用连续的内存块。在声明时必须指定其大小，大小固定不变。数组的内存分配通常在栈上（对于静态数组）或堆上（对于动态数组）。</li><li><strong>链表</strong>：链表的节点在内存中不需要是连续的，每个节点通过指针连接到下一个节点。链表的大小可以动态变化，节点的内存通常在堆上分配。</li></ul> 
+<h3><a id="2__381"></a>2. 访问方式</h3> 
+<ul><li><strong>数组</strong>：支持随机访问，可以通过索引在 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          O 
+         
+        
+          ( 
+         
+        
+          1 
+         
+        
+          ) 
+         
+        
+       
+         O(1) 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span> 时间内访问任何元素。</li><li><strong>链表</strong>：不支持随机访问，需要从头节点开始，顺序遍历链表来找到特定位置的元素，访问时间为 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          O 
+         
+        
+          ( 
+         
+        
+          n 
+         
+        
+          ) 
+         
+        
+       
+         O(n) 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>。</li></ul> 
+<h3><a id="3__385"></a>3. 插入和删除操作</h3> 
+<ul><li><strong>数组</strong>：在数组中插入或删除元素需要移动其他元素，因此插入和删除的平均时间复杂度为 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          O 
+         
+        
+          ( 
+         
+        
+          n 
+         
+        
+          ) 
+         
+        
+       
+         O(n) 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>。在末尾插入元素的平均时间复杂度为 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          O 
+         
+        
+          ( 
+         
+        
+          1 
+         
+        
+          ) 
+         
+        
+       
+         O(1) 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>。</li><li><strong>链表</strong>：在链表中插入或删除节点只需要调整指针，不需要移动其他元素，时间复杂度为 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          O 
+         
+        
+          ( 
+         
+        
+          1 
+         
+        
+          ) 
+         
+        
+       
+         O(1) 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></span>。但是，找到插入或删除位置需要遍历链表，时间复杂度为 <span class="katex--inline"><span class="katex"><span class="katex-mathml"> 
+      
+       
+        
+        
+          O 
+         
+        
+          ( 
+         
+        
+          n 
+         
+        
+          ) 
+         
+        
+       
+         O(n) 
+        
+       
+     </span><span class="katex-html"><span class="base"><span class="strut" style="height: 1em; vertical-align: -0.25em;"></span><span style="margin-right: 0.0278em;" class="mord mathnormal">O</span><span class="mopen">(</span><span class="mord mathnormal">n</span><span class="mclose">)</span></span></span></span></span>。</li></ul> 
+<h3><a id="4__389"></a>4. 内存使用效率</h3> 
+<ul><li><strong>数组</strong>：由于数组大小固定，因此可能会造成内存浪费或不足。</li><li><strong>链表</strong>：链表节点动态分配内存，内存使用更灵活，但每个节点需要额外的指针存储空间，增加了内存开销。</li></ul> 
+<h3><a id="5__393"></a>5. 简单示例代码</h3> 
+<p><strong>数组示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> arr<span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">}</span><span class="token punctuation">;</span> <span class="token comment">// 定义一个大小为5的静态数组</span>
+
+    <span class="token comment">// 访问数组元素</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Array elements: "</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">5</span><span class="token punctuation">;</span> <span class="token operator">++</span>i<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<p><strong>链表示例</strong>：</p> 
+<pre><code class="prism language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream&gt;</span></span>
+
+<span class="token keyword">struct</span> <span class="token class-name">Node</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">int</span> data<span class="token punctuation">;</span>
+    Node<span class="token operator">*</span> next<span class="token punctuation">;</span>
+    <span class="token function">Node</span><span class="token punctuation">(</span><span class="token keyword">int</span> val<span class="token punctuation">)</span> <span class="token operator">:</span> <span class="token function">data</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token function">next</span><span class="token punctuation">(</span><span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">void</span> <span class="token function">insertAtHead</span><span class="token punctuation">(</span>Node<span class="token operator">*</span><span class="token operator">&amp;</span> head<span class="token punctuation">,</span> <span class="token keyword">int</span> data<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    Node<span class="token operator">*</span> newNode <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token function">Node</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newNode<span class="token operator">-&gt;</span>next <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    head <span class="token operator">=</span> newNode<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span>Node<span class="token operator">*</span> head<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    Node<span class="token operator">*</span> current <span class="token operator">=</span> head<span class="token punctuation">;</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>current <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> current<span class="token operator">-&gt;</span>data <span class="token operator">&lt;&lt;</span> <span class="token string">" "</span><span class="token punctuation">;</span>
+        current <span class="token operator">=</span> current<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    Node<span class="token operator">*</span> head <span class="token operator">=</span> <span class="token keyword">nullptr</span><span class="token punctuation">;</span>
+    
+    <span class="token function">insertAtHead</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">insertAtHead</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token function">insertAtHead</span><span class="token punctuation">(</span>head<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"Linked list elements: "</span><span class="token punctuation">;</span>
+    <span class="token function">display</span><span class="token punctuation">(</span>head<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 释放链表内存</span>
+    <span class="token keyword">while</span> <span class="token punctuation">(</span>head <span class="token operator">!=</span> <span class="token keyword">nullptr</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        Node<span class="token operator">*</span> temp <span class="token operator">=</span> head<span class="token punctuation">;</span>
+        head <span class="token operator">=</span> head<span class="token operator">-&gt;</span>next<span class="token punctuation">;</span>
+        <span class="token keyword">delete</span> temp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="TCPIPUDP_461"></a>TCP/IP协议相对UDP安全，请说说为什么安全</h2> 
+<h5><a id="1__463"></a>1. 连接性和状态性</h5> 
+<ul><li><strong>TCP（Transmission Control Protocol）</strong>：TCP是面向连接的协议，它在通信之前需要建立一个连接（三次握手）。在数据传输过程中，TCP会维护一个连接状态，包括发送和接收的窗口、序列号等，确保数据按顺序、无误地传输。</li><li><strong>UDP（User Datagram Protocol）</strong>：UDP是无连接的协议，它不建立连接，数据报文的发送是独立的，接收方无法知道数据报文是否丢失或按顺序接收。</li></ul> 
+<h5><a id="2__467"></a>2. 数据传输的可靠性</h5> 
+<ul><li><strong>TCP</strong>：TCP通过确认机制（ACK）来确保数据包的可靠传输。如果数据包在传输过程中丢失，发送方会重新发送该数据包。此外，TCP还具有流量控制和拥塞控制机制，确保数据传输的稳定和高效。</li><li><strong>UDP</strong>：UDP不提供数据包的重传机制，也没有流量控制和拥塞控制。数据包在传输过程中可能会丢失、重复或乱序，接收方需要自行处理这些问题。</li></ul> 
+<h5><a id="3__471"></a>3. 数据完整性和顺序</h5> 
+<ul><li><strong>TCP</strong>：TCP保证数据包按发送顺序到达接收方，通过序列号和确认号机制确保数据的完整性和顺序。</li><li><strong>UDP</strong>：UDP不保证数据包按顺序到达，数据包可能会乱序到达接收方。UDP也没有内置的机制来检查数据的完整性，应用层需要自行处理。</li></ul> 
+<h5><a id="4__475"></a>4. 流量控制和拥塞控制</h5> 
+<ul><li><strong>TCP</strong>：TCP实现了流量控制（利用滑动窗口机制）和拥塞控制（例如慢启动、拥塞避免、快速重传和快速恢复），能够根据网络状况动态调整数据传输速率，避免网络拥塞。</li><li><strong>UDP</strong>：UDP没有流量控制和拥塞控制机制，发送数据的速率不受网络状况的影响，可能导致网络拥塞。</li></ul> 
+<h5><a id="5__479"></a>5. 应用场景</h5> 
+<ul><li><strong>TCP</strong>：由于其可靠性和有序性，TCP适用于需要高可靠性的数据传输场景，如网页浏览、文件传输、电子邮件等。</li><li><strong>UDP</strong>：UDP适用于对实时性要求高、对丢包不敏感的应用，如视频流、在线游戏、实时音频等。</li></ul>
+                </div>
+</body>
+</html>

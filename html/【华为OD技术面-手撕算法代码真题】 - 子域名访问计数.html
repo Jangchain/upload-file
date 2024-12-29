@@ -1,0 +1,148 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_15" rel="nofollow">题目描述</a></li><li><a href="#_27" rel="nofollow">解题思路</a></li><li><ul><li><ul><li><a href="#_31" rel="nofollow">优化后的语言表达：</a></li><li><ul><li><a href="#_33" rel="nofollow">**题目概述**</a></li><li><a href="#_47" rel="nofollow">**解题思路**</a></li></ul> 
+   </li></ul> 
+  </li></ul> 
+  </li><li><a href="#Java_70" rel="nofollow">Java</a></li><li><a href="#javaScript_105" rel="nofollow">javaScript</a></li><li><a href="#Python_143" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<h2><a id="_15"></a>题目描述</h2> 
+<blockquote> 
+ <blockquote> 
+  <p>数组、哈希表、字符串、计数</p> 
+  <p>中等难度</p> 
+  <p>https://leetcode.cn/problems/subdomain-visit-count/</p> 
+ </blockquote> 
+</blockquote> 
+<h2><a id="_27"></a>解题思路</h2> 
+<h4><a id="_31"></a>优化后的语言表达：</h4> 
+<h5><a id="_33"></a><strong>题目概述</strong></h5> 
+<p>网站域名通常由多个子域名组成。例如，“discuss.leetcode.com” 由三个层级的域名构成，其中：</p> 
+<ul><li>顶级域名为 “com”，</li><li>二级域名为 “leetcode.com”，</li><li>三级域名为 “discuss.leetcode.com”。</li></ul> 
+<p>当访问 “discuss.leetcode.com” 时，实际上也会隐式访问其父域名 “leetcode.com” 和顶级域名 “com”。</p> 
+<p>计算机配对域名的格式为 “rep d1.d2.d3” 或 “rep d1.d2”，其中 <code>rep</code> 代表该域名的访问次数，<code>d1.d2.d3</code> 或 <code>d1.d2</code> 为实际域名。</p> 
+<p>例如，“9001 discuss.leetcode.com” 表示 “discuss.leetcode.com” 被访问了 9001 次。</p> 
+<p>现给定一个由此类计算机配对域名组成的数组 <code>cpdomains</code>，需要解析每个配对域名，并计算各级域名的总访问次数，最后以数组形式返回结果。返回顺序可以是任意的。</p> 
+<h5><a id="_47"></a><strong>解题思路</strong></h5> 
+<p>此题要求汇总各层级域名的访问次数，可以利用哈希表来完成统计。具体步骤如下：</p> 
+<ol><li> <p><strong>特殊情况处理</strong>：如果 <code>cpdomains</code> 数组为空，直接返回空数组。</p> </li><li> <p><strong>使用哈希表存储访问次数</strong>：</p> 
+  <ul><li>创建一个哈希表 <code>times_dict</code>，用于存储不同层级域名的访问次数。</li></ul> </li><li> <p><strong>解析并统计访问次数</strong>：</p> 
+  <ul><li>遍历 <code>cpdomains</code> 数组，对于每个计算机配对域名 <code>cpdomain</code>，先将其访问次数 <code>times</code> 与域名 <code>domain</code> 分离。</li><li>将 <code>domain</code> 转换为子域名数组 <code>domain_list</code>，然后逆序拼接形成不同级别的子域名 <code>sub_domain</code>。</li><li>对于每个 <code>sub_domain</code>，如果它不在 <code>times_dict</code> 中，则将其与对应的访问次数 <code>times</code> 添加到哈希表中；如果它已经存在，则累加其访问次数。</li></ul> </li><li> <p><strong>构建并返回结果数组</strong>：</p> 
+  <ul><li>遍历哈希表 <code>times_dict</code>，将每个域名和其访问次数拼接成字符串，存入结果数组中。</li><li>返回结果数组。</li></ul> </li></ol> 
+<h2><a id="Java_70"></a>Java</h2> 
+<pre><code class="prism language-java"> 
+
+<span class="token keyword">class</span> <span class="token class-name">Solution</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">public</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> <span class="token function">subdomainVisits</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> cpdomains<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>cpdomains <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">||</span> cpdomains<span class="token punctuation">.</span>length <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">return</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Integer</span><span class="token punctuation">&gt;</span></span> timesDict <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> cpdomain <span class="token operator">:</span> cpdomains<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> parts <span class="token operator">=</span> cpdomain<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> times <span class="token operator">=</span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span>parts<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">String</span> domain <span class="token operator">=</span> parts<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+            <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> domainList <span class="token operator">=</span> domain<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">"\\."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> domainList<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                <span class="token class-name">String</span> subDomain <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">"."</span><span class="token punctuation">,</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">copyOfRange</span><span class="token punctuation">(</span>domainList<span class="token punctuation">,</span> i<span class="token punctuation">,</span> domainList<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                timesDict<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>subDomain<span class="token punctuation">,</span> timesDict<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>subDomain<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> times<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> res <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">String</span> key <span class="token operator">:</span> timesDict<span class="token punctuation">.</span><span class="token function">keySet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            res<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>timesDict<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>key<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+        <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="javaScript_105"></a>javaScript</h2> 
+<pre><code class="prism language-js"> 
+<span class="token keyword">var</span> <span class="token function-variable function">subdomainVisits</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">cpdomains</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>cpdomains <span class="token operator">||</span> cpdomains<span class="token punctuation">.</span>length <span class="token operator">===</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">let</span> timesDict <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+    cpdomains<span class="token punctuation">.</span><span class="token function">forEach</span><span class="token punctuation">(</span><span class="token parameter">cpdomain</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">let</span> <span class="token punctuation">[</span>times<span class="token punctuation">,</span> domain<span class="token punctuation">]</span> <span class="token operator">=</span> cpdomain<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">' '</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        times <span class="token operator">=</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>times<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">let</span> domainList <span class="token operator">=</span> domain<span class="token punctuation">.</span><span class="token function">split</span><span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> domainList<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&gt;=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">let</span> subDomain <span class="token operator">=</span> domainList<span class="token punctuation">.</span><span class="token function">slice</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">join</span><span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>timesDict<span class="token punctuation">[</span>subDomain<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+                timesDict<span class="token punctuation">[</span>subDomain<span class="token punctuation">]</span> <span class="token operator">=</span> times<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>
+                timesDict<span class="token punctuation">[</span>subDomain<span class="token punctuation">]</span> <span class="token operator">+=</span> times<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">let</span> res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> key <span class="token keyword">in</span> timesDict<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        res<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>timesDict<span class="token punctuation">[</span>key<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> key<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">return</span> res<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+ 
+</code></pre> 
+<h2><a id="Python_143"></a>Python</h2> 
+<pre><code class="prism language-python"><span class="token keyword">class</span> <span class="token class-name">Solution</span><span class="token punctuation">:</span>
+    <span class="token keyword">def</span> <span class="token function">subdomainVisits</span><span class="token punctuation">(</span>self<span class="token punctuation">,</span> cpdomains<span class="token punctuation">:</span> List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span><span class="token operator">&gt;</span> List<span class="token punctuation">[</span><span class="token builtin">str</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+        <span class="token keyword">if</span> <span class="token keyword">not</span> cpdomains<span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+
+        times_dict <span class="token operator">=</span> <span class="token builtin">dict</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+        <span class="token keyword">for</span> cpdomain <span class="token keyword">in</span> cpdomains<span class="token punctuation">:</span>
+            tiems<span class="token punctuation">,</span> domain <span class="token operator">=</span> cpdomain<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span>
+            tiems <span class="token operator">=</span> <span class="token builtin">int</span><span class="token punctuation">(</span>tiems<span class="token punctuation">)</span>
+            
+            domain_list <span class="token operator">=</span> domain<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token string">'.'</span><span class="token punctuation">)</span>
+            <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>domain_list<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+                sub_domain <span class="token operator">=</span> <span class="token string">'.'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>domain_list<span class="token punctuation">[</span>i<span class="token punctuation">:</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+                <span class="token keyword">if</span> sub_domain <span class="token keyword">not</span> <span class="token keyword">in</span> times_dict<span class="token punctuation">:</span>
+                    times_dict<span class="token punctuation">[</span>sub_domain<span class="token punctuation">]</span> <span class="token operator">=</span> tiems
+                <span class="token keyword">else</span><span class="token punctuation">:</span>
+                    times_dict<span class="token punctuation">[</span>sub_domain<span class="token punctuation">]</span> <span class="token operator">+=</span> tiems
+        
+        res <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+        <span class="token keyword">for</span> key <span class="token keyword">in</span> times_dict<span class="token punctuation">.</span>keys<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+            res<span class="token punctuation">.</span>append<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>times_dict<span class="token punctuation">[</span>key<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">' '</span> <span class="token operator">+</span> key<span class="token punctuation">)</span>
+        <span class="token keyword">return</span> res
+</code></pre> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#_15" rel="nofollow">题目描述</a></li><li><a href="#_27" rel="nofollow">解题思路</a></li><li><ul><li><ul><li><a href="#_31" rel="nofollow">优化后的语言表达：</a></li><li><ul><li><a href="#_33" rel="nofollow">**题目概述**</a></li><li><a href="#_47" rel="nofollow">**解题思路**</a></li></ul> 
+   </li></ul> 
+  </li></ul> 
+  </li><li><a href="#Java_70" rel="nofollow">Java</a></li><li><a href="#javaScript_105" rel="nofollow">javaScript</a></li><li><a href="#Python_143" rel="nofollow">Python</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b6608860e62feedde911d2bcf4217ab2.png" alt="封面"></p>
+                </div>
+</body>
+</html>

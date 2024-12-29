@@ -1,0 +1,191 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#8_13" rel="nofollow">黑盒测试的8种测试方法</a></li><li><a href="#34_36" rel="nofollow">3次握手4次挥手</a></li><li><ul><li><ul><li><a href="#_ThreeWay_Handshake_40" rel="nofollow">三次握手 (Three-Way Handshake)</a></li><li><a href="#_FourWay_Handshake_57" rel="nofollow">四次挥手 (Four-Way Handshake)</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#UI_82" rel="nofollow">UI自动化测试</a></li><li><ul><li><ul><li><a href="#UI_92" rel="nofollow">UI自动化测试的优点：</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#po_101" rel="nofollow">po模型的分层</a></li><li><ul><li><ul><li><a href="#Page_Object__Page_Object_Model_POM_105" rel="nofollow">Page Object 模型 (Page Object Model, POM)</a></li><li><a href="#PO_109" rel="nofollow">PO模型的分层结构：</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_205" rel="nofollow">开发设计说明书的评审会议参与过没有</a></li><li><a href="#ip_209" rel="nofollow">实现获取本机的物理地址和ip地址</a></li><li><a href="#bug_260" rel="nofollow">提出的bug开发人员不认</a></li><li><a href="#_270" rel="nofollow">抓包</a></li><li><ul><li><ul><li><a href="#_274" rel="nofollow">工具选择</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_282" rel="nofollow">用例的设计</a></li><li><a href="#_295" rel="nofollow">黑盒测试方法在项目里具体的运用</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/044c13f12b7b05fa860f365d481b03ab.png" alt="封面"></p> 
+<h2><a id="8_13"></a>黑盒测试的8种测试方法</h2> 
+<blockquote> 
+ <p><a href="https://blog.csdn.net/Gabbana/article/details/108698502">八大黑盒测试方法总结【超详细】_黑盒测试的八大测试方法-CSDN博客</a></p> 
+</blockquote> 
+<ol><li> <p>等价类划分：将输入条件划分为等价类，从每个等价类中选择测试用例，以代表该等价类的典型情况。</p> </li><li> <p>边界值分析：通过选择接近或在边界值上的测试用例，检测系统在边界处的行为。</p> </li><li> <p>错误推测：基于对系统的理解和经验，推测可能存在的错误，并设计测试用例来验证这些错误是否存在。</p> </li><li> <p>因果图法：使用因果图展示系统中各个输入和输出之间的关系，根据因果关系设计测试用例。</p> </li><li> <p>判定图测试：将系统行为建模为一组规则，设计测试用例以覆盖这些规则的各种组合情况。</p> </li><li> <p>状态迁移测试：针对系统的状态转换进行测试，包括测试状态之间的转换触发条件和动作。</p> </li><li> <p>错误猜测：基于对系统的理解和经验，猜测可能存在的错误类型，并设计测试用例来验证这些错误。</p> </li><li> <p>正交测试：使用正交表设计测试用例，以覆盖系统输入的各种组合情况，从而减少测试用例的数量。</p> </li></ol> 
+<h2><a id="34_36"></a>3次握手4次挥手</h2> 
+<h4><a id="_ThreeWay_Handshake_40"></a>三次握手 (Three-Way Handshake)</h4> 
+<p>三次握手是TCP协议建立连接的过程，用于确保连接的双方能够成功通信。具体步骤如下：</p> 
+<ol><li> <p><strong>SYN</strong>：</p> 
+  <ul><li>客户端向服务器发送一个SYN（synchronize）报文，表示请求建立连接。</li><li>报文包含初始序列号（ISN, Initial Sequence Number）。</li></ul> </li><li> <p><strong>SYN-ACK</strong>：</p> 
+  <ul><li>服务器收到SYN报文后，响应一个SYN-ACK报文。</li><li>服务器也生成一个自己的初始序列号，并在SYN-ACK报文中发送给客户端。</li><li>同时确认（ACK）客户端的SYN报文，序列号加1。</li></ul> </li><li> <p><strong>ACK</strong>：</p> 
+  <ul><li>客户端收到服务器的SYN-ACK报文后，向服务器发送一个ACK报文，确认服务器的SYN报文。</li><li>这一步完成后，连接建立，客户端和服务器可以开始传输数据。</li></ul> </li></ol> 
+<h4><a id="_FourWay_Handshake_57"></a>四次挥手 (Four-Way Handshake)</h4> 
+<p>四次挥手是TCP协议关闭连接的过程，用于确保连接的双方能够成功关闭通信。具体步骤如下：</p> 
+<ol><li> <p><strong>FIN</strong>：</p> 
+  <ul><li>客户端向服务器发送一个FIN（finish）报文，表示请求关闭连接。</li><li>客户端进入FIN_WAIT_1状态。</li></ul> </li><li> <p><strong>ACK</strong>：</p> 
+  <ul><li>服务器收到FIN报文后，响应一个ACK报文，确认客户端的FIN报文。</li><li>服务器进入CLOSE_WAIT状态，客户端进入FIN_WAIT_2状态。</li></ul> </li><li> <p><strong>FIN</strong>：</p> 
+  <ul><li>服务器准备好关闭连接时，发送一个FIN报文给客户端。</li><li>服务器进入LAST_ACK状态。</li></ul> </li><li> <p><strong>ACK</strong>：</p> 
+  <ul><li>客户端收到服务器的FIN报文后，响应一个ACK报文，确认服务器的FIN报文。</li><li>客户端进入TIME_WAIT状态，服务器关闭连接。</li><li>在等待一段时间（通常是2倍的MSL，Maximum Segment Lifetime）后，客户端关闭连接，进入CLOSED状态。</li></ul> </li></ol> 
+<h2><a id="UI_82"></a>UI自动化测试</h2> 
+<p>UI自动化测试是使用自动化工具模拟用户在图形用户界面（GUI）上的操作，以验证软件应用程序的功能和性能。UI自动化测试的主要目的是提高测试效率和覆盖率，减少人为错误，并确保应用程序在各种环境下都能正常运行。UI自动化测试属于黑盒测试(功能测试)</p> 
+<p>适合的UI自动化测试工具：如Selenium、Appium、Cypress，<strong>TestCafe</strong>等。</p> 
+<h4><a id="UI_92"></a>UI自动化测试的优点：</h4> 
+<ul><li><strong>提高效率</strong>：自动化测试能够快速执行大量测试用例，比手动测试更高效。</li><li><strong>提高覆盖率</strong>：可以在各种环境和设备上运行，增加测试覆盖率。</li><li><strong>可重复性</strong>：测试脚本可以重复运行，确保一致性和可靠性。</li><li><strong>减少人为错误</strong>：自动化测试减少了人为操作的错误，提高了测试的准确性。</li></ul> 
+<h2><a id="po_101"></a>po模型的分层</h2> 
+<h4><a id="Page_Object__Page_Object_Model_POM_105"></a>Page Object 模型 (Page Object Model, POM)</h4> 
+<p>Page Object 模型是一种设计模式，用于自动化测试中，旨在提高测试代码的可维护性和可读性。它通过将页面上的元素和操作封装到对象中，使测试脚本与页面细节解耦。</p> 
+<h4><a id="PO_109"></a>PO模型的分层结构：</h4> 
+<ol><li> <p><strong>页面层 (Page Layer)</strong>：</p> 
+  <ul><li><strong>Page Object 类</strong>：每个页面或组件都有一个对应的类，这个类封装了页面上的所有元素和操作。例如，登录页面可能有一个LoginPage类，它包含了用户名输入框、密码输入框和登录按钮等元素，以及登录操作的方法。</li></ul> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginPage</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token class-name">WebDriver</span> driver<span class="token punctuation">;</span>
+
+    <span class="token comment">// 定位器</span>
+    <span class="token class-name">By</span> usernameField <span class="token operator">=</span> <span class="token class-name">By</span><span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">By</span> passwordField <span class="token operator">=</span> <span class="token class-name">By</span><span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"password"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">By</span> loginButton <span class="token operator">=</span> <span class="token class-name">By</span><span class="token punctuation">.</span><span class="token function">id</span><span class="token punctuation">(</span><span class="token string">"login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 构造函数</span>
+    <span class="token keyword">public</span> <span class="token class-name">LoginPage</span><span class="token punctuation">(</span><span class="token class-name">WebDriver</span> driver<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>driver <span class="token operator">=</span> driver<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 操作方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">enterUsername</span><span class="token punctuation">(</span><span class="token class-name">String</span> username<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>usernameField<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">enterPassword</span><span class="token punctuation">(</span><span class="token class-name">String</span> password<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>passwordField<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">sendKeys</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">clickLoginButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        driver<span class="token punctuation">.</span><span class="token function">findElement</span><span class="token punctuation">(</span>loginButton<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> </li><li> <p><strong>业务逻辑层 (Business Logic Layer)</strong>：</p> 
+  <ul><li><strong>业务方法</strong>：在这一层，多个页面对象的操作被组合成更高级别的业务逻辑。例如，登录操作可以在业务逻辑层中组合调用LoginPage类中的方法。</li></ul> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginActions</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token class-name">WebDriver</span> driver<span class="token punctuation">;</span>
+    <span class="token class-name">LoginPage</span> loginPage<span class="token punctuation">;</span>
+
+    <span class="token comment">// 构造函数</span>
+    <span class="token keyword">public</span> <span class="token class-name">LoginActions</span><span class="token punctuation">(</span><span class="token class-name">WebDriver</span> driver<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>driver <span class="token operator">=</span> driver<span class="token punctuation">;</span>
+        loginPage <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LoginPage</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token comment">// 登录业务方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">login</span><span class="token punctuation">(</span><span class="token class-name">String</span> username<span class="token punctuation">,</span> <span class="token class-name">String</span> password<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        loginPage<span class="token punctuation">.</span><span class="token function">enterUsername</span><span class="token punctuation">(</span>username<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        loginPage<span class="token punctuation">.</span><span class="token function">enterPassword</span><span class="token punctuation">(</span>password<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        loginPage<span class="token punctuation">.</span><span class="token function">clickLoginButton</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> </li><li> <p><strong>测试层 (Test Layer)</strong>：</p> 
+  <ul><li><strong>测试脚本</strong>：在这一层，测试脚本调用业务逻辑层的方法进行测试。测试脚本只关心测试逻辑，而不需要了解具体的页面细节。</li></ul> <pre><code class="prism language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LoginTest</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token class-name">WebDriver</span> driver<span class="token punctuation">;</span>
+    <span class="token class-name">LoginActions</span> loginActions<span class="token punctuation">;</span>
+
+    <span class="token annotation punctuation">@Before</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setUp</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 初始化WebDriver和LoginActions</span>
+        driver <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ChromeDriver</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        loginActions <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LoginActions</span><span class="token punctuation">(</span>driver<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@Test</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">testLogin</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 打开登录页面</span>
+        driver<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"https://example.com/login"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 执行登录操作</span>
+        loginActions<span class="token punctuation">.</span><span class="token function">login</span><span class="token punctuation">(</span><span class="token string">"testuser"</span><span class="token punctuation">,</span> <span class="token string">"testpassword"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+        <span class="token comment">// 验证登录结果</span>
+        <span class="token comment">// Assert语句可以验证登录是否成功</span>
+    <span class="token punctuation">}</span>
+
+    <span class="token annotation punctuation">@After</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">tearDown</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token comment">// 关闭浏览器</span>
+        driver<span class="token punctuation">.</span><span class="token function">quit</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> </li></ol> 
+<h2><a id="_205"></a>开发设计说明书的评审会议参与过没有</h2> 
+<p>联系个人实际i回答</p> 
+<h2><a id="ip_209"></a>实现获取本机的物理地址和ip地址</h2> 
+<p>使用 <code>os.popen</code> 来获取本机的物理地址（MAC地址）和IP地址，可以通过执行系统命令来实现。以下是一个示例代码：</p> 
+<pre><code class="prism language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> re
+
+<span class="token keyword">def</span> <span class="token function">get_ip_addresses</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    ip_addresses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    ifconfig_result <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">'ifconfig'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    ip_pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r'inet\s(\d+\.\d+\.\d+\.\d+)'</span><span class="token punctuation">)</span>
+    ip_addresses <span class="token operator">=</span> ip_pattern<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>ifconfig_result<span class="token punctuation">)</span>
+    <span class="token keyword">return</span> ip_addresses
+
+<span class="token keyword">def</span> <span class="token function">get_mac_addresses</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    mac_addresses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
+    ifconfig_result <span class="token operator">=</span> os<span class="token punctuation">.</span>popen<span class="token punctuation">(</span><span class="token string">'ifconfig'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    mac_pattern <span class="token operator">=</span> re<span class="token punctuation">.</span><span class="token builtin">compile</span><span class="token punctuation">(</span><span class="token string">r'([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})'</span><span class="token punctuation">)</span>
+    mac_addresses <span class="token operator">=</span> mac_pattern<span class="token punctuation">.</span>findall<span class="token punctuation">(</span>ifconfig_result<span class="token punctuation">)</span>
+    <span class="token comment"># Join the MAC address parts</span>
+    mac_addresses <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token string">''</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>mac<span class="token punctuation">)</span> <span class="token keyword">for</span> mac <span class="token keyword">in</span> mac_addresses<span class="token punctuation">]</span>
+    <span class="token keyword">return</span> mac_addresses
+
+<span class="token comment"># 获取IP地址</span>
+ips <span class="token operator">=</span> get_ip_addresses<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"IP Addresses:"</span><span class="token punctuation">,</span> ips<span class="token punctuation">)</span>
+
+<span class="token comment"># 获取MAC地址</span>
+macs <span class="token operator">=</span> get_mac_addresses<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"MAC Addresses:"</span><span class="token punctuation">,</span> macs<span class="token punctuation">)</span>
+</code></pre> 
+<pre><code class="prism language-py"><span class="token keyword">import</span> socket
+<span class="token keyword">import</span> uuid
+ip <span class="token operator">=</span> socket<span class="token punctuation">.</span>gethostbyname<span class="token punctuation">(</span>socket<span class="token punctuation">.</span>gethostname<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+node <span class="token operator">=</span> uuid<span class="token punctuation">.</span>getnode<span class="token punctuation">(</span><span class="token punctuation">)</span>
+macHex <span class="token operator">=</span> uuid<span class="token punctuation">.</span>UUID<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token operator">=</span>node<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token builtin">hex</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">12</span><span class="token punctuation">:</span><span class="token punctuation">]</span>
+mac <span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>macHex<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">:</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+mac<span class="token punctuation">.</span>append<span class="token punctuation">(</span>macHex<span class="token punctuation">[</span>i<span class="token punctuation">:</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+mac <span class="token operator">=</span><span class="token string">':'</span><span class="token punctuation">.</span>join<span class="token punctuation">(</span>mac<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'IP:'</span><span class="token punctuation">,</span> ip<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">'MAC:'</span><span class="token punctuation">,</span> mac<span class="token punctuation">)</span>
+</code></pre> 
+<h2><a id="bug_260"></a>提出的bug开发人员不认</h2> 
+<p>随便说，只要不导致冲突，解决问题就行。</p> 
+<p>“当开发人员不认同发现的 Bug 时，我会首先确保我的 Bug 报告足够详细，包括重现步骤、预期结果和实际结果，并附上相关的截图或日志。如果仍然有分歧，我会亲自或与开发人员一起重现问题，确保他们能够亲眼看到 Bug 的存在。同时，我会保持开放和建设性的沟通，解释问题的严重性和影响，并在必要时寻求其他团队成员或主管的意见来解决分歧。”</p> 
+<h2><a id="_270"></a>抓包</h2> 
+<p>抓包（Packet Capturing）是指通过网络分析工具截获和记录网络数据包，以便进行分析和调试。抓包有助于了解网络通信的详细信息，包括请求和响应数据、协议使用情况等。</p> 
+<h4><a id="_274"></a>工具选择</h4> 
+<p>常用的抓包工具有：</p> 
+<ul><li><strong>Wireshark</strong>：功能强大且广泛使用的网络协议分析工具。</li><li><strong>tcpdump</strong>：基于命令行的网络数据包分析工具，通常用于 Unix 系统。</li><li><strong>Fiddler</strong>：专注于 HTTP/HTTPS 流量的调试代理工具。</li></ul> 
+<h2><a id="_282"></a>用例的设计</h2> 
+<ul><li><strong>用例标识</strong>：为每个用例分配唯一的标识符。</li><li><strong>用例描述</strong>：简要描述用例的目的。</li><li><strong>前置条件</strong>：列出执行该用例所需的前置条件。</li><li><strong>测试步骤</strong>：详细列出执行测试的步骤。</li><li><strong>预期结果</strong>：明确每一步的预期结果。</li><li><strong>实际结果</strong>：执行测试后记录的实际结果（用于测试执行阶段）</li></ul> 
+<h2><a id="_295"></a>黑盒测试方法在项目里具体的运用</h2> 
+<p>需要结合自己做过的项目来说</p>
+                </div>
+</body>
+</html>

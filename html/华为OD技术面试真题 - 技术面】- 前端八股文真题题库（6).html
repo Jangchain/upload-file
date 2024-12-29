@@ -1,0 +1,244 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#1_17" rel="nofollow">1.浏览器的缓存机制，涉及浏览器是怎么存放缓存的，强制缓存的概念</a></li><li><ul><li><ul><li><a href="#1__21" rel="nofollow">1. **浏览器缓存机制**</a></li><li><a href="#2__25" rel="nofollow">2. **浏览器缓存的存储位置**</a></li><li><a href="#3__32" rel="nofollow">3. **强制缓存的概念**</a></li><li><a href="#4__37" rel="nofollow">4. **协商缓存**</a></li><li><a href="#5__42" rel="nofollow">5. **缓存更新策略**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#2CSS_position_49" rel="nofollow">2.CSS position属性的值有哪几种分别介绍区别</a></li><li><ul><li><ul><li><a href="#1_static_57" rel="nofollow">1. **`static`（默认值）**</a></li><li><a href="#2_relative_61" rel="nofollow">2. **`relative`（相对定位）**</a></li><li><a href="#3_absolute_68" rel="nofollow">3. **`absolute`（绝对定位）**</a></li><li><a href="#4_fixed_74" rel="nofollow">4. **`fixed`（固定定位）**</a></li><li><a href="#5_sticky_80" rel="nofollow">5. **`sticky`（粘性定位）**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#3css_91" rel="nofollow">3.css盒子模型</a></li><li><ul><li><ul><li><a href="#1__97" rel="nofollow">1. **盒子模型的组成部分**</a></li><li><a href="#2__113" rel="nofollow">2. **两种盒子模型：标准盒子模型和怪异盒子模型**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#4_132" rel="nofollow">4.隐藏页面元素的方法</a></li><li><ul><li><ul><li><a href="#1_display_none_138" rel="nofollow">1. **`display: none;`**</a></li><li><a href="#2_visibility_hidden_145" rel="nofollow">2. **`visibility: hidden;`**</a></li><li><a href="#3_opacity_0_153" rel="nofollow">3. **`opacity: 0;`**</a></li><li><a href="#4_position_absolute__lefttop__161" rel="nofollow">4. **`position: absolute;` 结合负值的 `left`、`top` 等属性**</a></li><li><a href="#5_zindex__position__168" rel="nofollow">5. **`z-index` 结合 `position` 属性**</a></li><li><a href="#6_clippath_or_clip_174" rel="nofollow">6. **`clip-path` or `clip`**</a></li><li><a href="#7__181" rel="nofollow">7. **移除元素节点**</a></li><li><a href="#8__ariahiddentrue_189" rel="nofollow">8. **使用 `aria-hidden="true"`**</a></li><li><a href="#9_transform_scale0__transform_translateX100_195" rel="nofollow">9. **`transform: scale(0);` 或 `transform: translateX(-100%);`**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#5_js_203" rel="nofollow">5. 介绍js的闭包，闭包是怎么样保存私有变量的？</a></li><li><ul><li><ul><li><a href="#_207" rel="nofollow">闭包的定义</a></li><li><a href="#_215" rel="nofollow">闭包的工作原理</a></li><li><a href="#_221" rel="nofollow">闭包如何保存私有变量</a></li><li><a href="#_253" rel="nofollow">分析</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#6_js_261" rel="nofollow">6. js作用域分别有哪些</a></li><li><ul><li><ul><li><a href="#1_Global_Scope_265" rel="nofollow">1. **全局作用域（Global Scope）**</a></li><li><a href="#2_Function_Scope_279" rel="nofollow">2. **函数作用域（Function Scope）**</a></li><li><a href="#3_Block_Scope_294" rel="nofollow">3. **块级作用域（Block Scope）**</a></li><li><a href="#4_Lexical_Scope_309" rel="nofollow">4. **词法作用域（Lexical Scope）**</a></li><li><a href="#5_Module_Scope_328" rel="nofollow">5. **模块作用域（Module Scope）**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#7__351" rel="nofollow">7. 箭头函数的特性</a></li><li><ul><li><ul><li><a href="#1__355" rel="nofollow">1. **语法简洁**</a></li><li><a href="#2__this__369" rel="nofollow">2. **没有自己的 `this` 绑定**</a></li><li><a href="#3__386" rel="nofollow">3. **不能用作构造函数**</a></li><li><a href="#4__arguments__395" rel="nofollow">4. **没有 `arguments` 对象**</a></li><li><a href="#5__yield__407" rel="nofollow">5. **不能使用 `yield` 关键字**</a></li></ul> 
+  </li></ul> 
+ </li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/82eb94d80bcaaf02b1fc85510bdbccb5.png" alt="封面"></p> 
+<h2><a id="1_17"></a>1.浏览器的缓存机制，涉及浏览器是怎么存放缓存的，强制缓存的概念</h2> 
+<h4><a id="1__21"></a>1. <strong>浏览器缓存机制</strong></h4> 
+<p>浏览器缓存机制是指浏览器为了提高页面加载速度、减少服务器负载，将已经访问过的资源（如 HTML、CSS、JS 文件，图片等）保存在本地的一种策略。当用户再次访问同一资源时，浏览器可以直接从缓存中读取数据，而不需要再次向服务器请求。</p> 
+<h4><a id="2__25"></a>2. <strong>浏览器缓存的存储位置</strong></h4> 
+<p>浏览器通常会将缓存存储在以下几个地方：</p> 
+<ul><li><strong>Memory Cache</strong>（内存缓存）：存储在浏览器的内存中，速度非常快，适合存储一些较小的资源。通常在关闭浏览器时清空。</li><li><strong>Disk Cache</strong>（磁盘缓存）：存储在本地磁盘中，存储量较大，可以长期保存，适合大文件和长期需要缓存的资源。</li><li><strong>Service Workers Cache</strong>：借助 Service Workers API，可以在本地保存特定的资源，甚至支持离线访问。</li><li><strong>IndexedDB、LocalStorage、SessionStorage</strong>：这些 Web 存储机制主要用于结构化的数据。</li></ul> 
+<h4><a id="3__32"></a>3. <strong>强制缓存的概念</strong></h4> 
+<p>强制缓存是指浏览器直接从缓存中读取资源，而不需要向服务器发起请求确认资源的有效性。强制缓存的实现依赖于 HTTP 响应头中的以下两个字段：</p> 
+<ul><li><strong>Expires</strong>：使用一个具体的时间戳（如 “Wed, 21 Oct 2023 07:28:00 GMT”）来指定资源的过期时间。在过期时间之前，浏览器会直接使用缓存的资源，不会向服务器发送请求。</li><li><strong>Cache-Control</strong>：这是一个更现代的缓存控制方式，通常替代 Expires。它可以包含多个指令，如 <code>max-age</code>（指定资源的最大缓存时间，单位为秒）、<code>no-cache</code>（不使用缓存，每次都向服务器确认资源是否有效）、<code>no-store</code>（不缓存资源）等。</li></ul> 
+<h4><a id="4__37"></a>4. <strong>协商缓存</strong></h4> 
+<p>如果强制缓存失效，浏览器会向服务器发送请求，询问资源是否有更新。这时会用到协商缓存机制。常见的协商缓存字段有：</p> 
+<ul><li><strong>Last-Modified / If-Modified-Since</strong>：浏览器发送请求时会附带 <code>If-Modified-Since</code> 头部，如果资源自上次请求后没有更新，服务器会返回 <code>304 Not Modified</code> 状态码，并且不返回资源的内容。</li><li><strong>ETag / If-None-Match</strong>：ETag 是服务器为每个资源生成的唯一标识符。浏览器请求时带上 <code>If-None-Match</code>，如果资源未修改，服务器同样返回 <code>304 Not Modified</code>。</li></ul> 
+<h4><a id="5__42"></a>5. <strong>缓存更新策略</strong></h4> 
+<p>浏览器缓存机制的核心目标是平衡性能和资源的实时性。通常，前端开发者会根据业务需求，利用 HTTP 头部来控制缓存策略，以达到最佳的用户体验。例如：</p> 
+<ul><li>对于静态资源（如图片、CSS 文件），可以设置长时间的强制缓存，并通过文件名的变化来触发缓存更新。</li><li>对于频繁变化的资源，可以使用 <code>Cache-Control: no-cache</code> 来确保资源的实时性。</li></ul> 
+<h2><a id="2CSS_position_49"></a>2.CSS position属性的值有哪几种分别介绍区别</h2> 
+<ul><li><strong><code>static</code></strong>：默认定位，元素按文档流排列，不受 <code>top</code> 等影响。</li><li><strong><code>relative</code></strong>：相对定位，基于原始位置偏移，但仍占据原空间。</li><li><strong><code>absolute</code></strong>：绝对定位，相对于最近的定位祖先元素脱离文档流定位。</li><li><strong><code>fixed</code></strong>：固定定位，相对于浏览器窗口固定，不随页面滚动。</li><li><strong><code>sticky</code></strong>：粘性定位，在特定条件下从相对变为固定定位。</li></ul> 
+<h4><a id="1_static_57"></a>1. <strong><code>static</code>（默认值）</strong></h4> 
+<ul><li><strong>定义</strong>：这是所有元素默认的 <code>position</code> 值，表示元素会按照正常的文档流进行排列，不会受到 <code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code> 属性的影响。</li><li><strong>特点</strong>：元素的位置由其在 HTML 中的顺序决定。即使你设置了 <code>top</code>、<code>left</code> 等属性，它们也不会生效，因为 <code>static</code> 下元素的位置是不可调整的。</li></ul> 
+<h4><a id="2_relative_61"></a>2. <strong><code>relative</code>（相对定位）</strong></h4> 
+<ul><li><strong>定义</strong>：相对定位的元素仍然保留在文档流中，但可以通过 <code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code> 属性相对于它在文档流中的原始位置进行偏移。</li><li><strong>特点</strong>： 
+  <ul><li>元素在页面上的空间依然被保留（即它仍然占据原来位置的空间）。</li><li>相对定位主要用于对元素进行微调而不影响文档流的其他部分。</li><li>其他元素仍会按照该元素原来的位置排列。</li></ul> </li></ul> 
+<h4><a id="3_absolute_68"></a>3. <strong><code>absolute</code>（绝对定位）</strong></h4> 
+<ul><li><strong>定义</strong>：绝对定位的元素脱离了文档流，通过 <code>top</code>、<code>right</code>、<code>bottom</code>、<code>left</code> 属性相对于最近的<strong>定位祖先元素</strong>（即设置了 <code>relative</code>、<code>absolute</code> 或 <code>fixed</code> 的父级元素）进行定位。如果没有找到这样的父级元素，则相对于浏览器窗口（或文档的 <code>&lt;html&gt;</code> 元素）定位。</li><li><strong>特点</strong>： 
+  <ul><li>元素不再占据原始位置的空间，因此不会影响其他元素的布局。</li><li>绝对定位常用于创建悬浮元素、模态框或自定义组件。</li></ul> </li></ul> 
+<h4><a id="4_fixed_74"></a>4. <strong><code>fixed</code>（固定定位）</strong></h4> 
+<ul><li><strong>定义</strong>：固定定位的元素相对于浏览器窗口进行定位，即使页面滚动，它也不会移动。</li><li><strong>特点</strong>： 
+  <ul><li>与 <code>absolute</code> 类似，<code>fixed</code> 定位的元素脱离了文档流，不会影响其他元素的布局。</li><li>常用于创建始终固定在屏幕某个位置的元素，如导航栏、返回顶部按钮等。</li></ul> </li></ul> 
+<h4><a id="5_sticky_80"></a>5. <strong><code>sticky</code>（粘性定位）</strong></h4> 
+<ul><li><strong>定义</strong>：粘性定位是一种混合定位模式，元素在页面滚动到某个阈值前是相对定位的，当达到阈值后，它会变为固定定位，固定在某个位置。</li><li><strong>特点</strong>： 
+  <ul><li>结合了 <code>relative</code> 和 <code>fixed</code> 的特性：在阈值之前是相对定位，达到阈值后变为固定定位。</li><li>常用于实现像表头在滚动过程中固定在顶部的效果。</li><li>需要注意的是，父容器的 overflow 设为 <code>hidden</code>、<code>scroll</code> 或 <code>auto</code> 时，<code>sticky</code> 定位的效果可能会失效。</li></ul> </li></ul> 
+<h2><a id="3css_91"></a>3.css盒子模型</h2> 
+<h4><a id="1__97"></a>1. <strong>盒子模型的组成部分</strong></h4> 
+<p>一个标准的 CSS 盒子模型由以下四个部分组成，从内到外分别是：</p> 
+<ul><li> <p><strong>Content（内容区域）</strong>：</p> 
+  <ul><li>包含实际显示的内容，比如文本、图像或其他子元素。<code>width</code> 和 <code>height</code> 属性直接影响内容区域的尺寸。</li></ul> </li><li> <p><strong>Padding（内边距）</strong>：</p> 
+  <ul><li>内容区域与边框之间的空间。<code>padding</code> 属性可以设置内容区域四周的内边距，增加盒子的实际可见尺寸，但不会影响内容区域的大小。</li></ul> </li><li> <p><strong>Border（边框）</strong>：</p> 
+  <ul><li>围绕在内边距外部的边框。通过 <code>border</code> 属性可以设置边框的宽度、样式和颜色。边框也会增加盒子的整体尺寸。</li></ul> </li><li> <p><strong>Margin（外边距）</strong>：</p> 
+  <ul><li>盒子与其他元素之间的外部空间。<code>margin</code> 属性可以设置元素四周的外边距，控制元素之间的距离。外边距不会影响盒子本身的尺寸，但会影响元素在页面上的间距。</li></ul> </li></ul> 
+<h4><a id="2__113"></a>2. <strong>两种盒子模型：标准盒子模型和怪异盒子模型</strong></h4> 
+<p>在 CSS 中，盒子模型有两种模式：标准盒子模型和怪异盒子模型。</p> 
+<ul><li> <p><strong>标准盒子模型（content-box）</strong>：</p> 
+  <ul><li>默认模式，<code>width</code> 和 <code>height</code> 只应用于内容区域（Content）。</li><li>盒子的总宽度和总高度计算公式： 
+    <ul><li>总宽度 = <code>width</code> + <code>padding-left</code> + <code>padding-right</code> + <code>border-left-width</code> + <code>border-right-width</code></li><li>总高度 = <code>height</code> + <code>padding-top</code> + <code>padding-bottom</code> + <code>border-top-width</code> + <code>border-bottom-width</code></li></ul> </li></ul> </li><li> <p><strong>怪异盒子模型（border-box）</strong>：</p> 
+  <ul><li>在这种模式下，<code>width</code> 和 <code>height</code> 包括内容区域、内边距和边框的总和。</li><li>盒子的总宽度和总高度直接等于 <code>width</code> 和 <code>height</code>，不需要额外计算内边距和边框： 
+    <ul><li>总宽度 = <code>width</code>（已包含内边距和边框）</li><li>总高度 = <code>height</code>（已包含内边距和边框）</li></ul> </li><li>可以通过设置 <code>box-sizing: border-box;</code> 来启用这种模型。</li></ul> </li></ul> 
+<h2><a id="4_132"></a>4.隐藏页面元素的方法</h2> 
+<h4><a id="1_display_none_138"></a>1. <strong><code>display: none;</code></strong></h4> 
+<ul><li><strong>效果</strong>：元素被完全从文档流中移除，不占据任何空间。页面上的其他元素会填补这个空隙。</li><li><strong>特点</strong>： 
+  <ul><li>隐藏的元素不会被渲染，也不会响应任何用户交互。</li><li>适合需要完全移除元素的场景，例如条件渲染、切换组件等。</li><li>注意：使用 <code>display: none;</code> 隐藏的元素不会被屏幕阅读器读取，这意味着对无障碍访问有影响。</li></ul> </li></ul> 
+<h4><a id="2_visibility_hidden_145"></a>2. <strong><code>visibility: hidden;</code></strong></h4> 
+<ul><li><strong>效果</strong>：元素仍然保留在文档流中，占据空间，但不可见。</li><li><strong>特点</strong>： 
+  <ul><li>元素不可见，但页面布局不会变化，因为元素依然存在并占据空间。</li><li>隐藏的元素不会响应点击等用户交互。</li><li>可以用在希望保持页面布局不变但临时隐藏内容的场景中。</li><li>屏幕阅读器通常仍然会读取 <code>visibility: hidden;</code> 的元素，这可能对无障碍访问有用。</li></ul> </li></ul> 
+<h4><a id="3_opacity_0_153"></a>3. <strong><code>opacity: 0;</code></strong></h4> 
+<ul><li><strong>效果</strong>：元素完全透明，不可见，但仍保留在文档流中，占据空间，并且可以响应用户交互。</li><li><strong>特点</strong>： 
+  <ul><li>元素只是变得透明，仍会触发事件，如点击、hover 等。</li><li>页面布局保持不变，元素的存在感可以通过用户交互体验到。</li><li>适用于需要保留交互但暂时隐藏视觉内容的场景，例如悬浮效果、淡入淡出动画等。</li><li>屏幕阅读器通常仍然会读取该元素。</li></ul> </li></ul> 
+<h4><a id="4_position_absolute__lefttop__161"></a>4. <strong><code>position: absolute;</code> 结合负值的 <code>left</code>、<code>top</code> 等属性</strong></h4> 
+<ul><li><strong>效果</strong>：通过将元素移动到屏幕之外来隐藏元素，但它仍然在文档流中，并且会影响布局（尽管在视觉上不可见）。</li><li><strong>特点</strong>： 
+  <ul><li>元素被移出了视口范围，因此不可见，但实际上仍存在于页面结构中。</li><li>适用于需要暂时移除可视区域的内容，但仍希望保留元素的其他特性（例如占位、样式、动画等）。</li><li>在某些情况下，这种方法可能导致页面滚动条意外出现。</li></ul> </li></ul> 
+<h4><a id="5_zindex__position__168"></a>5. <strong><code>z-index</code> 结合 <code>position</code> 属性</strong></h4> 
+<ul><li><strong>效果</strong>：通过设置较低的 <code>z-index</code> 值（小于其他元素）或较高的 <code>z-index</code> 值（超出视口范围）来隐藏元素。</li><li><strong>特点</strong>： 
+  <ul><li>元素仍在文档流中，只是被其他元素遮挡住或被移到视口外。</li><li>适合用于元素层叠顺序管理，在需要动态调整元素层级时使用。</li></ul> </li></ul> 
+<h4><a id="6_clippath_or_clip_174"></a>6. <strong><code>clip-path</code> or <code>clip</code></strong></h4> 
+<ul><li><strong>效果</strong>：通过裁剪元素的显示区域，使其不可见。</li><li><strong>特点</strong>： 
+  <ul><li>可以精确控制元素的可见部分或完全隐藏元素。</li><li>常用于图像、动画效果或需要部分显示的场景。</li><li>被裁剪的部分不可见，但仍保留在文档流中。</li></ul> </li></ul> 
+<h4><a id="7__181"></a>7. <strong>移除元素节点</strong></h4> 
+<ul><li><strong>方法</strong>：通过 JavaScript 或其他动态手段直接从 DOM 中移除元素节点。</li><li><strong>效果</strong>：元素从文档中完全移除，不占据空间。</li><li><strong>特点</strong>： 
+  <ul><li>页面布局可能会发生变化，其他元素会填补被移除元素的位置。</li><li>适用于完全不再需要该元素的场景。</li><li>无法通过 CSS 恢复元素，除非重新将元素添加回 DOM。</li></ul> </li></ul> 
+<h4><a id="8__ariahiddentrue_189"></a>8. <strong>使用 <code>aria-hidden="true"</code></strong></h4> 
+<ul><li><strong>效果</strong>：元素仍然在页面上显示，但对于使用屏幕阅读器的用户不可见。</li><li><strong>特点</strong>： 
+  <ul><li>适用于无障碍访问控制，隐藏那些不应该被阅读器访问的内容。</li><li>不影响元素的可见性和布局。</li></ul> </li></ul> 
+<h4><a id="9_transform_scale0__transform_translateX100_195"></a>9. <strong><code>transform: scale(0);</code> 或 <code>transform: translateX(-100%);</code></strong></h4> 
+<ul><li><strong>效果</strong>：通过 CSS 转换来缩放或移动元素，使其不可见。</li><li><strong>特点</strong>： 
+  <ul><li>可以用于动画效果，通过 CSS transition 或 animation 实现平滑的隐藏或显示效果。</li><li>元素仍在文档流中，并占据空间，但视觉上不可见。</li></ul> </li></ul> 
+<h2><a id="5_js_203"></a>5. 介绍js的闭包，闭包是怎么样保存私有变量的？</h2> 
+<h4><a id="_207"></a>闭包的定义</h4> 
+<p>闭包是指一个函数能够记住并访问它的词法作用域，即使在函数执行完之后，外部作用域的变量依然可以被访问和操作。闭包通常在以下情况下生成：</p> 
+<ul><li>一个函数内部定义了另一个函数。</li><li>内部函数访问了外部函数的变量。</li><li>这个内部函数在外部被调用。</li></ul> 
+<h4><a id="_215"></a>闭包的工作原理</h4> 
+<p>为了理解闭包如何保存私有变量，首先要了解JavaScript的作用域链。每当函数被创建时，函数内部会形成一个闭包。这个闭包由函数和它可以访问的外部环境（也称为词法环境）组成。</p> 
+<p>当一个函数在外部作用域中被调用时，它依然能够通过闭包访问它原始定义时的环境变量。这是因为当JavaScript函数被创建时，它会在内存中记录下它所能访问的变量，即使外部函数已经执行结束，JavaScript引擎依然会保留这些变量的引用，从而实现变量的持久化。</p> 
+<h4><a id="_221"></a>闭包如何保存私有变量</h4> 
+<p>私有变量可以通过闭包实现，常见的做法是使用一个函数来创建一个局部作用域，然后在这个作用域内定义变量和操作这些变量的函数。外部只能通过闭包暴露出来的函数来访问和修改这些变量，而不能直接访问它们。</p> 
+<p>以下是一个示例代码，展示了如何使用闭包来保存私有变量：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">function</span> <span class="token function">createCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">let</span> count <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 私有变量</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token function-variable function">increment</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            count<span class="token operator">++</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">decrement</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            count<span class="token operator">--</span><span class="token punctuation">;</span>
+            <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">,</span>
+        <span class="token function-variable function">getCount</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+            <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> counter <span class="token operator">=</span> <span class="token function">createCounter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span><span class="token function">increment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 2</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span><span class="token function">decrement</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 1</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>counter<span class="token punctuation">.</span><span class="token function">getCount</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 输出 1</span>
+</code></pre> 
+<h4><a id="_253"></a>分析</h4> 
+<ul><li><code>createCounter</code> 函数中定义了一个私有变量 <code>count</code>，这个变量只在 <code>createCounter</code> 的作用域内有效。</li><li><code>createCounter</code> 返回了一个包含多个方法的对象，这些方法是 <code>increment</code>、<code>decrement</code> 和 <code>getCount</code>，这些方法在定义时形成了闭包，它们可以访问 <code>count</code> 变量。</li><li>当调用 <code>counter.increment()</code> 等方法时，尽管 <code>createCounter</code> 函数的执行环境已经结束，但由于闭包的存在，这些方法仍然可以访问并修改 <code>count</code> 变量。</li></ul> 
+<h2><a id="6_js_261"></a>6. js作用域分别有哪些</h2> 
+<h4><a id="1_Global_Scope_265"></a>1. <strong>全局作用域（Global Scope）</strong></h4> 
+<ul><li><strong>定义</strong>：在代码的任何地方都可以访问的作用域。所有在函数外部定义的变量和函数都会被添加到全局作用域中。</li><li><strong>特点</strong>： 
+  <ul><li>全局变量可以在任何地方访问。</li><li>全局作用域中的变量会挂载在 <code>window</code> 对象（浏览器环境中）或 <code>global</code> 对象（Node.js 环境中）上。</li><li>全局变量可能引发命名冲突，因此不推荐滥用。</li></ul> </li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">var</span> globalVar <span class="token operator">=</span> <span class="token string">'I am global'</span><span class="token punctuation">;</span> <span class="token comment">// 全局变量</span>
+<span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>globalVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 可以访问到全局变量</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="2_Function_Scope_279"></a>2. <strong>函数作用域（Function Scope）</strong></h4> 
+<ul><li><strong>定义</strong>：在函数内部定义的变量只能在该函数内部访问，即局部变量。函数作用域在函数调用时才会被创建，并在函数执行结束后销毁。</li><li><strong>特点</strong>： 
+  <ul><li>函数作用域内的变量和函数只能在该函数内部访问。</li><li>不同函数之间的作用域是独立的。</li><li>可以通过函数嵌套形成嵌套作用域。</li></ul> </li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">function</span> <span class="token function">test</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">var</span> localVar <span class="token operator">=</span> <span class="token string">'I am local'</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>localVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 可以访问到局部变量</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>localVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 报错，无法在函数外访问局部变量</span>
+</code></pre> 
+<h4><a id="3_Block_Scope_294"></a>3. <strong>块级作用域（Block Scope）</strong></h4> 
+<ul><li><strong>定义</strong>：块级作用域是由 <code>let</code> 和 <code>const</code> 关键字引入的，定义在 <code>{}</code> 大括号内的作用域。包括在 <code>if</code>、<code>for</code>、<code>while</code> 等代码块内部。</li><li><strong>特点</strong>： 
+  <ul><li>变量只在块内部可见。</li><li>块级作用域可以避免变量提升问题，减少全局作用域中的变量。</li><li><code>let</code> 和 <code>const</code> 定义的变量在块级作用域之外不可访问。</li></ul> </li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token boolean">true</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">let</span> blockVar <span class="token operator">=</span> <span class="token string">'I am block scoped'</span><span class="token punctuation">;</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blockVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 可以访问到块级变量</span>
+<span class="token punctuation">}</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>blockVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 报错，无法在块外访问块级变量</span>
+</code></pre> 
+<h4><a id="4_Lexical_Scope_309"></a>4. <strong>词法作用域（Lexical Scope）</strong></h4> 
+<ul><li><strong>定义</strong>：词法作用域指的是函数的作用域在函数定义时就已经确定，而不是在函数调用时确定。函数在定义时“记住”了它创建时的环境，这个环境决定了函数可以访问哪些变量。</li><li><strong>特点</strong>： 
+  <ul><li>词法作用域是静态的，与函数的调用位置无关。</li><li>闭包是词法作用域的一个重要应用。</li></ul> </li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">function</span> <span class="token function">outerFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">var</span> outerVar <span class="token operator">=</span> <span class="token string">'I am outside'</span><span class="token punctuation">;</span>
+    <span class="token keyword">function</span> <span class="token function">innerFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>outerVar<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 可以访问到外部函数的变量</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> innerFunction<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">var</span> myFunction <span class="token operator">=</span> <span class="token function">outerFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 'I am outside'</span>
+</code></pre> 
+<h4><a id="5_Module_Scope_328"></a>5. <strong>模块作用域（Module Scope）</strong></h4> 
+<ul><li><strong>定义</strong>：在模块化代码（如 ES6 模块）中，每个模块都有自己的作用域，模块内部定义的变量和函数默认是模块内私有的，除非使用 <code>export</code> 关键字将其导出。</li><li><strong>特点</strong>： 
+  <ul><li>模块作用域与全局作用域隔离，不会污染全局作用域。</li><li>通过 <code>import</code> 和 <code>export</code> 可以控制模块之间的依赖关系和变量共享。</li><li>提供了一种封装代码和管理依赖的方式。</li></ul> </li></ul> 
+<pre><code class="prism language-javascript"><span class="token comment">// module1.js</span>
+<span class="token keyword">const</span> moduleVar <span class="token operator">=</span> <span class="token string">'I am in a module'</span><span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">getModuleVar</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">return</span> moduleVar<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token comment">// main.js</span>
+<span class="token keyword">import</span> <span class="token punctuation">{<!-- --></span> getModuleVar <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./module1.js'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">getModuleVar</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 'I am in a module'</span>
+</code></pre> 
+<h2><a id="7__351"></a>7. 箭头函数的特性</h2> 
+<h4><a id="1__355"></a>1. <strong>语法简洁</strong></h4> 
+<ul><li>箭头函数采用了更简洁的语法，尤其在定义简单的函数时，这种语法显得更为简便。</li><li>如果函数体只有一个表达式，甚至可以省略大括号 <code>{}</code> 和 <code>return</code> 关键字。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token comment">// 传统函数表达式</span>
+<span class="token keyword">var</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">return</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 箭头函数</span>
+<span class="token keyword">var</span> <span class="token function-variable function">sum</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter">a<span class="token punctuation">,</span> b</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> a <span class="token operator">+</span> b<span class="token punctuation">;</span>
+</code></pre> 
+<h4><a id="2__this__369"></a>2. <strong>没有自己的 <code>this</code> 绑定</strong></h4> 
+<ul><li>箭头函数不会创建自己的 <code>this</code> 上下文，它会捕获（或说“继承”）在定义箭头函数时的外层 <code>this</code> 值，即<strong>词法作用域中的 <code>this</code></strong>。</li><li>这意味着在箭头函数中，<code>this</code> 始终指向其外层作用域中的 <code>this</code>，而不会根据调用位置的不同而改变。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+
+    <span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token operator">++</span><span class="token punctuation">;</span> <span class="token comment">// `this` 指向 `Person` 对象，而不是 `setInterval` 的调用者</span>
+        console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">1000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">var</span> p <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<h4><a id="3__386"></a>3. <strong>不能用作构造函数</strong></h4> 
+<ul><li>箭头函数不能用作构造函数，使用 <code>new</code> 关键字调用箭头函数会抛出错误。</li><li>传统函数可以通过 <code>new</code> 关键字调用创建实例，但箭头函数没有 <code>[[Construct]]</code> 内部方法，因此不能用于创建实例。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">Foo</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+<span class="token keyword">var</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Foo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: Foo is not a constructor</span>
+</code></pre> 
+<h4><a id="4__arguments__395"></a>4. <strong>没有 <code>arguments</code> 对象</strong></h4> 
+<ul><li>箭头函数没有自己的 <code>arguments</code> 对象，如果需要使用 <code>arguments</code> 对象，可以通过外层函数的 <code>arguments</code> 对象来访问。</li><li>在需要操作参数列表时，通常推荐使用 ES6 的剩余参数语法 <code>...args</code>。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">func</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token parameter"><span class="token operator">...</span>args</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>args<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用剩余参数语法替代 `arguments`</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token function">func</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出 [1, 2, 3]</span>
+</code></pre> 
+<h4><a id="5__yield__407"></a>5. <strong>不能使用 <code>yield</code> 关键字</strong></h4> 
+<ul><li>箭头函数不能作为生成器函数，因此不能使用 <code>yield</code> 关键字。</li><li>如果需要生成器功能，必须使用传统的 <code>function*</code> 语法。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">var</span> <span class="token function-variable function">gen</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">yield</span> <span class="token number">1</span><span class="token punctuation">;</span> <span class="token comment">// SyntaxError: Unexpected strict mode reserved word</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+                </div>
+</body>
+</html>

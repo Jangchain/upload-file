@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#Webpack_loaderplugin_15" rel="nofollow">Webpack loader和plugin区别</a></li><li><ul><li><ul><li><a href="#Webpack_Loader_19" rel="nofollow">Webpack Loader</a></li><li><a href="#Webpack_Plugin_44" rel="nofollow">Webpack Plugin</a></li><li><a href="#_65" rel="nofollow">总结</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_xss_csrf___72" rel="nofollow">攻击手段 xss csrf 这些 具体怎么攻击</a></li><li><ul><li><ul><li><a href="#1_XSS_76" rel="nofollow">1. XSS（跨站脚本攻击）</a></li><li><a href="#2_CSRF_90" rel="nofollow">2. CSRF（跨站请求伪造）</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_105" rel="nofollow">原型链</a></li><li><ul><li><ul><li><a href="#_107" rel="nofollow">原型链的工作原理：</a></li><li><a href="#_115" rel="nofollow">一个简单的例子：</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#_140" rel="nofollow">怎么创建一个没有原型的对象</a></li><li><ul><li><ul><li><a href="#_Objectcreatenull__144" rel="nofollow">使用 `Object.create(null)` 创建对象</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#Constructor_class_160" rel="nofollow">Constructor 可不可以写多次在class里面</a></li><li><ul><li><ul><li><a href="#_164" rel="nofollow">示例：</a></li><li><a href="#_183" rel="nofollow">错误示例：</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#ES6_Proxy_209" rel="nofollow">ES6 的Proxy</a></li><li><ul><li><ul><li><a href="#Proxy__213" rel="nofollow">Proxy 基本概念</a></li><li><a href="#Handler__224" rel="nofollow">Handler 对象的方法</a></li><li><a href="#_Proxy_233" rel="nofollow">示例：使用 Proxy</a></li></ul> 
+  </li></ul> 
+ </li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/531481147412447605047d39bc063274.png" alt="封面"></p> 
+<h2><a id="Webpack_loaderplugin_15"></a>Webpack loader和plugin区别</h2> 
+<h4><a id="Webpack_Loader_19"></a>Webpack Loader</h4> 
+<p>Loader 在 Webpack 中用于处理源文件。Webpack 自身只能理解 JavaScript 和 JSON 文件，Loader 让 Webpack 有能力去处理其他类型的文件，并将它们转换为有效的模块，这些模块可以被包含在依赖图中。简单地说，Loader 用于转换特定类型的文件并将其包含到依赖图中。</p> 
+<ul><li><strong>用途</strong>：比如，将 TypeScript 转换为 JavaScript，将 SCSS 转换为 CSS，或将 JSX 转换为 JavaScript。</li><li><strong>配置方式</strong>：在 Webpack 的配置文件中，Loader 是作为模块规则（module rules）来配置的。你可以指定多个 Loader 来处理不同类型的文件。</li></ul> 
+<p>例如，使用 <code>babel-loader</code> 处理 JavaScript 文件的配置：</p> 
+<pre><code class="prism language-javascript"><span class="token literal-property property">module</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token literal-property property">rules</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token punctuation">{<!-- --></span>
+      <span class="token literal-property property">test</span><span class="token operator">:</span> <span class="token regex"><span class="token regex-delimiter">/</span><span class="token regex-source language-regex">\.js$</span><span class="token regex-delimiter">/</span></span><span class="token punctuation">,</span>
+      <span class="token literal-property property">use</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+        <span class="token literal-property property">loader</span><span class="token operator">:</span> <span class="token string">'babel-loader'</span><span class="token punctuation">,</span>
+        <span class="token literal-property property">options</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+          <span class="token literal-property property">presets</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">'@babel/preset-env'</span><span class="token punctuation">]</span>
+        <span class="token punctuation">}</span>
+      <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="Webpack_Plugin_44"></a>Webpack Plugin</h4> 
+<p>Plugin 在 Webpack 中用于执行更广泛的任务。它们直接影响到 Webpack 构建过程，可以用于执行范围广泛的任务，如打包优化、资源管理和环境变量注入等。</p> 
+<ul><li><strong>用途</strong>：比如，优化打包文件，管理输出资产，定义环境变量等。</li><li><strong>配置方式</strong>：在 Webpack 配置中，Plugin 是在 <code>plugins</code> 数组中直接添加的。</li></ul> 
+<p>例如，使用 <code>HtmlWebpackPlugin</code> 来自动生成 HTML 文件的配置：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">const</span> HtmlWebpackPlugin <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'html-webpack-plugin'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token literal-property property">plugins</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token keyword">new</span> <span class="token class-name">HtmlWebpackPlugin</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span>
+      <span class="token literal-property property">template</span><span class="token operator">:</span> <span class="token string">'./src/index.html'</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">]</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="_65"></a>总结</h4> 
+<ul><li><strong>Loader</strong>：专注于单个文件的转换。</li><li><strong>Plugin</strong>：影响整个构建流程和 Webpack 的核心功能。</li></ul> 
+<h2><a id="_xss_csrf___72"></a>攻击手段 xss csrf 这些 具体怎么攻击</h2> 
+<h4><a id="1_XSS_76"></a>1. XSS（跨站脚本攻击）</h4> 
+<p>XSS 攻击是通过将恶意脚本注入到网页上，然后当其他用户浏览该网页时执行这些脚本，从而达到攻击目的。这种攻击通常利用网站允许用户输入未经充分过滤或未正确转义的数据。</p> 
+<ul><li> <p><strong>攻击方式</strong>：</p> 
+  <ul><li><strong>存储型 XSS</strong>：恶意脚本存储在服务器上（如数据库、消息论坛、访客日志等），任何访问该数据的用户都会触发这些脚本。</li><li><strong>反射型 XSS</strong>：恶意脚本在用户的请求中发送，通过诸如 URL 参数的方式，当用户点击一个恶意链接时，服务器将脚本作为响应的一部分返回，脚本随即在用户的浏览器上执行。</li><li><strong>DOM 基 XSS</strong>：当脚本通过修改页面的 DOM 而执行时，源于客户端的数据处理不当，比如 JavaScript 可以读取 URL 参数并动态修改 HTML 内容。</li></ul> </li><li> <p><strong>防御措施</strong>：</p> 
+  <ul><li>对所有输入进行过滤和转义，特别是来自用户的输入。</li><li>使用内容安全策略（CSP）限制资源的获取。</li><li>对存储的数据进行适当的编码和处理。</li></ul> </li></ul> 
+<h4><a id="2_CSRF_90"></a>2. CSRF（跨站请求伪造）</h4> 
+<p>CSRF 攻击是指攻击者诱使用户的浏览器去执行未经认证的操作，如在用户不知情的情况下，使用用户当前的登录状态发起恶意请求。</p> 
+<ul><li> <p><strong>攻击方式</strong>：</p> 
+  <ul><li>攻击者创建一个恶意网站或邮件，其中包含一个请求指向一个合法网站（用户已登录的），例如通过隐藏的表单自动提交。</li><li>当用户浏览到这个恶意网站时，如果他们已经登录了目标网站，那么这个请求就会在用户的浏览器上以用户的身份自动发送。</li></ul> </li><li> <p><strong>防御措施</strong>：</p> 
+  <ul><li>使用 CSRF 令牌（Anti-CSRF tokens），每个会话生成一个唯一的令牌，用于验证用户提交的请求确实是他们意图发送的。</li><li>对敏感操作使用双重验证。</li><li>设置并验证 HTTP 的 <code>Referer</code> 和 <code>Origin</code> 头部，以确保请求是从合法的源发起的。</li></ul> </li></ul> 
+<h2><a id="_105"></a>原型链</h2> 
+<h4><a id="_107"></a>原型链的工作原理：</h4> 
+<ol><li> <p><strong>原型对象（Prototype Object）</strong>：JavaScript 中的每个函数都有一个特殊的属性叫做 <code>prototype</code>。这个 <code>prototype</code> 属性是一个对象，它包含应该由特定类型的所有实例继承的属性和方法。例如，如果有一个 <code>Person</code> 函数，那么 <code>Person.prototype</code> 将包含所有 <code>Person</code> 实例应该共享的属性和方法。</p> </li><li> <p><strong>构造函数（Constructor）</strong>：当使用 <code>new</code> 关键字创建一个新对象时，这个新对象会继承其构造函数的 <code>prototype</code> 对象。例如，使用 <code>new Person()</code> 创建的所有对象将继承自 <code>Person.prototype</code>。</p> </li><li> <p><strong>原型链（Prototype Chain）</strong>：当访问一个对象的属性或方法时，如果对象本身没有这个属性或方法，JavaScript 会尝试在对象的原型（即 <code>Person.prototype</code>）中查找。如果在原型中也找不到，那么 JavaScript 会查找原型的原型，依此类推，直到找到该属性或方法或到达原型链的末端（通常结束于 <code>Object.prototype</code>）。</p> </li></ol> 
+<h4><a id="_115"></a>一个简单的例子：</h4> 
+<pre><code class="prism language-javascript"><span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token class-name">Person</span><span class="token punctuation">.</span>prototype<span class="token punctuation">.</span><span class="token function-variable function">greet</span> <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'Hello, my name is '</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">var</span> alice <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Alice'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+alice<span class="token punctuation">.</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: Hello, my name is Alice</span>
+</code></pre> 
+<p>在这个例子中：</p> 
+<ul><li><code>Person</code> 函数有一个 <code>prototype</code> 属性，我们向它添加了一个 <code>greet</code> 方法。</li><li>创建的 <code>alice</code> 对象使用 <code>new Person('Alice')</code>，它继承自 <code>Person.prototype</code>。</li><li>当调用 <code>alice.greet()</code> 时，虽然 <code>greet</code> 方法不是 <code>alice</code> 对象本身的属性，但由于原型链的存在，JavaScript 查找到 <code>Person.prototype</code> 中的 <code>greet</code> 方法并执行它。</li></ul> 
+<h2><a id="_140"></a>怎么创建一个没有原型的对象</h2> 
+<p>在 JavaScript 中，如果您想创建一个没有原型的对象，即一个不继承任何方法或属性（例如 <code>Object.prototype</code> 中的方法），可以使用 <code>Object.create(null)</code> 方法。这种方法会创建一个纯净的对象，它不继承任何东西，甚至基本的对象功能，如 <code>toString</code>、<code>hasOwnProperty</code> 等也不会有。</p> 
+<h4><a id="_Objectcreatenull__144"></a>使用 <code>Object.create(null)</code> 创建对象</h4> 
+<p><code>Object.create</code> 方法允许您指定一个原型对象作为新创建的对象的原型。通过传递 <code>null</code> 作为参数，您可以确保新对象不具有原型链：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">var</span> obj <span class="token operator">=</span> Object<span class="token punctuation">.</span><span class="token function">create</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span>toString<span class="token punctuation">)</span><span class="token punctuation">;</span>      <span class="token comment">// undefined</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'toString'</span> <span class="token keyword">in</span> obj<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>obj<span class="token punctuation">.</span><span class="token function">hasOwnProperty</span><span class="token punctuation">(</span><span class="token string">'toString'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// TypeError: obj.hasOwnProperty is not a function</span>
+</code></pre> 
+<p>在上面的例子中，尝试访问 <code>toString</code> 方法会返回 <code>undefined</code>，因为它不是 <code>obj</code> 对象的一部分。同样，尝试使用 <code>hasOwnProperty</code> 方法会导致错误，因为这个方法也不在对象上。</p> 
+<h2><a id="Constructor_class_160"></a>Constructor 可不可以写多次在class里面</h2> 
+<p>在 JavaScript 的类定义中，构造函数是通过 <code>constructor</code> 方法来指定的，它用于创建和初始化类创建的对象。根据 JavaScript 的类语法，一个类中只能有一个 <code>constructor</code> 方法。如果在一个类中定义了多个 <code>constructor</code> 方法，将会引发语法错误。</p> 
+<h4><a id="_164"></a>示例：</h4> 
+<p>这是一个定义良好的类，包含一个 <code>constructor</code>：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello, my name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">const</span> alice <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">'Alice'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+alice<span class="token punctuation">.</span><span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 输出：Hello, my name is Alice</span>
+</code></pre> 
+<h4><a id="_183"></a>错误示例：</h4> 
+<p>下面的例子展示了尝试在一个类中包含多个 <code>constructor</code> 方法时会发生什么：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">age</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>  <span class="token comment">// 这会导致语法错误</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token function">greet</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Hello, my name is </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> and I am </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span><span class="token keyword">this</span><span class="token punctuation">.</span>age<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> years old.</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<p>这段代码在尝试编译时会抛出一个语法错误，因为 <code>Person</code> 类试图包含两个 <code>constructor</code> 方法。</p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b71d318b7092783882bc4018f2873ac3.png" alt="image-20240426164059562"></p> 
+<h2><a id="ES6_Proxy_209"></a>ES6 的Proxy</h2> 
+<p>在 JavaScript 中，ES6 引入了 <code>Proxy</code> 这一新特性，它允许创建一个对象的代理（proxy），从而可以拦截并自定义对象的基本操作，例如属性读取、属性赋值、函数调用等。</p> 
+<h4><a id="Proxy__213"></a>Proxy 基本概念</h4> 
+<p><code>Proxy</code> 对象用于定义基本操作的自定义行为（如属性查找、赋值、枚举、函数调用等）。其构造函数语法如下：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">var</span> proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<ul><li><strong>target</strong>：目标对象（可以是任何类型的对象，包括数组、函数或其他代理）。</li><li><strong>handler</strong>：一个对象，其属性是当执行一个操作时定义代理的行为的函数。</li></ul> 
+<h4><a id="Handler__224"></a>Handler 对象的方法</h4> 
+<p><code>handler</code> 对象可以定义很多种方法，这些方法对应不同的操作，比如：</p> 
+<ul><li><code>get(target, propKey, receiver)</code>：拦截对象属性的读取。</li><li><code>set(target, propKey, value, receiver)</code>：拦截对象属性的设置。</li><li><code>has(target, propKey)</code>：拦截 <code>propKey in proxy</code> 的操作，返回一个布尔值。</li><li><code>deleteProperty(target, propKey)</code>：拦截 <code>delete proxy[propKey]</code> 的操作，返回一个布尔值。</li></ul> 
+<h4><a id="_Proxy_233"></a>示例：使用 Proxy</h4> 
+<p>下面是一个简单的例子，演示如何使用 <code>Proxy</code> 来拦截对象属性的读取和设置：</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">let</span> target <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token literal-property property">message1</span><span class="token operator">:</span> <span class="token string">"hello"</span><span class="token punctuation">,</span>
+  <span class="token literal-property property">message2</span><span class="token operator">:</span> <span class="token string">"everyone"</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> handler <span class="token operator">=</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token function-variable function">get</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prop<span class="token punctuation">,</span> receiver</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>prop <span class="token keyword">in</span> target<span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+      <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span>target<span class="token punctuation">[</span>prop<span class="token punctuation">]</span><span class="token interpolation-punctuation punctuation">}</span></span><span class="token string"> world!</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">return</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Property not found</span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token function-variable function">set</span><span class="token operator">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">target<span class="token punctuation">,</span> prop<span class="token punctuation">,</span> value</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>value<span class="token punctuation">.</span>length <span class="token operator">&gt;</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+      target<span class="token punctuation">[</span>prop<span class="token punctuation">]</span> <span class="token operator">=</span> value<span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">true</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{<!-- --></span>
+      console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Failed: value too short!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> proxy <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Proxy</span><span class="token punctuation">(</span>target<span class="token punctuation">,</span> handler<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>proxy<span class="token punctuation">.</span>message1<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: hello world!</span>
+proxy<span class="token punctuation">.</span>message2 <span class="token operator">=</span> <span class="token string">"hi"</span><span class="token punctuation">;</span>        <span class="token comment">// 输出: Failed: value too short!</span>
+proxy<span class="token punctuation">.</span>message2 <span class="token operator">=</span> <span class="token string">"everyone"</span><span class="token punctuation">;</span>  <span class="token comment">// 设置成功</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>proxy<span class="token punctuation">.</span>message2<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 输出: everyone world!</span>
+</code></pre> 
+<p>在这个例子中：</p> 
+<ul><li><code>get</code> 方法增加了对任何被读取属性的修改。</li><li><code>set</code> 方法对属性的赋值进行了条件限制。</li></ul>
+                </div>
+</body>
+</html>

@@ -1,0 +1,221 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#1_CSS_15" rel="nofollow">1. CSS画椭圆</a></li><li><a href="#2_js_30" rel="nofollow">2. js会发生阻塞吗</a></li><li><ul><li><ul><li><ul><li><a href="#_34" rel="nofollow">主要阻塞情形：</a></li><li><a href="#_39" rel="nofollow">如何避免阻塞：</a></li></ul> 
+   </li></ul> 
+  </li></ul> 
+  </li><li><a href="#3__46" rel="nofollow">3. 扩展运算符？这种拷贝属于浅拷贝还是深拷贝，扩展运算符为什么算浅拷贝？深拷贝了解吗？</a></li><li><ul><li><ul><li><ul><li><a href="#_51" rel="nofollow">为什么扩展运算符算是浅拷贝？</a></li></ul> 
+    </li><li><a href="#_55" rel="nofollow">深拷贝</a></li><li><ul><li><a href="#_60" rel="nofollow">如何实现深拷贝？</a></li></ul> 
+   </li></ul> 
+  </li></ul> 
+  </li><li><a href="#4_setTimeoutsetInterval_67" rel="nofollow">4. setTimeout和setInterval</a></li><li><ul><li><ul><li><a href="#setTimeout__setInterval_76" rel="nofollow">setTimeout 和 setInterval</a></li><li><a href="#setTimeout__0__98" rel="nofollow">setTimeout 设置为 0 会发生什么？</a></li><li><a href="#_102" rel="nofollow">为什么会这样？</a></li><li><a href="#_setTimeout__setInterval_API_106" rel="nofollow">为什么会有 setTimeout 和 setInterval 这两个API？</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#5__112" rel="nofollow">5. 事件循环</a></li><li><ul><li><ul><li><a href="#_117" rel="nofollow">事件循环的工作原理</a></li><li><a href="#_128" rel="nofollow">事件循环的流程</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#6_Vue2dom_138" rel="nofollow">6. Vue2的虚拟dom</a></li><li><ul><li><ul><li><a href="#_DOM__143" rel="nofollow">虚拟 DOM 的基本概念</a></li><li><a href="#Vue_2__DOM_147" rel="nofollow">Vue 2 中的虚拟 DOM</a></li><li><ul><li><a href="#_151" rel="nofollow">差异比较算法</a></li><li><a href="#_161" rel="nofollow">更新过程</a></li></ul> 
+    </li><li><a href="#_165" rel="nofollow">性能优势</a></li><li><a href="#_DOM__169" rel="nofollow">使用虚拟 DOM 的优点</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#7_packagejson__dependencies_179" rel="nofollow">7. package.json 中的各种 dependencies</a></li><li><ul><li><ul><li><a href="#1_dependencies_184" rel="nofollow">1. `dependencies`</a></li><li><a href="#2_devDependencies_193" rel="nofollow">2. `devDependencies`</a></li><li><a href="#3_peerDependencies_202" rel="nofollow">3. `peerDependencies`</a></li><li><a href="#4_optionalDependencies_211" rel="nofollow">4. `optionalDependencies`</a></li><li><a href="#_220" rel="nofollow">使用场景总结</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#8__232" rel="nofollow">8. 如何处理大量数据？</a></li><li><ul><li><ul><li><a href="#1__237" rel="nofollow">1. 分页和懒加载</a></li><li><a href="#2__241" rel="nofollow">2. 虚拟滚动</a></li><li><a href="#3__244" rel="nofollow">3. 前端数据处理</a></li><li><a href="#4__248" rel="nofollow">4. 数据索引和搜索</a></li><li><a href="#5__252" rel="nofollow">5. 使用高效的数据结构</a></li><li><a href="#6_DOM_255" rel="nofollow">6. 减少DOM操作</a></li><li><a href="#7__258" rel="nofollow">7. 缓存策略</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#9_packagejson_263" rel="nofollow">9. package.json中^符号和~符号前缀的区别</a></li><li><ul><li><ul><li><a href="#__268" rel="nofollow">`^` 符号（脱字符）</a></li><li><a href="#__272" rel="nofollow">`~` 符号（波浪号）</a></li><li><a href="#_276" rel="nofollow">总结</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#10_ES6_282" rel="nofollow">10. ES6模块化</a></li><li><ul><li><ul><li><a href="#1_Export_287" rel="nofollow">1. 导出（Export）</a></li><li><ul><li><a href="#Named_Exports_290" rel="nofollow">命名导出（Named Exports）</a></li><li><a href="#Default_Exports_303" rel="nofollow">默认导出（Default Exports）</a></li></ul> 
+    </li><li><a href="#2_Import_315" rel="nofollow">2. 导入（Import）</a></li><li><ul><li><a href="#_318" rel="nofollow">导入整个模块</a></li><li><a href="#_326" rel="nofollow">导入特定的命名导出</a></li><li><a href="#_333" rel="nofollow">导入默认导出</a></li></ul> 
+    </li><li><a href="#3_Dynamic_Imports_340" rel="nofollow">3. 动态导入（Dynamic Imports）</a></li><li><a href="#4__350" rel="nofollow">4. 模块的特性</a></li></ul> 
+  </li></ul> 
+ </li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/82eb94d80bcaaf02b1fc85510bdbccb5.png" alt="封面"></p> 
+<h2><a id="1_CSS_15"></a>1. CSS画椭圆</h2> 
+<pre><code class="prism language-css"><span class="token selector">.ellipse</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token property">width</span><span class="token punctuation">:</span> 300px<span class="token punctuation">;</span>
+    <span class="token property">height</span><span class="token punctuation">:</span> 150px<span class="token punctuation">;</span>
+    <span class="token property">background-color</span><span class="token punctuation">:</span> blue<span class="token punctuation">;</span>
+    <span class="token property">border-radius</span><span class="token punctuation">:</span> 50%<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h2><a id="2_js_30"></a>2. js会发生阻塞吗</h2> 
+<p>JavaScript是一种单线程语言，意味着在大多数情况下，它在同一时间内只能执行一个任务。由于这个特性，某些操作确实可以造成阻塞，特别是那些耗时的同步任务。</p> 
+<h5><a id="_34"></a>主要阻塞情形：</h5> 
+<ol><li><strong>长时间运行的同步代码</strong>：如果JavaScript代码中有长时间运行的同步循环或计算，它会阻塞浏览器的主线程，导致用户界面无法响应用户操作，造成网页卡顿甚至暂时无响应。</li><li><strong>同步API调用</strong>：例如，使用<code>alert()</code>或<code>prompt()</code>这类同步API会立即中断代码执行，直到用户响应，期间浏览器无法处理其他任何任务。</li></ol> 
+<h5><a id="_39"></a>如何避免阻塞：</h5> 
+<ul><li><strong>异步编程</strong>：使用<code>setTimeout</code>, <code>setInterval</code>, <code>Promise</code>, <code>async/await</code>等异步编程技术可以帮助避免阻塞。这些技术允许JavaScript启动一个操作，然后在操作完成时通过回调、Promise解决或异步等待来处理结果，而不阻塞代码的其他部分。</li><li><strong>Web Workers</strong>：对于复杂和耗时的任务，可以使用Web Workers。Web Workers允许将一部分JavaScript操作放在后台线程中运行，这个线程是完全独立于主线程的，因此不会影响界面的响应性。</li></ul> 
+<h2><a id="3__46"></a>3. 扩展运算符？这种拷贝属于浅拷贝还是深拷贝，扩展运算符为什么算浅拷贝？深拷贝了解吗？</h2> 
+<p>扩展运算符（<code>...</code>）在JavaScript中实现的是浅拷贝（shallow copy）。这意味着当使用扩展运算符复制数组或对象时，它只复制一层属性值。如果被复制的对象中的属性值是基本数据类型（如Number, String, Boolean），则会复制这些值。然而，如果属性值是引用数据类型（如数组、对象或函数），则复制的是对原数据的引用地址，而非数据本身。</p> 
+<h5><a id="_51"></a>为什么扩展运算符算是浅拷贝？</h5> 
+<p>这是因为当使用扩展运算符复制数据结构（如对象或数组）时，对于数据结构中的每一个引用类型的子元素，扩展运算符仅仅复制其引用，而不是创建一个新的独立对象。这意味着如果原始数据结构中的引用类型的子元素发生变化，那么新复制的数据结构中的相应元素也会发生变化，因为它们指向同一个对象。</p> 
+<h4><a id="_55"></a>深拷贝</h4> 
+<p>深拷贝（deep copy）在JavaScript中指的是创建一个新对象，其中不仅原始对象的第一层数据被复制，而且所有的嵌套对象也都被递归地复制。这样，新对象与原始对象之间不会共享任何项（包括所有的内部对象），它们是完全独立的。</p> 
+<h5><a id="_60"></a>如何实现深拷贝？</h5> 
+<p>在JavaScript中，实现深拷贝的常见方法包括：</p> 
+<ul><li>使用<code>JSON.parse(JSON.stringify(object))</code>：这种方法通过将对象转换成JSON字符串，然后再将字符串解析回对象，可以实现对象深拷贝。但这种方法有局限性，例如它不能复制函数、undefined、循环引用等。</li><li>使用第三方库如Lodash的<code>_.cloneDeep(object)</code>：Lodash提供了一个非常有效的深拷贝函数，可以处理各种数据类型和复杂的对象结构。</li><li>手动实现递归深拷贝：对于更复杂或特定需求的深拷贝，可以通过递归函数手动实现，以确保所有嵌套对象都被适当复制。</li></ul> 
+<h2><a id="4_setTimeoutsetInterval_67"></a>4. setTimeout和setInterval</h2> 
+<blockquote> 
+ <p>.setTimeout和setInterval？setTimeout设置0会发生什么？为什么会这样？为什么会有setTimeout和setInterval这两个API</p> 
+</blockquote> 
+<p>在JavaScript中，<code>setTimeout</code>和<code>setInterval</code>是两个非常重要的定时器函数，它们允许开发者在代码执行中设置延迟和定期执行任务。这些函数的设计和存在主要是因为JavaScript的单线程特性和非阻塞I/O模型。</p> 
+<h4><a id="setTimeout__setInterval_76"></a>setTimeout 和 setInterval</h4> 
+<p><strong>setTimeout:</strong><br> <code>setTimeout</code>函数用于在指定的毫秒数后执行一个函数或一段代码。它只执行一次。</p> 
+<p><strong>语法示例：</strong></p> 
+<pre><code class="prism language-javascript"><span class="token function">setTimeout</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello after 3 seconds"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<p><strong>setInterval:</strong><br> <code>setInterval</code>函数用于每隔指定的毫秒数重复执行指定的函数或执行代码片段，直到<code>clearInterval()</code>被调用或窗口被关闭。</p> 
+<p><strong>语法示例：</strong></p> 
+<pre><code class="prism language-javascript"><span class="token function">setInterval</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">"Hello every 3 seconds"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<h4><a id="setTimeout__0__98"></a>setTimeout 设置为 0 会发生什么？</h4> 
+<p>当你为<code>setTimeout</code>设置0毫秒时，虽然延迟时间为0，但指定的函数或代码并不会立即执行。JavaScript引擎会将该任务放入事件队列中，在当前执行栈中的所有同步任务完成后，才会执行这个<code>setTimeout</code>中的任务。实际上，这为其他正在执行的脚本提供了完成运行的机会，使得UI和其他事件处理程序能够保持响应。</p> 
+<h4><a id="_102"></a>为什么会这样？</h4> 
+<p>这是因为JavaScript是单线程的，使用事件循环来处理任务。即使延迟为0，事件循环也需要先完成所有正在进行的同步执行，然后才能从任务队列中取出下一个任务。这确保了程序的执行顺序是可预测的，并且避免了潜在的竞态条件。</p> 
+<h4><a id="_setTimeout__setInterval_API_106"></a>为什么会有 setTimeout 和 setInterval 这两个API？</h4> 
+<p>这些API的设计初衷源于JavaScript的单线程执行模型。JavaScript的主要环境，如浏览器，需要处理大量的用户交互、脚本执行、UI渲染等任务。如果所有这些操作都是同步进行的，那么执行长时间的任务将会阻塞UI，导致糟糕的用户体验。<code>setTimeout</code>和<code>setInterval</code>允许开发者延迟任务的执行或以固定时间间隔重复执行任务，从而使UI保持响应，同时仍能执行必要的背景计算或处理。这样设计使得JavaScript能够处理复杂的任务，而不会阻塞页面的其余部分，提升了应用的性能和用户体验。</p> 
+<h2><a id="5__112"></a>5. 事件循环</h2> 
+<p>JavaScript 的事件循环是其异步编程模型的核心机制，确保了尽管 JavaScript 是单线程的，它仍能执行非阻塞操作。事件循环允许 JavaScript 在执行环境中管理多个任务，通过在事件队列中排队任务，并逐个处理它们来达到这一点。</p> 
+<h4><a id="_117"></a>事件循环的工作原理</h4> 
+<ol><li> <p><strong>主线程执行堆栈（执行栈）</strong>：<br> JavaScript 的主执行栈是其中运行同步代码的地方。所有的同步任务都在这个栈中按顺序执行。</p> </li><li> <p><strong>任务队列</strong>：<br> 当异步事件（如用户交互、定时器触发、网络请求等）发生时，相应的回调函数将被添加到任务队列中。任务队列也被称为消息队列。</p> </li><li> <p><strong>微任务队列</strong>：<br> 除了常规的任务队列，还有一个微任务队列，用于处理像 <code>Promise</code> 回调这样的微任务。微任务队列的处理速度比常规任务队列更快，且在每次执行栈清空后立即执行。</p> </li></ol> 
+<h4><a id="_128"></a>事件循环的流程</h4> 
+<ul><li>首先，事件循环从执行栈开始，运行其中的所有同步任务。</li><li>当执行栈为空时，事件循环检查微任务队列。如果队列中有任务，它们将被连续执行，直到微任务队列为空。</li><li>完成所有微任务后，如果主执行栈仍为空，事件循环将移动到任务队列。事件循环从任务队列中取出第一个任务，将其推入执行栈中执行。</li><li>每次执行栈清空后，事件循环都会再次检查微任务队列，优先处理这些任务，然后再处理任务队列中的下一个任务。</li><li>这个循环持续进行，直到任务队列和微任务队列都为空。</li></ul> 
+<h2><a id="6_Vue2dom_138"></a>6. Vue2的虚拟dom</h2> 
+<p>Vue.js 是一个流行的前端框架，其使用虚拟 DOM (V-DOM) 技术来优化 DOM 更新，提高应用的性能。在 Vue 2 中，虚拟 DOM 是其响应式系统和渲染机制的核心部分。</p> 
+<h4><a id="_DOM__143"></a>虚拟 DOM 的基本概念</h4> 
+<p>虚拟 DOM 是对真实 DOM 的抽象表示。它本质上是一个轻量级的 JavaScript 对象，代表 DOM 树的结构。Vue 使用虚拟 DOM 的主要目的是减少直接操作 DOM 的次数，因为真实的 DOM 操作往往是昂贵的（性能成本高）。</p> 
+<h4><a id="Vue_2__DOM_147"></a>Vue 2 中的虚拟 DOM</h4> 
+<p>在 Vue 2 中，每个组件实例都有一个对应的虚拟 DOM 树。这个树反映了组件的结构和当前状态。当组件的数据发生变化时，Vue 会重新生成一个新的虚拟 DOM 树，并与旧树进行比较（称为“差异比较”或“diffing”）。</p> 
+<h5><a id="_151"></a>差异比较算法</h5> 
+<p>Vue 2 使用一种高效的算法来对比新旧虚拟 DOM 树，识别出需要更新的部分。这个过程分为几个步骤：</p> 
+<ol><li> <p><strong>节点对比</strong>：Vue 首先对比新旧虚拟 DOM 树的根节点。如果节点本身相同（例如，标签和key相同），则进行深入比较；如果不同，则直接替换旧节点。</p> </li><li> <p><strong>属性更新</strong>：如果节点相同，Vue 接着对比节点的属性（如类、样式、监听器等），只更新发生变化的属性。</p> </li><li> <p><strong>子节点对比</strong>：对子节点进行递归对比。Vue 使用“最小操作原则”，只更新有差异的部分。</p> </li></ol> 
+<h5><a id="_161"></a>更新过程</h5> 
+<p>一旦完成差异比较，Vue 会计算出最小数量的 DOM 操作来应用这些变更。这包括添加、删除和移动 DOM 元素，以反映虚拟 DOM 树的最新状态。</p> 
+<h4><a id="_165"></a>性能优势</h4> 
+<p>通过使用虚拟 DOM，Vue 2 可以极大地减少不必要的 DOM 操作，尤其是在复杂界面和频繁数据更新的场景下。这种更新策略使得 Vue 应用能够保持高效和响应快速，即使是在大规模数据变更时也能保持良好的性能。</p> 
+<h4><a id="_DOM__169"></a>使用虚拟 DOM 的优点</h4> 
+<ul><li><strong>性能提升</strong>：减少实际 DOM 操作，提升渲染效率。</li><li><strong>跨平台</strong>：虚拟 DOM 由纯 JavaScript 对象组成，可以在任何可以运行 JavaScript 的环境中实现，包括服务器端和原生应用。</li><li><strong>维护简化</strong>：通过声明式的数据绑定和组件系统，开发者可以更专注于数据逻辑而非DOM操作细节。</li></ul> 
+<p>Vue 的虚拟 DOM 系统为开发高性能、响应式的前端应用提供了坚实的基础，同时也简化了开发过程。</p> 
+<h2><a id="7_packagejson__dependencies_179"></a>7. package.json 中的各种 dependencies</h2> 
+<p>在 <code>package.json</code> 文件中，<code>dependencies</code>、<code>devDependencies</code>、<code>peerDependencies</code> 和 <code>optionalDependencies</code> 是用来管理 Node.js 项目中依赖包的不同类型。这些字段定义了项目运行和开发所需的外部模块以及它们的版本要求。</p> 
+<h4><a id="1_dependencies_184"></a>1. <code>dependencies</code></h4> 
+<p>这些是项目运行时必需的依赖。无论是开发还是生产环境，只要项目在运行，这些依赖就是必需的。例如，如果你的应用是一个 Web 服务器，使用了 Express 框架，那么 Express 就应该列在这个部分。</p> 
+<pre><code class="prism language-json"><span class="token string-property property">"dependencies"</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token string-property property">"express"</span><span class="token operator">:</span> <span class="token string">"^4.17.1"</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="2_devDependencies_193"></a>2. <code>devDependencies</code></h4> 
+<p><code>devDependencies</code> 列出了仅在开发过程中需要的包，比如测试框架、打包工具和编译器。这些依赖项不会在生产环境中安装。举例来说，如果你使用 Jest 来进行测试，那么 Jest 应该列在这部分。</p> 
+<pre><code class="prism language-json"><span class="token string-property property">"devDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token string-property property">"jest"</span><span class="token operator">:</span> <span class="token string">"^26.0.1"</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="3_peerDependencies_202"></a>3. <code>peerDependencies</code></h4> 
+<p><code>peerDependencies</code> 指定了包与其他包之间的依赖关系，但不会自动安装这些依赖。这常用于插件或扩展包，它们需要主体包的存在才能工作。例如，一个基于 React 的库可能需要声明 React 作为它的 peer 依赖，以确保使用库的项目中已经安装了兼容的 React 版本。</p> 
+<pre><code class="prism language-json"><span class="token string-property property">"peerDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token string-property property">"react"</span><span class="token operator">:</span> <span class="token string">"^16.0.0"</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="4_optionalDependencies_211"></a>4. <code>optionalDependencies</code></h4> 
+<p><code>optionalDependencies</code> 是那些即使安装失败也不会影响项目运行的依赖。这对于一些不是必需的功能或在特定平台上可能不可用的依赖很有用。如果安装失败，npm 不会停止整个安装过程。</p> 
+<pre><code class="prism language-json"><span class="token string-property property">"optionalDependencies"</span><span class="token operator">:</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token string-property property">"fsevents"</span><span class="token operator">:</span> <span class="token string">"^1.2.7"</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="_220"></a>使用场景总结</h4> 
+<ul><li><strong><code>dependencies</code></strong>：适用于所有需要随应用一起发布的库。</li><li><strong><code>devDependencies</code></strong>：用于开发过程中的工具，如测试工具、构建工具等。</li><li><strong><code>peerDependencies</code></strong>：用于插件或需要确保兼容性的扩展库。</li><li><strong><code>optionalDependencies</code></strong>：适用于那些不关键的依赖，即使安装失败也不会影响应用的主要功能。</li></ul> 
+<h2><a id="8__232"></a>8. 如何处理大量数据？</h2> 
+<h4><a id="1__237"></a>1. 分页和懒加载</h4> 
+<ul><li><strong>分页</strong>：将数据分批次加载和显示，每次只向用户展示一小部分数据（如一页显示10条记录），通过分页组件允许用户浏览其他数据。</li><li><strong>懒加载（Lazy Loading）</strong>：只在用户滚动到页面的某部分时才加载该区域的数据，适用于图片、列表等资源。</li></ul> 
+<h4><a id="2__241"></a>2. 虚拟滚动</h4> 
+<ul><li><strong>虚拟滚动</strong>：仅渲染可视区域内的元素，并在滚动时动态加载和卸载元素。这对于包含数千到数万条数据的长列表特别有效。</li></ul> 
+<h4><a id="3__244"></a>3. 前端数据处理</h4> 
+<ul><li><strong>Web Workers</strong>：使用 Web Workers 处理复杂计算或数据处理任务，以避免阻塞主线程和影响用户界面的响应性。</li><li><strong>防抖和节流</strong>：对于高频事件（如输入搜索、窗口大小调整等），使用防抖（Debounce）或节流（Throttle）技术来限制事件处理的频率，减少计算需求。</li></ul> 
+<h4><a id="4__248"></a>4. 数据索引和搜索</h4> 
+<ul><li><strong>客户端索引</strong>：为数据建立索引，以加速搜索和过滤操作，可以使用库如 <code>lunr.js</code> 或 <code>flexsearch</code>。</li><li><strong>服务端搜索</strong>：对于大数据量，最好的策略是通过 API 在服务器端进行数据处理和搜索，前端只处理展示和用户交互。</li></ul> 
+<h4><a id="5__252"></a>5. 使用高效的数据结构</h4> 
+<ul><li><strong>合适的数据结构</strong>：使用适合前端操作的数据结构，比如在处理树状数据时使用对象映射或哈希表来加快搜索速度。</li></ul> 
+<h4><a id="6_DOM_255"></a>6. 减少DOM操作</h4> 
+<ul><li><strong>使用框架的优势</strong>：利用现代前端框架如 React、Vue 或 Angular 的虚拟 DOM 来减少直接的 DOM 操作，优化渲染性能。</li></ul> 
+<h4><a id="7__258"></a>7. 缓存策略</h4> 
+<ul><li><strong>客户端缓存</strong>：使用浏览器的 localStorage 或 IndexedDB 来缓存已加载的数据，减少对服务器的请求。</li></ul> 
+<h2><a id="9_packagejson_263"></a>9. package.json中^符号和~符号前缀的区别</h2> 
+<p>在<code>package.json</code>文件中，<code>^</code>和<code>~</code>是用来控制Node.js项目依赖的版本范围的符号。这些符号帮助npm（Node包管理器）确定在安装依赖时应选择的版本。它们对版本的影响略有不同：</p> 
+<h4><a id="__268"></a><code>^</code> 符号（脱字符）</h4> 
+<ul><li><strong>用途</strong>：当在版本号前加上<code>^</code>符号时，它允许npm安装这个版本号指定的主版本（major version）中的最新的次版本（minor version）和补丁版本（patch version）。</li><li><strong>例如</strong>：如果依赖版本是<code>^1.2.3</code>，那么npm可以安装从<code>1.2.3</code>到<code>1.999.999</code>的任何版本，但不会安装<code>2.0.0</code>或更高版本，因为这将是下一个主版本。</li></ul> 
+<h4><a id="__272"></a><code>~</code> 符号（波浪号）</h4> 
+<ul><li><strong>用途</strong>：当在版本号前加上<code>~</code>符号时，它允许npm安装这个版本号指定的次版本（minor version）中的最新补丁版本（patch version）。</li><li><strong>例如</strong>：如果依赖版本是<code>~1.2.3</code>，那么npm可以安装从<code>1.2.3</code>到<code>1.2.999</code>的任何版本，但不会安装<code>1.3.0</code>或更高的版本，因为这将是下一个次版本。</li></ul> 
+<h4><a id="_276"></a>总结</h4> 
+<ul><li><code>^</code>符号适用于想要自动接收新功能但不引入主版本更改（可能破坏现有功能）的项目。</li><li><code>~</code>符号适用于更保守的项目，这些项目只希望自动接收bug修复，而不引入新功能，这些新功能可能带来不稳定性。</li></ul> 
+<h2><a id="10_ES6_282"></a>10. ES6模块化</h2> 
+<p>ECMAScript 6 (ES6) 引入了一种官方的JavaScript模块化标准，这是对之前广泛使用的CommonJS和AMD规范的一种改进。ES6模块化的主要目标是提高代码的可维护性、重用性和封装性。以下是ES6模块化的一些核心概念：</p> 
+<h4><a id="1_Export_287"></a>1. 导出（Export）</h4> 
+<p>在ES6中，你可以使用<code>export</code>关键字导出函数、变量、类等，使它们可以在其他文件中被导入（import）。有两种导出方式：</p> 
+<h5><a id="Named_Exports_290"></a>命名导出（Named Exports）</h5> 
+<p>允许模块导出多个值，每个值都有其对应的名称。导入时需要使用相同的名称。</p> 
+<pre><code class="prism language-javascript"><span class="token comment">// 文件: lib.js</span>
+<span class="token keyword">export</span> <span class="token keyword">const</span> sqrt <span class="token operator">=</span> Math<span class="token punctuation">.</span>sqrt<span class="token punctuation">;</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">square</span><span class="token punctuation">(</span><span class="token parameter">x</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token keyword">return</span> x <span class="token operator">*</span> x<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">export</span> <span class="token keyword">function</span> <span class="token function">diag</span><span class="token punctuation">(</span><span class="token parameter">x<span class="token punctuation">,</span> y</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token keyword">return</span> <span class="token function">sqrt</span><span class="token punctuation">(</span><span class="token function">square</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token function">square</span><span class="token punctuation">(</span>y<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h5><a id="Default_Exports_303"></a>默认导出（Default Exports）</h5> 
+<p>每个模块可以有一个默认导出，当导入时不需要知道具体的名称。</p> 
+<pre><code class="prism language-javascript"><span class="token comment">// 文件: User.js</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token keyword">class</span> <span class="token class-name">User</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token function">constructor</span><span class="token punctuation">(</span><span class="token parameter">name<span class="token punctuation">,</span> age</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre> 
+<h4><a id="2_Import_315"></a>2. 导入（Import）</h4> 
+<p>使用<code>import</code>关键字可以导入其他模块导出的值。可以根据需要导入整个模块、单个（或多个）命名导出、或默认导出。</p> 
+<h5><a id="_318"></a>导入整个模块</h5> 
+<pre><code class="prism language-javascript"><span class="token comment">// 文件: main.js</span>
+<span class="token keyword">import</span> <span class="token operator">*</span> <span class="token keyword">as</span> lib <span class="token keyword">from</span> <span class="token string">'./lib.js'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>lib<span class="token punctuation">.</span><span class="token function">square</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: 121</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>lib<span class="token punctuation">.</span><span class="token function">diag</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: 5</span>
+</code></pre> 
+<h5><a id="_326"></a>导入特定的命名导出</h5> 
+<pre><code class="prism language-javascript"><span class="token keyword">import</span> <span class="token punctuation">{<!-- --></span> square<span class="token punctuation">,</span> diag <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./lib.js'</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">square</span><span class="token punctuation">(</span><span class="token number">11</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: 121</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">diag</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: 5</span>
+</code></pre> 
+<h5><a id="_333"></a>导入默认导出</h5> 
+<pre><code class="prism language-javascript"><span class="token keyword">import</span> User <span class="token keyword">from</span> <span class="token string">'./User.js'</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> user <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">User</span><span class="token punctuation">(</span><span class="token string">'John'</span><span class="token punctuation">,</span> <span class="token number">30</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>user<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: John</span>
+</code></pre> 
+<h4><a id="3_Dynamic_Imports_340"></a>3. 动态导入（Dynamic Imports）</h4> 
+<p>ES6模块也支持动态导入，即在需要时才加载某个模块。这对于按需加载功能、减少启动时间等场景非常有用。</p> 
+<pre><code class="prism language-javascript"><span class="token keyword">async</span> <span class="token keyword">function</span> <span class="token function">loadModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+  <span class="token keyword">const</span> <span class="token punctuation">{<!-- --></span> diag <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token keyword">await</span> <span class="token keyword">import</span><span class="token punctuation">(</span><span class="token string">'./lib.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token function">diag</span><span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 输出: 5</span>
+<span class="token punctuation">}</span>
+<span class="token function">loadModule</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<h4><a id="4__350"></a>4. 模块的特性</h4> 
+<ul><li><strong>静态结构</strong>：模块的依赖关系在代码运行前就已确定，允许静态分析工具和JavaScript引擎优化加载和编译。</li><li><strong>严格模式</strong>：ES6模块自动运行在严格模式下，不需要指定<code>"use strict";</code>。</li><li><strong>文件和模块一一对应</strong>：每个JS文件被视为一个独立的模块。</li></ul>
+                </div>
+</body>
+</html>

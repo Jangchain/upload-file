@@ -1,0 +1,106 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_0"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<h2><a id="1_jvm_9"></a>1. 什么是jvm</h2> 
+<p>JVM（Java虚拟机）是一个可以执行Java字节码的抽象机器。它是Java运行时环境的一部分，主要负责解释执行编译后的Java程序代码，提供一个平台无关的运行环境，使得Java程序可以在多种操作系统上运行而无需修改。JVM是Java语言的核心部分，使得Java具有“一次编写，到处运行”的特性。</p> 
+<p>JVM主要包括以下几个核心组件：</p> 
+<ol><li><strong>类加载器（Class Loaders）</strong>：负责加载Java类文件到运行时数据区。</li><li><strong>运行时数据区（Runtime Data Areas）</strong>：存储在JVM内存中的数据，包括堆（Heap）、栈（Stack）、方法区（Method Area）、程序计数器（Program Counter Register）等。</li><li><strong>执行引擎（Execution Engine）</strong>：负责执行类文件中的指令。它可以通过解释执行（逐条将字节码转换成机器码）或即时编译（将字节码转换为本地机器码，然后直接执行）来运行代码。</li><li><strong>本地库接口（Native Interface）</strong>：连接Java和底层操作系统的接口，允许Java调用或被操作系统调用。</li><li><strong>垃圾回收器（Garbage Collector）</strong>：自动管理内存，回收不再被使用的对象所占用的内存。</li></ol> 
+<h2><a id="2_gc_24"></a>2. 什么是gc</h2> 
+<p>GC，即垃圾回收（Garbage Collection），是Java虚拟机（JVM）的一个重要部分，用于自动管理内存。在Java中，程序员不需要像在C或C++那样手动管理内存，这降低了内存泄露和指针错误的风险。</p> 
+<p>垃圾回收的主要目的是识别并且回收那些不再被程序使用的对象占据的内存空间，从而使得这些空间能被重新利用。Java中的垃圾回收过程通常包括以下几个步骤：</p> 
+<ol><li> <p><strong>标记（Marking）</strong>：这一步骤涉及到识别所有从根集（包括全局引用和活跃线程的栈帧中的本地引用）可达的对象。任何从根集可达的对象都被认为是活跃的，不应该被回收。</p> </li><li> <p><strong>清除（Sweeping）</strong>：在标记阶段之后，GC将清除那些未被标记的对象，释放它们占用的内存空间。</p> </li><li> <p><strong>压缩（Compacting）</strong>：这一步是可选的，旨在消除分散的空闲内存碎片，压缩剩余的对象，从而减少内存碎片，优化内存分配效率。</p> </li></ol> 
+<p>Java中垃圾回收器的类型有多种，每种都有其适用的场景和特点，主要包括：</p> 
+<ul><li><strong>串行垃圾回收器</strong>：适用于小型数据和单核处理器，它在进行垃圾回收时会暂停所有应用线程（Stop-The-World）。</li><li><strong>并行垃圾回收器</strong>：在多核处理器上表现更好，可以并行地执行垃圾回收，适用于需要更高吞吐量的应用。</li><li><strong>CMS（Concurrent Mark Sweep）垃圾回收器</strong>：减少停顿时间，通过并发标记和清除来实现，适用于互动式应用。</li><li><strong>G1（Garbage First）垃圾回收器</strong>：适用于大堆内存和要求可预测停顿时间的应用，它将堆分成多个区域并优先清理价值最大的区域。</li></ul> 
+<h2><a id="3_gc_47"></a>3. gc算法有哪些</h2> 
+<ol><li> <p><strong>标记-清除算法（Mark-Sweep）</strong>：</p> 
+  <ul><li><strong>原理</strong>：这种算法分为标记和清除两个阶段。首先标记出所有从根集合可达的对象，然后清除那些未被标记的对象。</li><li><strong>优点</strong>：实现简单，可以回收任何类型的垃圾对象。</li><li><strong>缺点</strong>：执行过程中会产生内存碎片；标记和清除过程中需要暂停所有应用线程（Stop-The-World）。</li></ul> </li><li> <p><strong>标记-压缩算法（Mark-Compact）</strong>：</p> 
+  <ul><li><strong>原理</strong>：在标记阶段之后，将所有存活的对象压缩到内存的一端，从而清理出连续的空闲内存块。</li><li><strong>优点</strong>：解决了内存碎片问题，有利于大对象的分配。</li><li><strong>缺点</strong>：压缩过程可能较慢，同样需要Stop-The-World。</li></ul> </li><li> <p><strong>复制算法（Copying）</strong>：</p> 
+  <ul><li><strong>原理</strong>：将可用内存划分为两块，每次只使用其中一块。在垃圾回收时，会将活跃的对象复制到未使用的那块内存中，然后清除旧内存块中的所有对象。</li><li><strong>优点</strong>：简化了对象分配和回收，不产生内存碎片，适合生存期较短的对象。</li><li><strong>缺点</strong>：内存使用效率较低，因为一半的内存始终处于闲置状态。</li></ul> </li><li> <p><strong>分代收集算法（Generational Collection）</strong>：</p> 
+  <ul><li><strong>原理</strong>：基于对象的生命周期长短将内存分为几个代，通常为新生代（Young Generation）和老年代（Old Generation）。新对象先分配在新生代，经过多次回收仍然存活的对象会被移动到老年代。</li><li><strong>优点</strong>：提高了垃圾回收的效率，因为大部分对象都是朝生夕死的，只对新生代频繁进行回收。</li><li><strong>缺点</strong>：需要更复杂的管理策略和算法实现。</li></ul> </li><li> <p><strong>增量收集算法（Incremental Collecting）</strong> 和 <strong>并发收集算法（Concurrent Collecting）</strong>：</p> 
+  <ul><li><strong>原理</strong>：增量收集通过将垃圾回收分成多个小步骤，交替执行应用程序和回收任务来减少单次回收的停顿时间。并发收集则允许垃圾收集过程与应用线程同时运行。</li><li><strong>优点</strong>：减少了应用的停顿时间，提高了用户体验。</li><li><strong>缺点</strong>：并发执行可能会增加复杂性，并且需要更多的CPU资源来保证垃圾回收和程序执行的效率。</li></ul> </li></ol> 
+<h2><a id="4_springcloud_78"></a>4. 用过哪些springcloud的生态、组件</h2> 
+<p>在Java的微服务架构中，Spring Cloud是一个非常流行的框架，它提供了一系列解决方案来帮助开发者构建在分布式系统环境下可靠运行的服务。 以下是一些主要的Spring Cloud组件和它们的用途：</p> 
+<ol><li> <p><strong>Spring Cloud Config</strong> - 提供服务器和客户端支持的集中化外部配置管理。它允许你将配置文件放置在远程位置，并在运行时为应用程序提供实时的配置更新。</p> </li><li> <p><strong>Spring Cloud Netflix</strong>:</p> 
+  <ul><li><strong>Eureka</strong> - 服务注册与发现的组件，可以让服务实例在启动时自动注册到Eureka Server，并从中获取其他服务的列表。</li><li><strong>Hystrix</strong> - 提供服务的容错保护，通过熔断机制控制服务与服务之间的交互，防止系统级的故障。</li><li><strong>Zuul</strong> - 网关服务，提供动态路由、监控、弹性负载和安全功能。</li></ul> </li><li> <p><strong>Spring Cloud Gateway</strong> - 另一种网关实现，它旨在提供更现代的、高性能的HTTP路由解决方案。支持API路由、熔断和限流等功能。</p> </li><li> <p><strong>Spring Cloud Sleuth</strong> - 提供服务之间调用的链路追踪。整合如Zipkin这样的工具，可以帮助开发者快速地找到可能的延迟瓶颈。</p> </li><li> <p><strong>Spring Cloud Consul</strong> - 服务发现与配置中心的工具，是Eureka的一个替代方案。它基于HashiCorp的Consul实现，提供服务注册、服务发现、配置管理等功能。</p> </li><li> <p><strong>Spring Cloud Ribbon</strong> - 客户端负载均衡工具，可以在调用微服务时提供负载均衡功能，以获得更好的服务稳定性和性能。</p> </li><li> <p><strong>Spring Cloud OpenFeign</strong> - 声明式的Web服务客户端，简化了REST API的使用方法。与Ribbon和Eureka结合使用时，Feign可以让你轻松实现负载均衡的HTTP客户端。</p> </li><li> <p><strong>Spring Cloud Stream</strong> - 为微服务应用构建消息驱动能力提供框架和基础设施。支持与Apache Kafka、RabbitMQ等消息代理的绑定。</p> </li><li> <p><strong>Spring Cloud Bus</strong> - 链接分布式系统的节点的事件通信通道，可以用于广播状态更改（例如配置变更）或其他管理指令。</p> </li></ol> 
+<h2><a id="5__105"></a>5. 单个事务可以多线程执行吗</h2> 
+<blockquote> 
+ <p>https://www.cnblogs.com/thisiswhy/p/13948055.html</p> 
+</blockquote> 
+<p>在Java中,一个事务被设计为一个单一的逻辑工作单元，应该在单个线程中连续执行以保持操作的原子性、一致性、隔离性和持久性（ACID属性）。</p> 
+<h4><a id="ACID_111"></a>事务的基本属性（ACID）</h4> 
+<ul><li><strong>原子性（Atomicity）</strong>：事务中的所有操作要么全部完成，要么全部不完成。</li><li><strong>一致性（Consistency）</strong>：事务必须使数据库从一个一致性状态转换到另一个一致性状态。</li><li><strong>隔离性（Isolation）</strong>：事务的执行不能被其他事务的操作干扰。</li><li><strong>持久性（Durability）</strong>：一旦事务被提交，它对数据库的修改应该是永久的，即使系统发生故障。</li></ul> 
+<h4><a id="_117"></a>单线程事务的原因</h4> 
+<ol><li><strong>隔离性</strong>：事务需要在执行过程中保持数据的隔离性，避免数据在并发环境下出现脏读、不可重复读和幻读等问题。</li><li><strong>简化管理</strong>：单线程执行可以简化事务的状态管理，因为不需要额外的机制来处理多线程之间的竞争和数据同步问题。</li></ol> 
+<h2><a id="6__127"></a>6. 组合索引失效的原因有哪些</h2> 
+<blockquote> 
+ <p>https://www.51cto.com/article/702691.html</p> 
+</blockquote> 
+<p>组合索引是一种在数据库表上根据多个列同时建立的索引，它可以极大地加速查询性能，但在某些情况下可能失效。以下是一些常见的组合索引失效的原因：</p> 
+<ol><li> <p><strong>查询中未使用索引的首列</strong>：</p> 
+  <ul><li>组合索引是按照列的顺序建立的。如果查询条件中没有使用组合索引中的第一列，那么索引可能不会被利用。例如，如果有一个基于<code>last_name, first_name</code>的组合索引，查询只有<code>first_name</code>条件时，这个索引可能不会被使用。</li></ul> </li><li> <p><strong>使用了不适合的操作符</strong>：</p> 
+  <ul><li>某些操作符，如<code>&lt;&gt;</code>（不等于）或使用<code>OR</code>条件链接的不同列的查询，可能导致数据库优化器放弃使用索引。例如，在使用组合索引<code>column1, column2</code>时，查询条件<code>column1 = 'value1' OR column2 = 'value2'</code>可能不会有效地使用索引。</li></ul> </li><li> <p><strong>函数或表达式中使用索引列</strong>：</p> 
+  <ul><li>如果查询条件对索引列使用了函数或计算表达式，如<code>LOWER(column1)</code>，那么即使<code>column1</code>是索引的一部分，索引也可能不会被使用，因为索引存储的是列的原始数据，不是计算结果。</li></ul> </li><li> <p><strong>类型不匹配</strong>：</p> 
+  <ul><li>如果查询中索引列的数据类型与列实际的数据类型不匹配，可能会导致索引失效。例如，如果索引列是整数类型，但在查询中被作为字符串来匹配，这可能导致索引失效。</li></ul> </li><li> <p><strong>过滤器选择性低</strong>：</p> 
+  <ul><li>如果查询条件中使用的索引列的选择性（不重复的值的比例）很低，那么数据库优化器可能判断全表扫描比使用索引更有效率，从而不使用索引。</li></ul> </li><li> <p><strong>使用了LIKE操作，但模式不是前缀</strong>：</p> 
+  <ul><li>当使用<code>LIKE</code>查询且查询模式不以常量字符串开始时（如<code>'%value'</code>），组合索引可能不会被使用，因为这样的模式匹配需要扫描整个索引。</li></ul> </li></ol> 
+<h2><a id="7_spring_ioc_153"></a>7. spring ioc原理</h2> 
+<p><strong>控制反转（IoC）</strong> 是一种设计原则，用于减少计算机代码之间的耦合。在传统的编程实践中，代码直接在对象内部创建依赖对象，这导致高耦合和代码难以测试。IoC通过将依赖的创建和绑定的控制权从对象转移到外部容器，来实现代码之间的解耦。</p> 
+<p>Spring框架通过其<strong>IoC容器</strong>实现了这一原则，容器管理应用中对象的创建、配置和管理过程。这个过程通常通过依赖注入（DI）来完成，DI是IoC的一种实现方式。</p> 
+<h4><a id="IoC_161"></a>IoC容器的工作原理</h4> 
+<ol><li> <p><strong>配置阶段</strong>：</p> 
+  <ul><li>开发者配置应用中的对象（称为beans）及其依赖关系。这可以通过XML配置文件、注解或Java配置类实现。</li></ul> </li><li> <p><strong>实例化阶段</strong>：</p> 
+  <ul><li>IoC容器负责实例化beans，容器会根据配置信息来创建对象。这个过程中，容器完全控制了对象的生命周期。</li></ul> </li><li> <p><strong>依赖注入</strong>：</p> 
+  <ul><li>容器接着会注入对象的依赖。依赖注入可以是构造器注入、设置器注入或字段注入。这意味着对象不需要自己查找或创建其依赖对象，依赖对象会被自动注入。</li></ul> </li><li> <p><strong>使用阶段</strong>：</p> 
+  <ul><li>一旦所有的bean都被正确创建和配置，它们就可以用于应用中了。应用程序代码只需从容器中获取已经配置好的bean。</li></ul> </li><li> <p><strong>销毁阶段</strong>：</p> 
+  <ul><li>当应用关闭时，容器负责清理资源，调用bean的销毁方法来释放资源。</li></ul> </li></ol> 
+<h4><a id="_178"></a>主要组件</h4> 
+<ul><li><strong>BeanFactory</strong>：是Spring IoC容器的核心接口，用于获取bean实例。</li><li><strong>ApplicationContext</strong>：是BeanFactory的子接口，提供更多的企业特定的功能如事件传播、声明式服务和验证。</li><li><strong>BeanDefinition</strong>：表示bean配置的元数据对象，包含如何创建一个具体的bean的信息。</li></ul> 
+<h4><a id="_184"></a>优点</h4> 
+<ul><li><strong>降低耦合度</strong>：应用组件间的依赖关系由容器在运行时负责注入，减少了组件间的直接依赖。</li><li><strong>增强模块化</strong>：通过IoC容器管理的组件更易于管理和维护。</li><li><strong>提高可测试性</strong>：由于依赖可以被轻松地注入，所以更容易进行单元测试。</li></ul> 
+<h2><a id="8__192"></a>8. 后端安全有哪些要注意</h2> 
+<ol><li> <p><strong>数据加密</strong>：</p> 
+  <ul><li>使用强加密算法来保护存储和传输中的敏感数据。确保所有敏感信息（如用户密码、个人信息等）在存储前加密，并使用HTTPS来加密客户端和服务器之间的数据传输。</li></ul> </li><li> <p><strong>使用安全的认证机制</strong>：</p> 
+  <ul><li>实现基于标准的认证机制，如OAuth、JWT（JSON Web Tokens）等。确保认证过程中的所有数据都是安全传输的，并且对于敏感操作使用多因素认证。</li></ul> </li><li> <p><strong>输入数据验证与清洗</strong>：</p> 
+  <ul><li>验证所有的输入数据，以防止常见攻击，如SQL注入、跨站脚本（XSS）和跨站请求伪造（CSRF）。使用白名单验证输入，并使用适当的库来清洗输入数据，确保它们在传递到应用程序的其他部分前是安全的。</li></ul> </li><li> <p><strong>权限控制和最小权限原则</strong>：</p> 
+  <ul><li>确保系统的每个部分仅能访问执行其功能所必需的资源。实施细粒度的访问控制，确保用户和系统组件的权限限制在最低必要范围内。</li></ul> </li><li> <p><strong>审计和监控</strong>：</p> 
+  <ul><li>实施日志记录和监控策略，以跟踪和记录所有关键操作和安全事件。使用监控工具来检测和警报异常行为，这可以帮助及时发现和响应安全威胁。</li></ul> </li><li> <p><strong>API安全</strong>：</p> 
+  <ul><li>保护API免受未授权访问和滥用。确保使用安全的API网关，实施速率限制，以防止API被过度使用或被DDoS攻击。</li></ul> </li><li> <p><strong>安全补丁和更新</strong>：</p> 
+  <ul><li>定期更新所有服务器软件、依赖库和平台，以保护应用免受已知漏洞的攻击。订阅安全通告，以确保及时响应新发现的漏洞。</li></ul> </li><li> <p><strong>错误处理和信息泄露</strong>：</p> 
+  <ul><li>在设计错误处理逻辑时避免泄露敏感信息。确保错误消息不会暴露过多的系统细节，这些信息可能被攻击者用来发起进一步的攻击。</li></ul> </li></ol> 
+<h2><a id="_222"></a>你了解哪些设计模式</h2> 
+<h4><a id="_226"></a>设计模式的分类</h4> 
+<p>设计模式通常分为三大类：</p> 
+<ul><li><strong>创建型模式</strong>：涉及对象实例化，用于帮助创建对象，使系统独立于对象的创建和组合方式。例如，单例模式、工厂方法模式、抽象工厂模式等。</li><li><strong>结构型模式</strong>：涉及到如何组合对象和类成为更大的结构。例如，适配器模式、装饰器模式、代理模式等。</li><li><strong>行为型模式</strong>：涉及对象间的通信，更关注于对象之间的责任和算法的分配。例如，策略模式、观察者模式、命令模式等。</li></ul> 
+<h4><a id="_236"></a>常见的设计模式原则</h4> 
+<ol><li> <p><strong>单一职责原则（Single Responsibility Principle, SRP）</strong></p> 
+  <ul><li>每个类应该只有一个引起变化的原因。这个原则强调将功能划分成小的、管理性强的部分，每部分解决一个单一的职责或功能。</li></ul> </li><li> <p><strong>开闭原则（Open/Closed Principle, OCP）</strong></p> 
+  <ul><li>软件实体应该对扩展开放，对修改关闭。这意味着应该能够在不修改现有代码的基础上扩展功能，通常通过使用接口和抽象类来实现。</li></ul> </li><li> <p><strong>里氏替换原则（Liskov Substitution Principle, LSP）</strong></p> 
+  <ul><li>子类应该能够替换它们的基类而不影响程序的正确性。这个原则强调继承结构的正确性，子类的行为应当与父类行为兼容。</li></ul> </li><li> <p><strong>接口隔离原则（Interface Segregation Principle, ISP）</strong></p> 
+  <ul><li>不应该强迫客户依赖于它们不使用的接口。这个原则鼓励使用多个专门的接口比使用单一的总接口更好。</li></ul> </li><li> <p><strong>依赖倒置原则（Dependency Inversion Principle, DIP）</strong></p> 
+  <ul><li>高层模块不应该依赖于低层模块，两者都应该依赖于抽象；抽象不应该依赖于细节，细节应该依赖于抽象。这个原则鼓励依赖于接口而非具体实现，提高系统的解耦性。</li></ul> </li></ol> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_0" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#1_jvm_9" rel="nofollow">1. 什么是jvm</a></li><li><a href="#2_gc_24" rel="nofollow">2. 什么是gc</a></li><li><a href="#3_gc_47" rel="nofollow">3. gc算法有哪些</a></li><li><a href="#4_springcloud_78" rel="nofollow">4. 用过哪些springcloud的生态、组件</a></li><li><a href="#5__105" rel="nofollow">5. 单个事务可以多线程执行吗</a></li><li><ul><li><ul><li><a href="#ACID_111" rel="nofollow">事务的基本属性（ACID）</a></li><li><a href="#_117" rel="nofollow">单线程事务的原因</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#6__127" rel="nofollow">6. 组合索引失效的原因有哪些</a></li><li><a href="#7_spring_ioc_153" rel="nofollow">7. spring ioc原理</a></li><li><ul><li><ul><li><a href="#IoC_161" rel="nofollow">IoC容器的工作原理</a></li><li><a href="#_178" rel="nofollow">主要组件</a></li><li><a href="#_184" rel="nofollow">优点</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#8__192" rel="nofollow">8. 后端安全有哪些要注意</a></li><li><a href="#_222" rel="nofollow">你了解哪些设计模式</a></li><li><ul><li><ul><li><a href="#_226" rel="nofollow">设计模式的分类</a></li><li><a href="#_236" rel="nofollow">常见的设计模式原则</a></li></ul> 
+  </li></ul> 
+ </li></ul> 
+</div> 
+<p></p>
+                </div>
+</body>
+</html>

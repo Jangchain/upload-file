@@ -1,0 +1,160 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+<div id="content_views" class="markdown_views prism-atom-one-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+                        <path stroke-linecap="round" d="M5,0 0,2.5 5,5z" id="raphael-marker-block" style="-webkit-tap-highlight-color: rgba(0, 0, 0, 0);"></path>
+                    </svg>
+                    <h2><a id="OD_2"></a>华为OD面试真题精选</h2> 
+<p>专栏：<a href="https://blog.csdn.net/banxia_frontend/category_12436481.html">华为OD面试真题精选</a><br> 目录: <a href="https://blog.csdn.net/banxia_frontend/article/details/138131520">2024华为OD面试手撕代码真题目录以及八股文真题目录</a></p> 
+<p></p> 
+<div class="toc"> 
+ <h4>文章目录</h4> 
+ <ul><li><a href="#OD_2" rel="nofollow">华为OD面试真题精选</a></li><li><a href="#1_CookieStorageInnoDB_13" rel="nofollow">1. Cookie、Storage、InnoDB的区别</a></li><li><ul><li><ul><li><a href="#1_Cookie_15" rel="nofollow">1. **Cookie**</a></li><li><a href="#2_Storage_localStorage__sessionStorage_23" rel="nofollow">2. **Storage (localStorage 和 sessionStorage)**</a></li><li><a href="#3_InnoDB_35" rel="nofollow">3. **InnoDB**</a></li><li><a href="#4_IndexedDB_44" rel="nofollow">4. 补充：*IndexedDB*</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#2__72" rel="nofollow">2. 前端开发涉及到的网络协议</a></li><li><ul><li><ul><li><a href="#1_HTTPHTTPS_78" rel="nofollow">1. **HTTP/HTTPS（超文本传输协议/安全超文本传输协议）**</a></li><li><a href="#2_WebSocket_82" rel="nofollow">2. **WebSocket**</a></li><li><a href="#3_HTTP2_85" rel="nofollow">3. **HTTP/2**</a></li><li><a href="#4_DNS_88" rel="nofollow">4. **DNS（域名系统）**</a></li><li><a href="#5_TLSSSL_91" rel="nofollow">5. **TLS/SSL（传输层安全协议/安全套接层协议）**</a></li><li><a href="#6_CDN_94" rel="nofollow">6. **CDN（内容分发网络）**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#3__100" rel="nofollow">3. 说说你知道的前端性能优化</a></li><li><a href="#4_Dom_140" rel="nofollow">4. 谈谈你知道的Dom修改</a></li><li><ul><li><ul><li><a href="#DOM__144" rel="nofollow">**DOM 操作的基本概念**</a></li><li><a href="#_DOM__147" rel="nofollow">**常见的 DOM 修改方法**</a></li><li><a href="#DOM__169" rel="nofollow">**DOM 修改的性能影响**</a></li><li><a href="#_DOM__177" rel="nofollow">**优化 DOM 操作的策略**</a></li></ul> 
+  </li></ul> 
+  </li><li><a href="#5__206" rel="nofollow">5. 浅拷贝和深拷贝</a></li><li><a href="#6_SetMap_212" rel="nofollow">6. 对Set、Map两种数据结构的理解</a></li><li><ul><li><ul><li><a href="#Set_216" rel="nofollow">**Set**</a></li><li><ul><li><a href="#Set__219" rel="nofollow">**Set 的特性与方法：**</a></li><li><a href="#Set__243" rel="nofollow">**Set 的使用场景：**</a></li></ul> 
+    </li><li><a href="#Map_254" rel="nofollow">**Map**</a></li><li><ul><li><a href="#Map__257" rel="nofollow">**Map 的特性与方法：**</a></li><li><a href="#Map__281" rel="nofollow">**Map 的使用场景：**</a></li></ul> 
+   </li></ul> 
+  </li></ul> 
+  </li><li><a href="#7__297" rel="nofollow">7. 数据量很大，有什么优化查询方法，你在项目中使用了哪些优化方法</a></li></ul> 
+</div> 
+<p></p> 
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/044c13f12b7b05fa860f365d481b03ab.png" alt="封面"></p> 
+<h2><a id="1_CookieStorageInnoDB_13"></a>1. Cookie、Storage、InnoDB的区别</h2> 
+<h4><a id="1_Cookie_15"></a>1. <strong>Cookie</strong></h4> 
+<ul><li><strong>用途</strong>：用于在客户端存储少量数据，可以在不同页面之间共享，并且数据会在 HTTP 请求中自动发送到服务器。常用于会话管理、用户跟踪等。</li><li><strong>容量</strong>：通常每个 Cookie 大小限制为约 4KB。</li><li><strong>存储位置</strong>：客户端浏览器。</li><li><strong>生命周期</strong>：可以设置过期时间，默认为会话结束后失效。</li><li><strong>安全性</strong>：由于会在每次请求中发送到服务器，因此不适合存储敏感信息。可以通过 <code>HttpOnly</code> 和 <code>Secure</code> 标记增加安全性。</li><li><strong>访问方式</strong>：通过 JavaScript 的 <code>document.cookie</code> 接口进行读写，或在服务器端进行设置。</li></ul> 
+<h4><a id="2_Storage_localStorage__sessionStorage_23"></a>2. <strong>Storage (localStorage 和 sessionStorage)</strong></h4> 
+<ul><li><strong>用途</strong>：用于在客户端存储较大数据，可以通过 JavaScript 进行本地数据存储和访问，不会自动发送到服务器。通常用于本地持久化用户数据。</li><li><strong>容量</strong>： 
+  <ul><li><code>localStorage</code>：每个域名通常有 5MB 到 10MB 的存储空间。</li><li><code>sessionStorage</code>：与 <code>localStorage</code> 类似，但数据仅在页面会话期间可用（页面关闭后数据即被清除）。</li></ul> </li><li><strong>存储位置</strong>：客户端浏览器。</li><li><strong>生命周期</strong>： 
+  <ul><li><code>localStorage</code>：持久化存储，直到手动删除。</li><li><code>sessionStorage</code>：仅在当前会话内有效，页面关闭后数据消失。</li></ul> </li><li><strong>安全性</strong>：仅在客户端存储，不会自动发送到服务器，但数据仍然可以被 JavaScript 访问，因此不适合存储高度敏感的信息。</li><li><strong>访问方式</strong>：通过 JavaScript 的 <code>localStorage</code> 或 <code>sessionStorage</code> 接口进行读写。</li></ul> 
+<h4><a id="3_InnoDB_35"></a>3. <strong>InnoDB</strong></h4> 
+<ul><li><strong>用途</strong>：<code>InnoDB</code> 是 MySQL 数据库中的一种存储引擎，与前端开发直接关联较少。通常用于在服务器端的数据库中管理和存储数据，支持事务、外键等高级特性。适用于需要持久化、结构化存储的数据。</li><li><strong>容量</strong>：理论上容量仅受限于服务器的硬件资源。</li><li><strong>存储位置</strong>：服务器端数据库。</li><li><strong>生命周期</strong>：数据的生命周期由数据库的设计和操作决定，可以是永久存储。</li><li><strong>安全性</strong>：通过数据库权限控制和网络安全措施来保障数据的安全性，适合存储高度敏感的数据。</li><li><strong>访问方式</strong>：通过 SQL 查询和数据库连接进行访问。</li></ul> 
+<h4><a id="4_IndexedDB_44"></a>4. 补充：<em>IndexedDB</em></h4> 
+<p><code>IndexedDB</code> 是一个功能强大的浏览器数据库，适用于需要在客户端存储和检索大量数据的场景。它超越了简单的键值对存储机制，如 <code>localStorage</code> 和 <code>sessionStorage</code>，并提供了对结构化数据的高级支持。</p> 
+<ul><li> <p><strong>用途</strong>：</p> 
+  <ul><li>适合用于需要在客户端存储大量数据的应用，如离线应用、PWA（渐进式Web应用）等。</li><li>可以存储复杂的数据结构，包括对象、文件、Blob 等，远超出 <code>localStorage</code> 或 <code>sessionStorage</code> 所支持的简单键值对存储。</li></ul> </li><li> <p><strong>特性</strong>：</p> 
+  <ul><li><strong>大容量</strong>：<code>IndexedDB</code> 的存储容量相对较大，通常可以存储数百 MB 甚至更多的数据。</li><li><strong>事务支持</strong>：<code>IndexedDB</code> 提供了对事务的支持，确保数据的完整性和一致性。</li><li><strong>索引</strong>：可以为数据创建索引，以提高查询效率。</li><li><strong>异步操作</strong>：所有操作都是异步的，以避免阻塞浏览器的主线程。</li><li><strong>结构化克隆算法</strong>：使用结构化克隆算法存储对象，因此可以保存复杂对象（包括循环引用的对象）。</li></ul> </li><li> <p><strong>使用场景</strong>：</p> 
+  <ul><li>离线应用：在用户断网时依然能够正常使用的应用。</li><li>大量数据存储：需要在浏览器中存储和管理大量数据的场景，例如缓存文件、数据分析等。</li></ul> </li><li> <p><strong>API</strong>：</p> 
+  <ul><li>通过 JavaScript 提供的 API 进行交互，主要包括 <code>open</code>、<code>transaction</code>、<code>objectStore</code> 等方法。需要注意的是，由于其异步特性，通常会使用回调函数或 Promises 来处理操作的结果。</li></ul> </li><li> <p><strong>安全性</strong>：<code>IndexedDB</code> 存储在浏览器的沙箱环境中，并且只能由同源脚本访问，因此安全性相对较高。</p> </li></ul> 
+<h2><a id="2__72"></a>2. 前端开发涉及到的网络协议</h2> 
+<h4><a id="1_HTTPHTTPS_78"></a>1. <strong>HTTP/HTTPS（超文本传输协议/安全超文本传输协议）</strong></h4> 
+<ul><li><strong>HTTP</strong>：超文本传输协议，是前端与服务器之间进行通信的基础协议。HTTP 是无状态的，即每次请求都是独立的，不保留任何上下文信息。常见的 HTTP 方法包括 <code>GET</code>、<code>POST</code>、<code>PUT</code>、<code>DELETE</code>、<code>PATCH</code> 等。</li><li><strong>HTTPS</strong>：在 HTTP 基础上增加了 SSL/TLS 加密层，确保数据在传输过程中不会被窃取或篡改。HTTPS 是现代 Web 应用的标准，尤其在涉及用户隐私和敏感数据时尤为重要。</li></ul> 
+<h4><a id="2_WebSocket_82"></a>2. <strong>WebSocket</strong></h4> 
+<ul><li><strong>WebSocket</strong>：一种全双工通信协议，允许客户端与服务器之间进行实时的双向通信。与 HTTP 不同，WebSocket 在初次握手后会保持连接开放，从而能够高效地进行数据交换，常用于实时聊天、在线游戏、实时更新等场景。</li></ul> 
+<h4><a id="3_HTTP2_85"></a>3. <strong>HTTP/2</strong></h4> 
+<ul><li><strong>HTTP/2</strong>：是 HTTP 协议的升级版本，提供了多路复用、头部压缩、服务器推送等功能，旨在提高 Web 应用的性能。前端开发中，HTTP/2 带来的性能改进对于优化资源加载、提高用户体验非常重要。</li></ul> 
+<h4><a id="4_DNS_88"></a>4. <strong>DNS（域名系统）</strong></h4> 
+<ul><li><strong>DNS</strong>：负责将人类可读的域名（如 <code>example.com</code>）解析为 IP 地址。前端开发中，了解 DNS 解析的过程有助于理解网络请求的延迟，并采取措施（如 DNS 预取）来优化页面加载速度。</li></ul> 
+<h4><a id="5_TLSSSL_91"></a>5. <strong>TLS/SSL（传输层安全协议/安全套接层协议）</strong></h4> 
+<ul><li><strong>TLS/SSL</strong>：用于加密 HTTP 数据传输，确保数据的保密性和完整性。TLS 是 SSL 的升级版本，现已成为 HTTPS 的标准加密协议。</li></ul> 
+<h4><a id="6_CDN_94"></a>6. <strong>CDN（内容分发网络）</strong></h4> 
+<ul><li><strong>CDN</strong> 不是一个独立的协议，但它涉及多个网络协议的使用，包括 HTTP/HTTPS 和 DNS。CDN 通过将内容缓存到全球各地的服务器上，加速了用户访问静态资源的速度，是现代前端性能优化的关键技术之一。</li></ul> 
+<h2><a id="3__100"></a>3. 说说你知道的前端性能优化</h2> 
+<ol><li> <p><strong>资源优化</strong></p> 
+  <ul><li><strong>图片优化</strong>：使用现代格式如 WebP 替代传统格式，压缩图片大小，减少带宽占用。还可以根据屏幕尺寸提供不同分辨率的图片（响应式图片）。</li><li><strong>懒加载</strong>：对于非关键资源（如图片、视频等），可以使用懒加载技术，即用户滚动到相关内容时才加载资源，以减少页面初次加载时间。</li><li><strong>合并与压缩资源</strong>：将多个 CSS 和 JavaScript 文件合并，减少 HTTP 请求；通过压缩工具（如 Uglify、Terser、CSSNano）减少文件体积。</li></ul> </li><li> <p><strong>减少 HTTP 请求</strong></p> 
+  <ul><li><strong>使用雪碧图（CSS Sprites）</strong>：将多个小图标合并到一张图片中，减少 HTTP 请求。</li><li><strong>内联关键 CSS</strong>：将渲染关键路径中的小部分 CSS 直接嵌入到 HTML 文件中，减少 CSS 文件的请求数并提高首屏渲染速度。</li></ul> </li><li> <p><strong>代码分割</strong></p> 
+  <ul><li>使用 Webpack 等构建工具进行代码分割，将应用拆分成更小的 JavaScript 包。按需加载这些包，以减少初始加载时间。这对大型单页应用（SPA）尤为重要。</li></ul> </li><li> <p><strong>缓存</strong></p> 
+  <ul><li><strong>HTTP 缓存</strong>：设置合理的缓存策略，如 <code>Cache-Control</code> 和 <code>ETag</code>，使得浏览器能够缓存静态资源，减少重复请求。</li><li><strong>服务端渲染（SSR）缓存</strong>：在使用 SSR 时，可以缓存生成的 HTML 页面，减少服务器计算压力，提升响应速度。</li></ul> </li><li> <p><strong>使用 CDN</strong></p> 
+  <ul><li>将静态资源（如图片、CSS、JS 文件）分发到全球各地的 CDN 节点，用户能够从最近的节点获取资源，从而降低加载时间。</li></ul> </li><li> <p><strong>减少渲染阻塞</strong></p> 
+  <ul><li><strong>异步加载 JavaScript</strong>：使用 <code>async</code> 或 <code>defer</code> 属性，避免 JavaScript 阻塞页面渲染。</li><li><strong>最小化 CSS 阻塞</strong>：将关键 CSS 直接嵌入到页面中，其他 CSS 文件则可以延迟加载，以避免页面渲染被 CSS 阻塞。</li></ul> </li><li> <p><strong>优先加载关键内容</strong></p> 
+  <ul><li><strong>首屏优化</strong>：确保首屏内容的优先加载，使得用户在最短时间内看到页面的主要内容。可以通过减少不必要的外部依赖、使用骨架屏等手段来优化首屏体验。</li><li><strong>预加载与预取</strong>：使用 <code>preload</code> 和 <code>prefetch</code> 标签提前加载即将使用的资源，减少后续的加载等待时间。</li></ul> </li><li> <p><strong>减少 JavaScript 执行时间</strong></p> 
+  <ul><li><strong>去除未使用的代码</strong>：通过工具（如 Webpack 的 Tree Shaking）去除未使用的代码，减少 JavaScript 文件的体积。</li><li><strong>减少重绘与重排</strong>：在 DOM 操作时，应尽量减少对页面的频繁修改，避免导致页面重绘或重排，从而提升性能。</li></ul> </li><li> <p><strong>性能监控</strong></p> 
+  <ul><li>使用 Lighthouse、PageSpeed Insights 等工具监控页面性能，识别性能瓶颈，定期优化。通过分析 <code>Time to First Byte</code>（TTFB）、<code>First Contentful Paint</code>（FCP）、<code>Largest Contentful Paint</code>（LCP）等指标，逐步提升用户体验。</li></ul> </li></ol> 
+<h2><a id="4_Dom_140"></a>4. 谈谈你知道的Dom修改</h2> 
+<h4><a id="DOM__144"></a><strong>DOM 操作的基本概念</strong></h4> 
+<p>DOM（文档对象模型）是浏览器呈现 HTML 文档的方式，允许开发者通过 JavaScript 动态修改页面的内容、结构和样式。DOM 操作是昂贵的，因为它可能触发浏览器的重排（reflow）和重绘（repaint），这会影响页面的响应速度和用户体验。</p> 
+<h4><a id="_DOM__147"></a><strong>常见的 DOM 修改方法</strong></h4> 
+<ol><li> <p><strong>直接修改</strong>：通过 JavaScript 直接添加、删除或更改 DOM 节点。</p> <pre><code class="prism language-javascript"><span class="token keyword">let</span> element <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'myElement'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+element<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token string">'New Content'</span><span class="token punctuation">;</span> <span class="token comment">// 修改内容</span>
+element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>color <span class="token operator">=</span> <span class="token string">'red'</span><span class="token punctuation">;</span> <span class="token comment">// 修改样式</span>
+</code></pre> </li><li> <p><strong>批量更新</strong>：通过批量修改 DOM 来减少重排次数。</p> <pre><code class="prism language-javascript"><span class="token keyword">let</span> fragment <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createDocumentFragment</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">let</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> <span class="token number">1000</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    <span class="token keyword">let</span> newElement <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'div'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    newElement<span class="token punctuation">.</span>textContent <span class="token operator">=</span> <span class="token template-string"><span class="token template-punctuation string">`</span><span class="token string">Item </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${<!-- --></span>i<span class="token interpolation-punctuation punctuation">}</span></span><span class="token template-punctuation string">`</span></span><span class="token punctuation">;</span>
+    fragment<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>newElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'container'</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>fragment<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> </li><li> <p><strong>使用虚拟 DOM</strong>：在 React、Vue 等框架中，虚拟 DOM 通过比较前后的差异（diffing）来减少直接操作真实 DOM，从而提高性能。</p> </li></ol> 
+<h4><a id="DOM__169"></a><strong>DOM 修改的性能影响</strong></h4> 
+<ol><li> <p><strong>重排（Reflow）</strong>：</p> 
+  <ul><li>当页面布局或几何属性（如大小、位置）发生变化时，浏览器会重新计算元素的位置和大小，称为重排。</li><li>重排是性能消耗最大的操作之一，尤其是在页面上有大量元素时。因此，尽量减少频繁的重排是优化性能的关键。</li></ul> </li><li> <p><strong>重绘（Repaint）</strong>：</p> 
+  <ul><li>当元素的外观发生变化（如颜色、背景），但没有影响到布局时，浏览器会触发重绘。虽然重绘的开销小于重排，但频繁的重绘依然会影响性能。</li></ul> </li></ol> 
+<h4><a id="_DOM__177"></a><strong>优化 DOM 操作的策略</strong></h4> 
+<ol><li> <p><strong>批量 DOM 操作</strong>：</p> 
+  <ul><li>使用 <code>DocumentFragment</code> 或离线节点（将节点从文档中移除进行操作）来批量处理 DOM 变化，减少重排次数。</li><li>例如，在向列表中添加大量元素时，先将这些元素添加到 <code>DocumentFragment</code>，再一次性将其添加到 DOM 中。</li></ul> </li><li> <p><strong>避免强制同步布局</strong>：</p> 
+  <ul><li>在读取元素的几何属性（如 <code>offsetWidth</code>、<code>offsetHeight</code>、<code>getBoundingClientRect()</code>）后立即修改 DOM，会导致浏览器为了获取最新的几何信息而强制重排。这种情况称为强制同步布局，应该尽量避免。</li><li>可以将读取和写入操作分开，确保在需要获取几何信息时，DOM 状态已经稳定。</li></ul> </li><li> <p><strong>使用 <code>requestAnimationFrame</code></strong>：</p> 
+  <ul><li>当需要频繁更新 UI 时（如动画效果），可以使用 <code>requestAnimationFrame</code> 来确保 DOM 操作与屏幕刷新同步，从而避免卡顿。</li></ul> <pre><code class="prism language-javascript"><span class="token keyword">function</span> <span class="token function">updateElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{<!-- --></span>
+    element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token function">parseInt</span><span class="token punctuation">(</span>element<span class="token punctuation">.</span>style<span class="token punctuation">.</span>left<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">'px'</span><span class="token punctuation">;</span>
+    <span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>updateElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+<span class="token function">requestAnimationFrame</span><span class="token punctuation">(</span>updateElement<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> </li><li> <p><strong>虚拟 DOM 与 Diff 算法</strong>：</p> 
+  <ul><li>在使用 React、Vue 等框架时，利用虚拟 DOM 和 Diff 算法，可以大幅减少不必要的 DOM 操作。虚拟 DOM 只会更新必要的部分，避免了直接操作真实 DOM 带来的性能问题。</li></ul> </li><li> <p><strong>减少 DOM 大小与深度</strong>：</p> 
+  <ul><li>DOM 树越大，浏览器处理重排和重绘的开销就越大。尽量减少不必要的 DOM 节点和层级，可以有效提升页面性能。</li></ul> </li></ol> 
+<h2><a id="5__206"></a>5. 浅拷贝和深拷贝</h2> 
+<p>常见题目：秒了</p> 
+<h2><a id="6_SetMap_212"></a>6. 对Set、Map两种数据结构的理解</h2> 
+<p>在前端开发中，<code>Set</code> 和 <code>Map</code> 是 ES6 引入的两种重要数据结构。</p> 
+<h4><a id="Set_216"></a><strong>Set</strong></h4> 
+<p><code>Set</code> 是一种集合数据结构，用于存储唯一值。与数组不同的是，<code>Set</code> 中的值不能重复。<code>Set</code> 的值可以是任何类型，包括原始值和对象引用。</p> 
+<h5><a id="Set__219"></a><strong>Set 的特性与方法：</strong></h5> 
+<ol><li><strong>唯一性</strong>：<code>Set</code> 自动去重，不允许重复的值。</li><li><strong>类型灵活</strong>：可以存储任何类型的值，包括基本类型和引用类型。</li><li><strong>顺序性</strong>：<code>Set</code> 会按照插入顺序保留元素顺序，因此可以用 <code>for...of</code> 或 <code>forEach</code> 进行遍历。</li></ol> 
+<p>常用方法：</p> 
+<ul><li><code>add(value)</code>：向 <code>Set</code> 添加一个值，如果值已经存在则不会添加。</li><li><code>has(value)</code>：检查 <code>Set</code> 中是否存在某个值。</li><li><code>delete(value)</code>：删除 <code>Set</code> 中的某个值。</li><li><code>clear()</code>：清空 <code>Set</code> 中的所有值。</li><li><code>size</code>：返回 <code>Set</code> 中元素的数量。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">let</span> mySet <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+mySet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 由于重复，这个值不会被添加</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mySet<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// true</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mySet<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+mySet<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>mySet<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code></pre> 
+<h5><a id="Set__243"></a><strong>Set 的使用场景：</strong></h5> 
+<ul><li><strong>数组去重</strong>：快速去除数组中的重复元素。</li><li><strong>集合操作</strong>：如交集、并集、差集等运算，这些在数学上常见的集合操作可以轻松用 <code>Set</code> 实现。</li><li><strong>唯一值存储</strong>：需要存储一组唯一值时，<code>Set</code> 是首选。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token comment">// 数组去重</span>
+<span class="token keyword">let</span> arr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> uniqueArr <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token operator">...</span><span class="token keyword">new</span> <span class="token class-name">Set</span><span class="token punctuation">(</span>arr<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+</code></pre> 
+<h4><a id="Map_254"></a><strong>Map</strong></h4> 
+<p><code>Map</code> 是一种键值对的数据结构，与对象类似，但 <code>Map</code> 的键可以是任何类型（包括对象）。<code>Map</code> 保留了键值对的插入顺序，且相较于普通对象，<code>Map</code> 在处理大量键值对时的性能通常更好。</p> 
+<h5><a id="Map__257"></a><strong>Map 的特性与方法：</strong></h5> 
+<ol><li><strong>键的类型灵活</strong>：<code>Map</code> 的键可以是任何类型，而对象的键只能是字符串或符号。</li><li><strong>顺序性</strong>：<code>Map</code> 会按照插入顺序保留键值对的顺序。</li><li><strong>性能优化</strong>：由于 <code>Map</code> 专门为存储键值对而设计，相对于对象来说，在存储和查找大量键值对时性能更好。</li></ol> 
+<p>常用方法：</p> 
+<ul><li><code>set(key, value)</code>：设置键值对，如果键已存在则更新其值。</li><li><code>get(key)</code>：获取键对应的值，如果键不存在则返回 <code>undefined</code>。</li><li><code>has(key)</code>：检查 <code>Map</code> 中是否存在某个键。</li><li><code>delete(key)</code>：删除 <code>Map</code> 中的某个键值对。</li><li><code>clear()</code>：清空 <code>Map</code> 中的所有键值对。</li><li><code>size</code>：返回 <code>Map</code> 中键值对的数量。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token keyword">let</span> myMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token string">'key1'</span><span class="token punctuation">,</span> <span class="token string">'value1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+myMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span><span class="token punctuation">{<!-- --></span><span class="token punctuation">}</span><span class="token punctuation">,</span> <span class="token string">'value2'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">'key1'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 'value1'</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myMap<span class="token punctuation">.</span>size<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 2</span>
+myMap<span class="token punctuation">.</span><span class="token function">delete</span><span class="token punctuation">(</span><span class="token string">'key1'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>myMap<span class="token punctuation">.</span><span class="token function">has</span><span class="token punctuation">(</span><span class="token string">'key1'</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// false</span>
+</code></pre> 
+<h5><a id="Map__281"></a><strong>Map 的使用场景：</strong></h5> 
+<ul><li><strong>数据映射</strong>：需要用复杂类型（如对象、函数）作为键时，<code>Map</code> 是最佳选择。</li><li><strong>频繁增删查操作</strong>：由于 <code>Map</code> 在处理大量键值对时性能更优，适用于频繁进行增删查操作的场景。</li><li><strong>按顺序存储数据</strong>：在需要保留插入顺序的键值对存储场景中使用 <code>Map</code>。</li></ul> 
+<pre><code class="prism language-javascript"><span class="token comment">// 使用 Map 来存储 DOM 节点的状态</span>
+<span class="token keyword">let</span> nodeStateMap <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Map</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">let</span> node <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementById</span><span class="token punctuation">(</span><span class="token string">'myNode'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+nodeStateMap<span class="token punctuation">.</span><span class="token function">set</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> <span class="token punctuation">{<!-- --></span> <span class="token literal-property property">clicked</span><span class="token operator">:</span> <span class="token boolean">true</span> <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> 
+<h2><a id="7__297"></a>7. 数据量很大，有什么优化查询方法，你在项目中使用了哪些优化方法</h2> 
+<ol><li> <p><strong>惰性加载 (Lazy Loading) 和分页 (Pagination)：</strong></p> 
+  <ul><li><strong>惰性加载</strong>：在数据量非常大的情况下，一次性加载所有数据会消耗大量资源。可以考虑使用惰性加载技术，只在用户需要时加载数据。</li><li><strong>分页</strong>：将数据按页加载，用户只会看到当前页的数据，减少了前端需要处理的数据量，提高了响应速度。</li></ul> </li><li> <p><strong>本地缓存 (Local Caching)：</strong></p> 
+  <ul><li>在浏览器中使用 <code>LocalStorage</code>、<code>SessionStorage</code> 或者 <code>IndexedDB</code> 来缓存经常访问的数据，避免频繁的网络请求，减少服务器的负载，并加快数据读取速度。</li><li><strong>Memoization</strong>：对函数返回的结果进行缓存，避免对相同输入的重复计算，从而加快数据查询速度。</li></ul> </li><li> <p><strong>Web Workers：</strong></p> 
+  <ul><li>使用 Web Workers 将数据处理工作移到主线程之外，避免大数据处理时阻塞 UI 渲染，提高页面的响应速度和用户体验。</li></ul> </li><li> <p><strong>虚拟滚动 (Virtual Scrolling)：</strong></p> 
+  <ul><li>当展示大量数据时，使用虚拟滚动技术，只渲染用户当前视口中的数据，其他数据仅在用户滚动时才动态加载。这样可以显著减少 DOM 元素的数量，提高页面性能。</li></ul> </li><li> <p><strong>分片处理 (Chunking)：</strong></p> 
+  <ul><li>如果必须一次处理大量数据，可以将其分成小块，并在多个事件循环中处理。这样可以避免阻塞主线程，保证页面的响应性。</li></ul> </li></ol>
+                </div>
+</body>
+</html>
