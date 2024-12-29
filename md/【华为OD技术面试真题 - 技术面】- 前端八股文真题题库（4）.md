@@ -1,4 +1,6 @@
-## 华为OD面试真题精选专栏：[华为OD面试真题精选](https://blog.csdn.net/banxia_frontend/category_12436481.html)  
+## 华为OD面试真题精选
+
+专栏：[华为OD面试真题精选](https://blog.csdn.net/banxia_frontend/category_12436481.html)  
 目录:
 [2024华为OD面试手撕代码真题目录以及八股文真题目录](https://blog.csdn.net/banxia_frontend/article/details/138131520)
 
@@ -6,7 +8,7 @@
 
   * 华为OD面试真题精选
   * 基本数据类型
-  *     *       1\. 数字（Number）
+  *     *       * 1\. 数字（Number）
       * 2\. 字符串（String）
       * 3\. 布尔值（Boolean）
       * 4\. 未定义（Undefined）
@@ -14,7 +16,7 @@
       * 6\. 符号（Symbol）
       * 7\. 大整数（BigInt）
   * ES6的新特性
-  *     *       1\. 块级作用域和 `let`/`const`
+  *     *       * 1\. 块级作用域和 `let`/`const`
       * 2\. 箭头函数
       * 3\. 模板字符串
       * 4\. 解构赋值
@@ -74,13 +76,13 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let intNum = 42;        // 整数
     let floatNum = 3.14;    // 浮点数
     console.log(NaN);       // 输出NaN
     console.log(1 / 0);     // 输出Infinity
-
+    
 
 #### 2\. 字符串（String）
 
@@ -93,12 +95,12 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let singleQuoteStr = 'Hello, World!';
     let doubleQuoteStr = "Hello, World!";
     let templateStr = `This is a number: ${intNum}`;
-
+    
 
 #### 3\. 布尔值（Boolean）
 
@@ -110,11 +112,11 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let isAvailable = true;
     let isFinished = false;
-
+    
 
 #### 4\. 未定义（Undefined）
 
@@ -127,11 +129,11 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let notAssigned;
     console.log(notAssigned); // 输出undefined
-
+    
 
 #### 5\. 空（Null）
 
@@ -143,11 +145,11 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let emptyValue = null;
     console.log(emptyValue); // 输出null
-
+    
 
 #### 6\. 符号（Symbol）
 
@@ -160,12 +162,12 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let sym1 = Symbol('identifier');
     let sym2 = Symbol('identifier');
     console.log(sym1 === sym2); // 输出false
-
+    
 
 #### 7\. 大整数（BigInt）
 
@@ -178,11 +180,11 @@ JavaScript使用浮点数表示数字，这些数字遵循IEEE 754标准，可�
 
 **示例** ：
 
-
-​    
+    
+    
     let bigInt = 123456789012345678901234567890n;
     console.log(bigInt + 1n); // 输出123456789012345678901234567891n
-
+    
 
 ## [ES6](https://so.csdn.net/so/search?q=ES6&spm=1001.2101.3001.7020)的新特性
 
@@ -197,8 +199,8 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
 
 **示例** ：
 
-
-​    
+    
+    
     function testBlockScope() {
         if (true) {
             let x = 10;
@@ -208,7 +210,7 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
         // console.log(x, y); // 抛出ReferenceError，因为x和y超出块作用域
     }
     testBlockScope();
-
+    
 
 #### 2\. 箭头函数
 
@@ -216,8 +218,8 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
 
 **示例** ：
 
-
-​    
+    
+    
     const add = (a, b) => a + b;
     console.log(add(3, 4)); // 输出7
     
@@ -227,7 +229,7 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
         getValue: () => this.value // 这里的this指向全局作用域，不是obj本身
     };
     console.log(obj.getValue()); // 输出undefined
-
+    
 
 #### 3\. 模板字符串
 
@@ -235,12 +237,12 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
 
 **示例** ：
 
-
-​    
+    
+    
     const name = "John";
     const greeting = `Hello, ${name}!`;
     console.log(greeting); // 输出Hello, John!
-
+    
 
 #### 4\. 解构赋值
 
@@ -248,8 +250,8 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
 
 **示例** ：
 
-
-​    
+    
+    
     // 数组解构
     const [first, second] = [10, 20];
     console.log(first, second); // 输出10, 20
@@ -258,7 +260,7 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
     const user = { name: "Alice", age: 25 };
     const { name, age } = user;
     console.log(name, age); // 输出Alice, 25
-
+    
 
 #### 5\. 扩展运算符
 
@@ -266,8 +268,8 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
 
 **示例** ：
 
-
-​    
+    
+    
     // 数组扩展
     const arr1 = [1, 2, 3];
     const arr2 = [...arr1, 4, 5];
@@ -277,7 +279,7 @@ ES6 引入了 `let` 和 `const` 两种新的变量声明方式，具有块级作
     const obj1 = { a: 1, b: 2 };
     const obj2 = { ...obj1, c: 3 };
     console.log(obj2); // 输出{a: 1, b: 2, c: 3}
-
+    
 
 #### 6\. 类
 
@@ -285,8 +287,8 @@ ES6引入了类的语法糖，使面向对象编程更加简洁。
 
 **示例** ：
 
-
-​    
+    
+    
     class Animal {
         constructor(name) {
             this.name = name;
@@ -305,7 +307,7 @@ ES6引入了类的语法糖，使面向对象编程更加简洁。
     
     const dog = new Dog('Rover');
     dog.speak(); // 输出Rover barks.
-
+    
 
 #### 7\. Promise
 
@@ -313,8 +315,8 @@ ES6引入了类的语法糖，使面向对象编程更加简洁。
 
 **示例** ：
 
-
-​    
+    
+    
     function fetchData() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
@@ -326,7 +328,7 @@ ES6引入了类的语法糖，使面向对象编程更加简洁。
     fetchData().then(data => {
         console.log(data); // 输出Data received
     });
-
+    
 
 #### 8\. 模块
 
@@ -335,24 +337,24 @@ ES6引入了模块化语法，使用 `import` 和 `export` 进行模块的导入
 **示例** ：  
 // module.js
 
-
-​    
+    
+    
     // 导出
     export const value = 42;
     export function greet() {
         console.log('Hello, World!');
     }
-
+    
 
 // main.js
 
-
-​    
+    
+    
     // 导入
     import { value, greet } from './module.js';
     console.log(value); // 输出42
     greet(); // 输出Hello, World!
-
+    
 
 ## vue值传递的方式
 
@@ -365,8 +367,8 @@ Vue.js提供了多种方式来传递数据，主要用于组件之间的数据�
 
 **示例** ：
 
-
-​    
+    
+    
     <!-- 父组件 -->
     <template>
       <div>
@@ -411,7 +413,7 @@ Vue.js提供了多种方式来传递数据，主要用于组件之间的数据�
       }
     }
     </script>
-
+    
 
 #### 2\. Event Bus（跨组件通信）
 
@@ -419,8 +421,8 @@ Event Bus 是一种使用 Vue 实例作为中央事件总线，在不相关的�
 
 **示例** ：
 
-
-​    
+    
+    
     // eventBus.js
     import Vue from 'vue';
     export const EventBus = new Vue();
@@ -432,7 +434,7 @@ Event Bus 是一种使用 Vue 实例作为中央事件总线，在不相关的�
     EventBus.$on('update', data => {
       console.log(data);
     });
-
+    
 
 #### 3\. Vuex（全局状态管理）
 
@@ -440,8 +442,8 @@ Vuex 是 Vue 的官方状态管理库，适用于复杂的组件结构，需要�
 
 **示例** ：
 
-
-​    
+    
+    
     // store.js
     import Vue from 'vue';
     import Vuex from 'vuex';
@@ -466,7 +468,7 @@ Vuex 是 Vue 的官方状态管理库，适用于复杂的组件结构，需要�
     
     // 组件中使用
     this.$store.dispatch('setData', 'New data');
-
+    
 
 #### 4\. Provide / Inject（祖孙组件通信）
 
@@ -474,8 +476,8 @@ Vuex 是 Vue 的官方状态管理库，适用于复杂的组件结构，需要�
 
 **示例** ：
 
-
-​    
+    
+    
     // 祖先组件
     <template>
       <div>
@@ -501,7 +503,7 @@ Vuex 是 Vue 的官方状态管理库，适用于复杂的组件结构，需要�
       inject: ['sharedData']
     }
     </script>
-
+    
 
 ## 浏览器三种本地存储的区别
 
@@ -609,8 +611,8 @@ localStorage 是 Web 存储 API 提供的一个接口，允许网站在用户的
 
 **示例** ：
 
-
-​    
+    
+    
     export default {
       data() {
         return {
@@ -623,7 +625,7 @@ localStorage 是 Web 存储 API 提供的一个接口，允许网站在用户的
         }
       }
     }
-
+    
 
 #### 侦听器（Watchers）
 

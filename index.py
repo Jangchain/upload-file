@@ -69,7 +69,7 @@ base_url = "https://blog.csdn.net/banxia_frontend/category_12436481"
 all_href = []
 
 # 假设要循环请求的次数，可根据实际需求调整
-num_requests = 1
+num_requests = 2
 
 for index in range(num_requests):
     # 动态生成带有索引参数的URL
